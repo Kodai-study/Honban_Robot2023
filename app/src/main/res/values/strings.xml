@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Honban_Robot2023</string>
+    <array name="selectRange">
+        <item>1日</item>
+        <item>1か月</item>
+        <item>1週間</item>
+
+    </array>
 </resources>

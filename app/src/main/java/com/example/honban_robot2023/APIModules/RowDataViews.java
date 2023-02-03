@@ -29,9 +29,9 @@ public class RowDataViews {
             TableRow.LayoutParams.WRAP_CONTENT);
 
 
-    public RowDataViews(Context activityContext,SampleAPIModel model) {
+    public RowDataViews(Context activityContext, SampleAPIModel model) {
 
-        if(!isSetLayout)
+        if (!isSetLayout)
             setLayoutParams();
 
         this.activityContext = activityContext;
@@ -56,7 +56,7 @@ public class RowDataViews {
         subTitleText.setTextSize(COL_TEXT_SIZE);
     }
 
-    private void setLayoutParams(){
+    private void setLayoutParams() {
         TEXT_LAYOUT_PARAMS.leftMargin = 100;
         FIRST_TEXT_LAYOUT_PARAMS.leftMargin = 40;
         isSetLayout = true;

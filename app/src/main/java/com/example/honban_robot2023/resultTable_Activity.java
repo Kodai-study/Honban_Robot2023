@@ -93,7 +93,6 @@ public class resultTable_Activity extends AppCompatActivity {
 
         Call<List<SampleAPIModel>> models = retrofitApi.getModels();
 
-
         models.enqueue(new Callback<List<SampleAPIModel>>() {
 
             @Override
