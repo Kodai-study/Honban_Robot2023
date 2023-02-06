@@ -39,7 +39,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 
-public class ChartSample_Activity extends AppCompatActivity {
+public class LineChartSample_Activity extends AppCompatActivity {
 
     private LineChart mChart;
     final SimpleDateFormat dateFormat = new SimpleDateFormat("YY/MM/dd");
