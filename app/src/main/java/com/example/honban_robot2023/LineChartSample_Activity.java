@@ -64,7 +64,7 @@ public class LineChartSample_Activity extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 1){
+                if (position == 1) {
                     addData_other();
                 } else {
                     addData();
@@ -97,9 +97,9 @@ public class LineChartSample_Activity extends AppCompatActivity {
             @Override
             public String getFormattedValue(float value) {
                 //new Date(currentTime.getTimeInMillis());
-               // return dateFormat.format(new Date(nowDate.getTime() + (int) (6000 * value)));
+                // return dateFormat.format(new Date(nowDate.getTime() + (int) (6000 * value)));
                 Calendar calendar = (Calendar) currentTime.clone();
-                calendar.add(timeRange,(int)value);
+                calendar.add(timeRange, (int) value);
                 return dateFormat.format(calendar.getTime());
             }
         });
@@ -121,25 +121,24 @@ public class LineChartSample_Activity extends AppCompatActivity {
 
     }
 
-    private void addData(){
+    private void addData() {
         data1.clear();
-        data1.add(new Entry(1,0.8f));
-        data1.add(new Entry(2,0.78f));
-        data1.add(new Entry(4,0.9f));
-        data1.add(new Entry(5,0.8f));
-        data1.add(new Entry(8,0.7f));
-        data1.add(new Entry(10,0.68f));
+        data1.add(new Entry(1, 0.8f));
+        data1.add(new Entry(2, 0.78f));
+        data1.add(new Entry(4, 0.9f));
+        data1.add(new Entry(5, 0.8f));
+        data1.add(new Entry(8, 0.7f));
+        data1.add(new Entry(10, 0.68f));
     }
 
-    private void addData_other(){
+    private void addData_other() {
         data1.clear();
-        data1.add(new Entry(1,0.69f));
-        data1.add(new Entry(3,0.8f));
-        data1.add(new Entry(4,0.92f));
-        data1.add(new Entry(5,0.8f));
-        data1.add(new Entry(8,0.75f));
-        data1.add(new Entry(12,0.71f));
+        data1.add(new Entry(1, 0.69f));
+        data1.add(new Entry(3, 0.8f));
+        data1.add(new Entry(4, 0.92f));
+        data1.add(new Entry(5, 0.8f));
+        data1.add(new Entry(8, 0.75f));
+        data1.add(new Entry(12, 0.71f));
     }
-
 
 }

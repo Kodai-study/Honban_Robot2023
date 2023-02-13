@@ -1,20 +1,36 @@
 package com.example.honban_robot2023;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.utils.widget.ImageFilterButton;
+
 import com.example.honban_robot2023.APIModules.APIManager;
+import com.example.honban_robot2023.APIModules.ResultsDataModel;
+import com.example.honban_robot2023.APIModules.RetrofitFactory;
 import com.example.honban_robot2023.APIModules.RowDataViews;
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +41,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class resultTable_Activity extends AppCompatActivity {
 
     TableLayout resultTable;
+
+    SharedPreferences saveSearchSettings;
+
+    Date searchTimeFirst;
+    Date searchTimeEnd;
+    final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+    ImageFilterButton firstDateSelect;
+    ImageFilterButton lastDateSelect;
+
+    EditText firstDateInput;
+    EditText lastDateInput;
 
     /**
      * テーブルの行に適応させるレイアウトデータ。
@@ -55,6 +83,25 @@ public class resultTable_Activity extends AppCompatActivity {
             button[i].setOnClickListener(new ColumButtonClickListener(i));
         }
         fetchAPISample();
+
+        firstDateSelect = findViewById(R.id.imageButton_selectFirstTime);
+        lastDateSelect = findViewById(R.id.imageButton_selectLastTime);
+        firstDateInput = findViewById(R.id.editText_firstDate);
+        lastDateInput = findViewById(R.id.editText_lastDate);
+
+        firstDateSelect.setOnClickListener( view -> {
+            Calendar currentTime = Calendar.getInstance();
+            DatePickerDialog datePicker = new DatePickerDialog(
+                    this,
+                    (DatePickerDialog.OnDateSetListener) (view1, year, monthOfYear, dayOfMonth) -> {
+                        firstDateInput.setText("" + year + "/" + monthOfYear + "/" + dayOfMonth);
+                    },
+                    currentTime.get(Calendar.YEAR),  currentTime.get(Calendar.MONTH),  currentTime.get(Calendar.DATE));
+
+            // 表示
+            datePicker.show();
+        });
+
     }
 
     class ColumButtonClickListener implements View.OnClickListener {
@@ -85,23 +132,18 @@ public class resultTable_Activity extends AppCompatActivity {
      * からJSONデータを持ってきてTableLayoutに表示する。
      */
     private void fetchAPISample() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com").
-                addConverterFactory(GsonConverterFactory.create())
-                .build();
-
+        /*
+        Retrofit retrofit = new RetrofitFactory().getApiClient("https://jsonplaceholder.typicode.com/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
+        Call<List<SampleAPIModel>> e = retrofitApi.getModels();
 
-        Call<List<SampleAPIModel>> models = retrofitApi.getModels();
-
-        models.enqueue(new Callback<List<SampleAPIModel>>() {
-
+        e.enqueue(new Callback<List<SampleAPIModel>>() {
             @Override
             public void onResponse(Call<List<SampleAPIModel>> call, Response<List<SampleAPIModel>> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
-
-                for (SampleAPIModel e : response.body()) {
+                for (SampleAPIModel e : Objects.requireNonNull(response.body())) {
                     TableRow t = new TableRow(resultTable_Activity.this);
 
                     RowDataViews tableRowViews = new RowDataViews
@@ -113,17 +155,67 @@ public class resultTable_Activity extends AppCompatActivity {
                     t.addView(tableRowViews.getSubTitleText());
                     t.setLayoutParams(rowLayoutParams);
                     t.setPadding(0, 100, 0, 0);
-                    t.setBackgroundColor(Color.BLACK);
+                    t.setBackgroundColor(Color.WHITE);
                     resultTable.addView(t);
                 }
-
+                Toast.makeText(resultTable_Activity.this,"OK", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<List<SampleAPIModel>> call, Throwable t) {
-                Toast.makeText(resultTable_Activity.this, "ミスった", Toast.LENGTH_SHORT).show();
+                Toast.makeText(resultTable_Activity.this, t.getCause().getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });*/
+
+
+       Retrofit retrofit = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/");
+        APIManager apiManager = retrofit.create(APIManager.class);
+        Call<ResultsDataModel> e = apiManager.getResults();
+        e.enqueue(new Callback<ResultsDataModel>() {
+
+            @Override
+            public void onResponse(Call<ResultsDataModel> call, Response<ResultsDataModel> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+
+                Toast.makeText(resultTable_Activity.this, "" + Objects.requireNonNull(response.body()).getValue(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ResultsDataModel> call, Throwable t) {
+                Toast.makeText(resultTable_Activity.this, t.getCause().getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.list_table_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        LinearLayout layout = findViewById(R.id.layout_timeSearch);
+        if (layout.getVisibility() == View.GONE) {
+            layout.setVisibility(View.VISIBLE);
+        } else {
+            layout.setVisibility(View.GONE);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveSearchSettings = getSharedPreferences("resultTableSettings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor saveSettingEditor = saveSearchSettings.edit();
+        saveSettingEditor.putString("searchTimeFirst", "g");
+
+        saveSettingEditor.commit();
+    }
 }

@@ -6,4 +6,17 @@
         <item>1週間</item>
 
     </array>
+    
+    <array name="visualInspection_detail">
+        <item>IC１の向き</item>
+        <item>IC１の無</item>
+        <item>IC2の向き</item>
+        <item>IC2の無</item>
+        <item>DIPSWパターン</item>
+        <item>R5 無</item>
+        <item>R10 無</item>
+        <item>R11 無</item>
+        <item>R12 無</item>
+        <item>R18 無</item>
+    </array>
 </resources>

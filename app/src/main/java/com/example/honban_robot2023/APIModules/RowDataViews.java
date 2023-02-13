@@ -1,6 +1,7 @@
 package com.example.honban_robot2023.APIModules;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class RowDataViews {
         userIdText.setLayoutParams(FIRST_TEXT_LAYOUT_PARAMS);
         userIdText.setText("" + model.getUserId());
         userIdText.setTextSize(COL_TEXT_SIZE);
+        userIdText.setTextColor(Color.WHITE);
 
         idText = new TextView(activityContext);
         idText.setLayoutParams(TEXT_LAYOUT_PARAMS);

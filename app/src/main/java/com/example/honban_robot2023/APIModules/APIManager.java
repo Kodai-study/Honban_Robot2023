@@ -13,4 +13,7 @@ public interface APIManager {
 
     @GET(value = "posts")
     Call<List<SampleAPIModel>> getModelsWithUserId(@Query("userId") int userId);
+
+    @GET(value = "sample1")
+    Call<ResultsDataModel> getResults();
 }

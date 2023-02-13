@@ -18,6 +18,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class BarChartSample_Activity extends AppCompatActivity {
@@ -78,6 +79,7 @@ public class BarChartSample_Activity extends AppCompatActivity {
                 this,
                 R.layout.spinner,
                 getResources().getStringArray(R.array.selectRange)
+
         );
         adapter.setDropDownViewResource(R.layout.spinner_item);
         spinner.setAdapter(adapter);
