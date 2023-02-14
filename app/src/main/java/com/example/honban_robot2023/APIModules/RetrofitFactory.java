@@ -1,6 +1,5 @@
 package com.example.honban_robot2023.APIModules;
 
-
 import java.security.cert.CertificateException;
 import java.util.concurrent.TimeUnit;
 
@@ -12,12 +11,23 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import okhttp3.OkHttpClient;
+import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ *  API取得のためのretrofitを作成する。
+ *  セキュリティレベルを手動で設定し、証明書のない
+ *  HTTPS通信でもエラーを出さないようにする。
+ */
 public class RetrofitFactory {
 
-    // ApiClientを生成する処理
+    /**
+     *  証明書が無くてもエラーを出さない、セキュリティレベルの低い
+     *  ビルド済みのretrofitオブジェクトを作成する。
+     * @param baseUrl WebページのURL。/で終わる必要がある
+     * @return {@link Retrofit} ビルド済みの
+     */
     public static Retrofit getApiClient(String baseUrl) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl)

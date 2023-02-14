@@ -31,9 +31,9 @@ public class BarChartSample_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_bar_chart_sample);
 
         //chartのコンポーネントを取得
-         bar_chart = findViewById(R.id.barchart);
+        bar_chart = findViewById(R.id.barchart);
 
-         bar_chart.getAxisLeft().setTextSize(20);
+        bar_chart.getAxisLeft().setTextSize(20);
 
         XAxis xAxis = bar_chart.getXAxis();
         //xAxis.enableGridDashedLine(10f, 10f, 0f);
@@ -42,7 +42,7 @@ public class BarChartSample_Activity extends AppCompatActivity {
         //xAxis.setAxisMaximum(100);
 
         //グラフのデータを設定
-        ArrayList<BarEntry> value1=new ArrayList<>();
+        ArrayList<BarEntry> value1 = new ArrayList<>();
         value1.add(new BarEntry(0F, 100F));
         value1.add(new BarEntry(1F, 150F));
         value1.add(new BarEntry(2F, 200F));
@@ -72,14 +72,12 @@ public class BarChartSample_Activity extends AppCompatActivity {
         bar_chart.setData(new BarData(dataSets));
         bar_chart.invalidate(); // refresh
 
-
         Spinner spinner = findViewById(R.id.spinner2);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 R.layout.spinner,
                 getResources().getStringArray(R.array.selectRange)
-
         );
         adapter.setDropDownViewResource(R.layout.spinner_item);
         spinner.setAdapter(adapter);

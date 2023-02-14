@@ -34,5 +34,4 @@ public class SampleAPIModel {
 
     @SerializedName(value = "body")
     private String subTitle;
-
 }

@@ -1,5 +1,7 @@
 package com.example.honban_robot2023.APIModules;
 
+import com.example.honban_robot2023.Test.TestFetchAPI;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -15,5 +17,8 @@ public interface APIManager {
     Call<List<SampleAPIModel>> getModelsWithUserId(@Query("userId") int userId);
 
     @GET(value = "sample1")
-    Call<ResultsDataModel> getResults();
+    Call<TestFetchAPI.Sample_OneParameterModel> getSampleParam();
+
+    @GET(value = "result")
+    Call<List<ResultsDataModel>> getResults();
 }

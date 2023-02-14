@@ -25,6 +25,7 @@ import com.example.honban_robot2023.APIModules.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.RetrofitFactory;
 import com.example.honban_robot2023.APIModules.RowDataViews;
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
+import com.example.honban_robot2023.Test.TestFetchAPI;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -89,14 +90,14 @@ public class resultTable_Activity extends AppCompatActivity {
         firstDateInput = findViewById(R.id.editText_firstDate);
         lastDateInput = findViewById(R.id.editText_lastDate);
 
-        firstDateSelect.setOnClickListener( view -> {
+        firstDateSelect.setOnClickListener(view -> {
             Calendar currentTime = Calendar.getInstance();
             DatePickerDialog datePicker = new DatePickerDialog(
                     this,
                     (DatePickerDialog.OnDateSetListener) (view1, year, monthOfYear, dayOfMonth) -> {
                         firstDateInput.setText("" + year + "/" + monthOfYear + "/" + dayOfMonth);
                     },
-                    currentTime.get(Calendar.YEAR),  currentTime.get(Calendar.MONTH),  currentTime.get(Calendar.DATE));
+                    currentTime.get(Calendar.YEAR), currentTime.get(Calendar.MONTH), currentTime.get(Calendar.DATE));
 
             // 表示
             datePicker.show();
@@ -132,7 +133,7 @@ public class resultTable_Activity extends AppCompatActivity {
      * からJSONデータを持ってきてTableLayoutに表示する。
      */
     private void fetchAPISample() {
-        /*
+
         Retrofit retrofit = new RetrofitFactory().getApiClient("https://jsonplaceholder.typicode.com/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
         Call<List<SampleAPIModel>> e = retrofitApi.getModels();
@@ -158,35 +159,15 @@ public class resultTable_Activity extends AppCompatActivity {
                     t.setBackgroundColor(Color.WHITE);
                     resultTable.addView(t);
                 }
-                Toast.makeText(resultTable_Activity.this,"OK", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<List<SampleAPIModel>> call, Throwable t) {
-                Toast.makeText(resultTable_Activity.this, t.getCause().getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });*/
-
-
-       Retrofit retrofit = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/");
-        APIManager apiManager = retrofit.create(APIManager.class);
-        Call<ResultsDataModel> e = apiManager.getResults();
-        e.enqueue(new Callback<ResultsDataModel>() {
-
-            @Override
-            public void onResponse(Call<ResultsDataModel> call, Response<ResultsDataModel> response) {
-                if (!response.isSuccessful()) {
-                    return;
-                }
-
-                Toast.makeText(resultTable_Activity.this, "" + Objects.requireNonNull(response.body()).getValue(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<ResultsDataModel> call, Throwable t) {
-                Toast.makeText(resultTable_Activity.this, t.getCause().getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(resultTable_Activity.this,
+                        t.getCause().getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+        new TestFetchAPI(this).fetchSampleAPI();
 
 
     }
