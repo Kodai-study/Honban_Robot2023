@@ -1,10 +1,11 @@
-package com.example.honban_robot2023.APIModules;
+package com.example.honban_robot2023.Models;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.honban_robot2023.APIModules.SampleAPIModel;
 
 
 public class RowDataViews {

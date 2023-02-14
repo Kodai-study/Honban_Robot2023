@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -21,11 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
-import com.example.honban_robot2023.APIModules.ResultsDataModel;
-import com.example.honban_robot2023.APIModules.RetrofitFactory;
-import com.example.honban_robot2023.APIModules.RowDataViews;
+import com.example.honban_robot2023.Models.RetrofitFactory;
+import com.example.honban_robot2023.Models.RowDataViews;
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
 import com.example.honban_robot2023.Test.TestFetchAPI;
+import com.example.honban_robot2023.event.DateSelectButtonClickListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,7 +36,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class resultTable_Activity extends AppCompatActivity {
 
@@ -90,19 +88,8 @@ public class resultTable_Activity extends AppCompatActivity {
         firstDateInput = findViewById(R.id.editText_firstDate);
         lastDateInput = findViewById(R.id.editText_lastDate);
 
-        firstDateSelect.setOnClickListener(view -> {
-            Calendar currentTime = Calendar.getInstance();
-            DatePickerDialog datePicker = new DatePickerDialog(
-                    this,
-                    (DatePickerDialog.OnDateSetListener) (view1, year, monthOfYear, dayOfMonth) -> {
-                        firstDateInput.setText("" + year + "/" + monthOfYear + "/" + dayOfMonth);
-                    },
-                    currentTime.get(Calendar.YEAR), currentTime.get(Calendar.MONTH), currentTime.get(Calendar.DATE));
-
-            // 表示
-            datePicker.show();
-        });
-
+        firstDateSelect.setOnClickListener(new DateSelectButtonClickListener(this,firstDateInput));
+        lastDateSelect.setOnClickListener(new DateSelectButtonClickListener(this,lastDateInput,firstDateInput));
     }
 
     class ColumButtonClickListener implements View.OnClickListener {

@@ -5,8 +5,7 @@ import android.widget.Toast;
 
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.APIModules.ResultsDataModel;
-import com.example.honban_robot2023.APIModules.RetrofitFactory;
-import com.example.honban_robot2023.resultTable_Activity;
+import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
@@ -51,13 +50,10 @@ public class TestFetchAPI {
         results.enqueue(new Callback<List<ResultsDataModel>>() {
             @Override
             public void onResponse(Call<List<ResultsDataModel>> call, Response<List<ResultsDataModel>> response) {
-                for(ResultsDataModel e : response.body()){
-                    try {
-                        Toast.makeText(activityContext, "" + e.getStartTime(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(activityContext, e.getCycleTime().toString(), Toast.LENGTH_SHORT).show();
-                    } catch (ParseException ex) {
-                        throw new RuntimeException(ex);
-                    }
+                try {
+                    Toast.makeText(activityContext, "" + response.body().get(0).getCycleTime(), Toast.LENGTH_SHORT).show();
+                } catch (ParseException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
 
@@ -66,7 +62,6 @@ public class TestFetchAPI {
                 Toast.makeText(activityContext, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     public class Sample_OneParameterModel {
@@ -81,7 +76,4 @@ public class TestFetchAPI {
             this.value = value;
         }
     }
-
 }
-
-
