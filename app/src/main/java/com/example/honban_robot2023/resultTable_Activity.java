@@ -90,8 +90,8 @@ public class resultTable_Activity extends AppCompatActivity {
         firstDateInput = findViewById(R.id.editText_firstDate);
         lastDateInput = findViewById(R.id.editText_lastDate);
 
-        firstDateSelect.setOnClickListener(new DateSelectButtonClickListener(this,firstDateInput));
-        lastDateSelect.setOnClickListener(new DateSelectButtonClickListener(this,lastDateInput,firstDateInput));
+        firstDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, firstDateInput));
+        lastDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, lastDateInput, firstDateInput));
     }
 
     class ColumButtonClickListener implements View.OnClickListener {
@@ -126,14 +126,14 @@ public class resultTable_Activity extends AppCompatActivity {
         Retrofit retrofit = new RetrofitFactory().getApiClient("https://jsonplaceholder.typicode.com/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
         Call<List<SampleAPIModel>> e = retrofitApi.getModels();
-        ResultTableController tableController = new ResultTableController(this,this.resultTable);
+        ResultTableController tableController = new ResultTableController(this, this.resultTable);
         e.enqueue(new Callback<List<SampleAPIModel>>() {
             @Override
             public void onResponse(Call<List<SampleAPIModel>> call, Response<List<SampleAPIModel>> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
-                tableController.setTableTitle(new String[]{"afsdf","gawewga"});
+                tableController.setTableTitle(new String[]{"afsdf", "gawewga"});
                 tableController.tableInit(response.body());
             }
 
@@ -143,7 +143,7 @@ public class resultTable_Activity extends AppCompatActivity {
                         t.getCause().getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-       // new TestFetchAPI(this).fetchSampleAPI();
+        // new TestFetchAPI(this).fetchSampleAPI();
     }
 
     @Override

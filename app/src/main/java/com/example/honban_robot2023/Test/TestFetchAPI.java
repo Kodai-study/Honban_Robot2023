@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.APIModules.ResultsDataModel;
+import com.example.honban_robot2023.APIModules.UtilizationModel;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.google.gson.annotations.SerializedName;
 
@@ -59,6 +60,19 @@ public class TestFetchAPI {
 
             @Override
             public void onFailure(Call<List<ResultsDataModel>> call, Throwable t) {
+                Toast.makeText(activityContext, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Call<List<UtilizationModel>> model =  apiManager.getUtilizationData();
+        model.enqueue(new Callback<List<UtilizationModel>>() {
+            @Override
+            public void onResponse(Call<List<UtilizationModel>> call, Response<List<UtilizationModel>> response) {
+                Toast.makeText(activityContext, "" + response.body(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<UtilizationModel>> call, Throwable t) {
                 Toast.makeText(activityContext, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

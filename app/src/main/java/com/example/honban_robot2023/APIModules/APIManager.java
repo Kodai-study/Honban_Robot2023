@@ -21,4 +21,7 @@ public interface APIManager {
 
     @GET(value = "result")
     Call<List<ResultsDataModel>> getResults();
+
+    @GET(value = "stationUtilization")
+    Call<List<UtilizationModel>> getUtilizationData();
 }
