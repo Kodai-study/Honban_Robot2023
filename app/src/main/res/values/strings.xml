@@ -6,7 +6,7 @@
         <item>1週間</item>
 
     </array>
-    
+
     <array name="visualInspection_detail">
         <item>IC１の向き</item>
         <item>IC１の無</item>
@@ -19,4 +19,6 @@
         <item>R12 無</item>
         <item>R18 無</item>
     </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

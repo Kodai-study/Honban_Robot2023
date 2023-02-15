@@ -32,15 +32,32 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+/**
+ * 検査結果の一覧表を表示するアクティビティ
+ */
 public class resultTable_Activity extends AppCompatActivity {
 
+    /**
+     *  一覧表を表示するテーブルレイアウト
+     */
     TableLayout resultTable;
 
     SharedPreferences saveSearchSettings;
 
+    /**
+     * 検査日時の範囲の下限値を設定するカレンダーダイアログを表示するボタン
+     * {@link #firstDateInput}
+     */
     ImageFilterButton firstDateSelect;
+    /**
+     * 検査日時の範囲の上限値を設定するカレンダーダイアログを表示するボタン
+     * {@link #lastDateInput}
+     */
     ImageFilterButton lastDateSelect;
-
+    /**
+     * 表示する結果を検査日時で範囲指定する時の下限値を入力する
+     * テキストボックス。ダイアログによって自動で入力される
+     */
     EditText firstDateInput;
     EditText lastDateInput;
 
@@ -78,7 +95,6 @@ public class resultTable_Activity extends AppCompatActivity {
         lastDateSelect = findViewById(R.id.imageButton_selectLastTime);
         firstDateInput = findViewById(R.id.editText_firstDate);
         lastDateInput = findViewById(R.id.editText_lastDate);
-
         firstDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, firstDateInput));
         lastDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, lastDateInput, firstDateInput));
     }
@@ -114,9 +130,9 @@ public class resultTable_Activity extends AppCompatActivity {
 
         Retrofit retrofit = RetrofitFactory.getApiClient("https://jsonplaceholder.typicode.com/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
-        Call<List<SampleAPIModel>> e = retrofitApi.getModels();
+        Call<List<SampleAPIModel>> fetchedResultList = retrofitApi.getModels();
         ResultTableController tableController = new ResultTableController(this, this.resultTable);
-        e.enqueue(new Callback<List<SampleAPIModel>>() {
+        fetchedResultList.enqueue(new Callback<List<SampleAPIModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<SampleAPIModel>> call, @NonNull Response<List<SampleAPIModel>> response) {
                 if (!response.isSuccessful()) {
@@ -150,6 +166,7 @@ public class resultTable_Activity extends AppCompatActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
+        new ResultTableSettingDialog().show(getSupportFragmentManager(),"dialog");
         return super.onOptionsItemSelected(item);
     }
 
@@ -159,7 +176,6 @@ public class resultTable_Activity extends AppCompatActivity {
         saveSearchSettings = getSharedPreferences("resultTableSettings", Context.MODE_PRIVATE);
         SharedPreferences.Editor saveSettingEditor = saveSearchSettings.edit();
         saveSettingEditor.putString("searchTimeFirst", "g");
-
         saveSettingEditor.apply();
     }
 }
