@@ -9,15 +9,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.honban_robot2023.R;
-
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 public abstract class  TableResultControl<T> {
 
-    protected List<T> rowDataList;
+    protected List<T> itemModelList;
     protected Context activityContext;
 
     protected TableLayout tableLayout;
@@ -43,6 +39,7 @@ public abstract class  TableResultControl<T> {
     }
 
     public void tableInit(List<T> itemModelList) {
+        this.itemModelList = itemModelList;
         for (T item : itemModelList) {
             tableLayout.addView(addRowFromModule(item));
         }
@@ -68,18 +65,27 @@ public abstract class  TableResultControl<T> {
         public TextLayout(int textSize, int textColor) {
             this.textSize = textSize;
             this.textColor = textColor;
-           // this.backGroundBorder = activityContext.getDrawable(R.drawable.border_line);
         }
+
+        public TextLayout(){}
+    }
+
+    protected void setColumText(@NonNull TextView targetTextView,TextLayout textLayout) {
+        targetTextView.setTextSize(textLayout.textSize);
+        targetTextView.setTextColor(textLayout.textColor);
     }
 
     protected void setColumText(@NonNull TextView targetTextView) {
-        targetTextView.setTextSize(DEFAULT_COLUM_LAYOUT.textSize);
-        targetTextView.setTextColor(DEFAULT_COLUM_LAYOUT.textColor);
+        setColumText(targetTextView,DEFAULT_COLUM_LAYOUT);
+    }
+
+    protected void setTitleText(@NonNull TextView targetTextView,TextLayout textLayout) {
+        targetTextView.setTextSize(textLayout.textSize);
+        targetTextView.setTextColor(textLayout.textColor);
     }
 
     protected void setTitleText(@NonNull TextView targetTextView) {
-        targetTextView.setTextSize(DEFAULT_TITLE_LAYOUT.textSize);
-        targetTextView.setTextColor(DEFAULT_TITLE_LAYOUT.textColor);
+        setTitleText(targetTextView,DEFAULT_TITLE_LAYOUT);
     }
 
 }
