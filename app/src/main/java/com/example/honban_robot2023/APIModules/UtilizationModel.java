@@ -7,12 +7,6 @@ import java.util.Date;
 
 public class UtilizationModel {
 
-    /* "currentDate": "2023-02-06T00:00:00",
-    "timeOfOperation": "01:02:00",
-    "timeOfStopSum": "00:00:00",
-    "timeOfSupplyPause": "00:01:00",
-    "timeOfPause":*/
-
     @SerializedName(value = "currentDate")
     private String currentDateString;
 
@@ -30,7 +24,7 @@ public class UtilizationModel {
 
 
     public Date getCurrentDate() {
-        if (currentDateString.equals("") || currentDateString == null)
+        if (currentDateString == null || currentDateString.equals(""))
             return null;
 
         try {
@@ -41,11 +35,11 @@ public class UtilizationModel {
     }
 
     public Date getTimeOfOperation() {
-        if (timeOfOperationString.equals("") || timeOfOperationString == null)
+        if (timeOfOperationString == null || timeOfOperationString.equals(""))
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(timeOfOperationString);
+            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfOperationString);
         } catch (ParseException e) {
             return null;
         }
@@ -56,7 +50,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(timeOfStopSumString);
+            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfStopSumString);
         } catch (ParseException e) {
             return null;
         }
@@ -67,7 +61,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(timeOfSupplyPauseString);
+            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfSupplyPauseString);
         } catch (ParseException e) {
             return null;
         }
@@ -78,7 +72,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(timeOfPauseString);
+            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfPauseString);
         } catch (ParseException e) {
             return null;
         }

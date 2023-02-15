@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 
 public class DateSelectButtonClickListener implements View.OnClickListener{
 
@@ -50,7 +51,7 @@ public class DateSelectButtonClickListener implements View.OnClickListener{
                             Date beforeDateText;
                             beforeDateText = dateFormat.parse(beforeTimeInputTextView.getText().toString());
                             beforeDate = Calendar.getInstance();
-                            beforeDate.setTime(beforeDateText);
+                            beforeDate.setTime(Objects.requireNonNull(beforeDateText));
                         } catch (ParseException e) {
                             Toast.makeText(activityContext, "下限に設定した日付が間違っている可能性があります", Toast.LENGTH_SHORT).show();
                         }

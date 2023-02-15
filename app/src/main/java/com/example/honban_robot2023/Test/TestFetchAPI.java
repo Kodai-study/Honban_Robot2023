@@ -1,7 +1,10 @@
 package com.example.honban_robot2023.Test;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.APIModules.ResultsDataModel;
@@ -20,7 +23,7 @@ import retrofit2.Retrofit;
 
 public class TestFetchAPI {
 
-    private Context activityContext;
+    private final Context activityContext;
 
     public TestFetchAPI(Context activityContext) {
         this.activityContext = activityContext;
@@ -33,7 +36,7 @@ public class TestFetchAPI {
         e.enqueue(new Callback<Sample_OneParameterModel>() {
 
             @Override
-            public void onResponse(Call<Sample_OneParameterModel> call, Response<Sample_OneParameterModel> response) {
+            public void onResponse(@NonNull Call<Sample_OneParameterModel> call, @NonNull Response<Sample_OneParameterModel> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
@@ -41,7 +44,7 @@ public class TestFetchAPI {
             }
 
             @Override
-            public void onFailure(Call<Sample_OneParameterModel> call, Throwable t) {
+            public void onFailure(@NonNull Call<Sample_OneParameterModel> call, @NonNull Throwable t) {
                 Toast.makeText(activityContext, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
@@ -50,16 +53,19 @@ public class TestFetchAPI {
         Call<List<ResultsDataModel>> results = apiManager.getResults();
         results.enqueue(new Callback<List<ResultsDataModel>>() {
             @Override
-            public void onResponse(Call<List<ResultsDataModel>> call, Response<List<ResultsDataModel>> response) {
+            public void onResponse(@NonNull Call<List<ResultsDataModel>> call, @NonNull Response<List<ResultsDataModel>> response) {
                 try {
+                    assert response.body() != null;
                     Toast.makeText(activityContext, "" + response.body().get(0).getCycleTime(), Toast.LENGTH_SHORT).show();
                 } catch (ParseException ex) {
                     throw new RuntimeException(ex);
+                }  catch (NullPointerException nullPointerException){
+                    Log.e("API","結果の一覧取得APIでヌルポエラーの発生");
                 }
             }
 
             @Override
-            public void onFailure(Call<List<ResultsDataModel>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<ResultsDataModel>> call, @NonNull Throwable t) {
                 Toast.makeText(activityContext, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -67,20 +73,20 @@ public class TestFetchAPI {
         Call<List<UtilizationModel>> model =  apiManager.getUtilizationData();
         model.enqueue(new Callback<List<UtilizationModel>>() {
             @Override
-            public void onResponse(Call<List<UtilizationModel>> call, Response<List<UtilizationModel>> response) {
+            public void onResponse(@NonNull Call<List<UtilizationModel>> call, @NonNull Response<List<UtilizationModel>> response) {
                 Toast.makeText(activityContext, "" + response.body(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<List<UtilizationModel>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<UtilizationModel>> call, @NonNull Throwable t) {
                 Toast.makeText(activityContext, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    public class Sample_OneParameterModel {
+    public static class Sample_OneParameterModel {
         @SerializedName(value = "value")
-        private Character value;
+        private final Character value;
 
         public Character getValue() {
             return value;

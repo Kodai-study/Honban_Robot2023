@@ -5,9 +5,11 @@ import com.google.gson.annotations.SerializedName;
 public class SampleAPIModel {
 
 
-    private int userId;
-    private int id;
-    private String title;
+    private final int userId;
+    private final int id;
+    private final String title;
+    @SerializedName(value = "body")
+    private final String subTitle;
 
     public SampleAPIModel(int userId, int id, String title, String subTitle) {
         this.userId = userId;
@@ -32,6 +34,5 @@ public class SampleAPIModel {
         return subTitle;
     }
 
-    @SerializedName(value = "body")
-    private String subTitle;
+
 }

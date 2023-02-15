@@ -24,7 +24,6 @@ public class TimeStumpModel {
     private String assemblyTimeString;
 
     public int getWorkId() {
-
         return workId;
     }
 

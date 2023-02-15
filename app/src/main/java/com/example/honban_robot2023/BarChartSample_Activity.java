@@ -1,24 +1,19 @@
 package com.example.honban_robot2023;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
-
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class BarChartSample_Activity extends AppCompatActivity {
@@ -35,11 +30,6 @@ public class BarChartSample_Activity extends AppCompatActivity {
 
         bar_chart.getAxisLeft().setTextSize(20);
 
-        XAxis xAxis = bar_chart.getXAxis();
-        //xAxis.enableGridDashedLine(10f, 10f, 0f);
-        //xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        //xAxis.setAxisMinimum(0);
-        //xAxis.setAxisMaximum(100);
 
         //グラフのデータを設定
         ArrayList<BarEntry> value1 = new ArrayList<>();

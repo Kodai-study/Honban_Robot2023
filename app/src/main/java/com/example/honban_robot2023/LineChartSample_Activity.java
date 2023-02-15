@@ -18,18 +18,14 @@ and limitations under the License.
 
 package com.example.honban_robot2023;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.honban_robot2023.APIModules.ConfigParameters;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -38,13 +34,14 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
 
 public class LineChartSample_Activity extends AppCompatActivity {
 
     private LineChart mChart;
-    final SimpleDateFormat dateFormat = new SimpleDateFormat("YY/MM/dd");
-
-    Date nowDate = new Date();
 
     Calendar currentTime = Calendar.getInstance();
 
@@ -89,18 +86,12 @@ public class LineChartSample_Activity extends AppCompatActivity {
 
         // Grid縦軸を破線
         XAxis xAxis = mChart.getXAxis();
-        //xAxis.enableGridDashedLine(10f, 10f, 0f);
-        //xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        //xAxis.setAxisMinimum(0);
-        //xAxis.setAxisMaximum(100);
         xAxis.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                //new Date(currentTime.getTimeInMillis());
-                // return dateFormat.format(new Date(nowDate.getTime() + (int) (6000 * value)));
                 Calendar calendar = (Calendar) currentTime.clone();
                 calendar.add(timeRange, (int) value);
-                return dateFormat.format(calendar.getTime());
+                return ConfigParameters.DATEFORMATTER_YEAR_TWODIGITS.format(calendar.getTime());
             }
         });
 

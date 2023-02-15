@@ -7,8 +7,6 @@ import android.widget.TextView;
 
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
 
-import java.util.List;
-
 public class ResultTableController extends TableResultControl<SampleAPIModel>{
 
 

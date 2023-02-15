@@ -1,8 +1,6 @@
 package com.example.honban_robot2023;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,16 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
+import com.example.honban_robot2023.APIModules.SampleAPIModel;
 import com.example.honban_robot2023.Models.ResultTableController;
 import com.example.honban_robot2023.Models.RetrofitFactory;
-import com.example.honban_robot2023.Models.RowDataViews;
-import com.example.honban_robot2023.APIModules.SampleAPIModel;
-import com.example.honban_robot2023.Test.TestFetchAPI;
 import com.example.honban_robot2023.event.DateSelectButtonClickListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -44,10 +37,6 @@ public class resultTable_Activity extends AppCompatActivity {
     TableLayout resultTable;
 
     SharedPreferences saveSearchSettings;
-
-    Date searchTimeFirst;
-    Date searchTimeEnd;
-    final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
     ImageFilterButton firstDateSelect;
     ImageFilterButton lastDateSelect;
@@ -96,7 +85,7 @@ public class resultTable_Activity extends AppCompatActivity {
 
     class ColumButtonClickListener implements View.OnClickListener {
 
-        private int columPosition;
+        private final int columPosition;
 
         public ColumButtonClickListener(int columPosition) {
             this.columPosition = columPosition;
@@ -123,24 +112,24 @@ public class resultTable_Activity extends AppCompatActivity {
      */
     private void fetchAPISample() {
 
-        Retrofit retrofit = new RetrofitFactory().getApiClient("https://jsonplaceholder.typicode.com/");
+        Retrofit retrofit = RetrofitFactory.getApiClient("https://jsonplaceholder.typicode.com/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
         Call<List<SampleAPIModel>> e = retrofitApi.getModels();
         ResultTableController tableController = new ResultTableController(this, this.resultTable);
         e.enqueue(new Callback<List<SampleAPIModel>>() {
             @Override
-            public void onResponse(Call<List<SampleAPIModel>> call, Response<List<SampleAPIModel>> response) {
+            public void onResponse(@NonNull Call<List<SampleAPIModel>> call, @NonNull Response<List<SampleAPIModel>> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
-                tableController.setTableTitle(new String[]{"afsdf", "gawewga"});
-                tableController.tableInit(response.body());
+                tableController.setTableTitle(new String[]{"after", "gawewga"});
+                tableController.tableInit(Objects.requireNonNull(response.body()));
             }
 
             @Override
-            public void onFailure(Call<List<SampleAPIModel>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<SampleAPIModel>> call, @NonNull Throwable t) {
                 Toast.makeText(resultTable_Activity.this,
-                        t.getCause().getMessage(), Toast.LENGTH_LONG).show();
+                        t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
         // new TestFetchAPI(this).fetchSampleAPI();
@@ -171,6 +160,6 @@ public class resultTable_Activity extends AppCompatActivity {
         SharedPreferences.Editor saveSettingEditor = saveSearchSettings.edit();
         saveSettingEditor.putString("searchTimeFirst", "g");
 
-        saveSettingEditor.commit();
+        saveSettingEditor.apply();
     }
 }

@@ -10,35 +10,5 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIController {
-
-    public List<SampleAPIModel> main() {
-
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com").
-                addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        APIManager retrofitApi = retrofit.create(APIManager.class);
-
-        Call<List<SampleAPIModel>> models = retrofitApi.getModelsWithUserId(2);
-        List<SampleAPIModel> datas = null;
-        models.enqueue(new Callback<List<SampleAPIModel>>() {
-            @Override
-            public void onResponse(Call<List<SampleAPIModel>> call, Response<List<SampleAPIModel>> response) {
-                if (!response.isSuccessful()) {
-
-                    return;
-                }
-
-                //datas = response.body();
-            }
-
-            @Override
-            public void onFailure(Call<List<SampleAPIModel>> call, Throwable t) {
-
-            }
-
-        });
-        return null;
-    }
-
+    //TODO 様々なAPIからの取得の処理をまとめるクラスを作成
 }

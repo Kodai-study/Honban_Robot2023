@@ -56,7 +56,7 @@ public abstract class  TableResultControl<T> {
 
     protected abstract void createTableRow(T colum);
 
-    protected class TextLayout {
+    protected static class TextLayout {
         int textSize = 24;
         int textColor = Color.BLACK;
 
@@ -66,7 +66,6 @@ public abstract class  TableResultControl<T> {
             this.textSize = textSize;
             this.textColor = textColor;
         }
-
         public TextLayout(){}
     }
 
