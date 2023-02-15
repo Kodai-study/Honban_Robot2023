@@ -11,8 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIController {
 
-
-
     public List<SampleAPIModel> main() {
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com").

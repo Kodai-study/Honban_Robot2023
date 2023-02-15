@@ -2,6 +2,7 @@ package com.example.honban_robot2023;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
+import com.example.honban_robot2023.Models.ResultTableController;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.example.honban_robot2023.Models.RowDataViews;
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
@@ -124,28 +126,15 @@ public class resultTable_Activity extends AppCompatActivity {
         Retrofit retrofit = new RetrofitFactory().getApiClient("https://jsonplaceholder.typicode.com/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
         Call<List<SampleAPIModel>> e = retrofitApi.getModels();
-
+        ResultTableController tableController = new ResultTableController(this,this.resultTable);
         e.enqueue(new Callback<List<SampleAPIModel>>() {
             @Override
             public void onResponse(Call<List<SampleAPIModel>> call, Response<List<SampleAPIModel>> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
-                for (SampleAPIModel e : Objects.requireNonNull(response.body())) {
-                    TableRow t = new TableRow(resultTable_Activity.this);
-
-                    RowDataViews tableRowViews = new RowDataViews
-                            (resultTable_Activity.this, e);
-
-                    t.addView(tableRowViews.getUserIdText());
-                    t.addView(tableRowViews.getIdText());
-                    t.addView(tableRowViews.getTitleText());
-                    t.addView(tableRowViews.getSubTitleText());
-                    t.setLayoutParams(rowLayoutParams);
-                    t.setPadding(0, 100, 0, 0);
-                    t.setBackgroundColor(Color.WHITE);
-                    resultTable.addView(t);
-                }
+                tableController.setTableTitle(new String[]{"afsdf","gawewga"});
+                tableController.tableInit(response.body());
             }
 
             @Override
@@ -154,9 +143,7 @@ public class resultTable_Activity extends AppCompatActivity {
                         t.getCause().getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        new TestFetchAPI(this).fetchSampleAPI();
-
-
+       // new TestFetchAPI(this).fetchSampleAPI();
     }
 
     @Override

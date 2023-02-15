@@ -41,7 +41,7 @@ public class TestFetchAPI {
 
             @Override
             public void onFailure(Call<Sample_OneParameterModel> call, Throwable t) {
-                Toast.makeText(activityContext, t.getCause().getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(activityContext, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 

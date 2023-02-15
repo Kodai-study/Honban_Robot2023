@@ -1,17 +1,19 @@
 package com.example.honban_robot2023.Models;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
+import com.example.honban_robot2023.R;
 
 
 public class RowDataViews {
 
     static final int COL_TEXT_SIZE = 24;
-    static boolean isSetLayout = false;
+    private static boolean isSetLayoutParam = false;
     private Context activityContext;
     private TextView userIdText;
     private TextView idText;
@@ -33,7 +35,7 @@ public class RowDataViews {
 
     public RowDataViews(Context activityContext, SampleAPIModel model) {
 
-        if (!isSetLayout)
+        if (!isSetLayoutParam)
             setLayoutParams();
 
         this.activityContext = activityContext;
@@ -42,6 +44,7 @@ public class RowDataViews {
         userIdText.setText("" + model.getUserId());
         userIdText.setTextSize(COL_TEXT_SIZE);
         userIdText.setTextColor(Color.WHITE);
+        userIdText.setTextColor(activityContext.getResources().getColor(R.color.black, activityContext.getTheme()));
 
         idText = new TextView(activityContext);
         idText.setLayoutParams(TEXT_LAYOUT_PARAMS);
@@ -62,7 +65,7 @@ public class RowDataViews {
     private void setLayoutParams() {
         TEXT_LAYOUT_PARAMS.leftMargin = 100;
         FIRST_TEXT_LAYOUT_PARAMS.leftMargin = 40;
-        isSetLayout = true;
+        isSetLayoutParam = true;
     }
 
     public TextView getUserIdText() {

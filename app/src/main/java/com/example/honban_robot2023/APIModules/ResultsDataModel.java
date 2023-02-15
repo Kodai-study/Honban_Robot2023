@@ -8,25 +8,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ResultsDataModel {
-  private  String startTime;
 
+    @SerializedName(value = "startTime")
+    private String startTimeString;
 
-  private  Character allResult;
-  private int workID;
-  private  float temprature;
-  private  float humidity;
-  private  float brightness;
-  private VisualInspectionResults result;
+    private Character allResult;
+    private int workID;
+    private float temprature;
+    private float humidity;
+    private float brightness;
+    private VisualInspectionResults result;
 
     @SerializedName(value = "cycleTime")
-    private String cycleTime;
+    private String cycleTimeString;
 
     public Date getStartTime() throws ParseException {
-        if(startTime == null){
+        if (startTimeString == null) {
             return new Date();
         }
         final DateFormat startTimeDateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        return startTimeDateFormatter.parse(startTime);
+        return startTimeDateFormatter.parse(startTimeString);
     }
 
     public Character getAllResult() {
@@ -54,11 +55,11 @@ public class ResultsDataModel {
     }
 
     public Date getCycleTime() throws ParseException {
-        if(cycleTime == null){
+        if (cycleTimeString == null) {
             return new Date();
         }
-        final DateFormat cycleTimeDateFormatter = new SimpleDateFormat( "HH:mm:ss");
-        return cycleTimeDateFormatter.parse(cycleTime);
+        final DateFormat cycleTimeDateFormatter = new SimpleDateFormat("HH:mm:ss");
+        return cycleTimeDateFormatter.parse(cycleTimeString);
     }
 }
 
