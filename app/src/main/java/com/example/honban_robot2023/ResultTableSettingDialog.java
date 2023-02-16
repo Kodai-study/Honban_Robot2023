@@ -3,7 +3,6 @@ package com.example.honban_robot2023;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.honban_robot2023.Fragment.ResultTableSetting_Fragment;
-
 public class ResultTableSettingDialog extends DialogFragment {
 
-    private resultTable_Activity parentActivity;
+    private ResultTable_Activity parentActivity;
 
 
     @NonNull

@@ -1,5 +1,6 @@
 package com.example.honban_robot2023.APIModules;
 
+import com.example.honban_robot2023.Models.ConfigParameters;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
@@ -28,7 +29,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(currentDateString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(currentDateString);
         } catch (ParseException e) {
             return null;
         }

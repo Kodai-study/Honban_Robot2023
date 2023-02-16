@@ -1,5 +1,6 @@
 package com.example.honban_robot2023.APIModules.ResultAPI;
 
+import com.example.honban_robot2023.Models.ConfigParameters;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.DateFormat;
@@ -14,7 +15,9 @@ public class ResultsDataModel {
 
     private Character allResult;
     private int workID;
-    private float temprature;
+
+    @SerializedName(value = "temprature")
+    private float temperature;
     private float humidity;
     private float brightness;
     private VisualInspectionResults result;
@@ -22,14 +25,15 @@ public class ResultsDataModel {
     @SerializedName(value = "cycleTime")
     private String cycleTimeString;
 
-    public Date getStartTime(){
+    public static final int COLUM_NUMBER = 20;
+
+    public Date getStartTime() {
         if (startTimeString == null) {
             return new Date();
         }
         try {
-            final DateFormat startTimeDateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-            return startTimeDateFormatter.parse(startTimeString);
-        }catch (ParseException parseException){
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(startTimeString);
+        } catch (ParseException parseException) {
             return null;
         }
     }
@@ -42,8 +46,8 @@ public class ResultsDataModel {
         return workID;
     }
 
-    public float getTemprature() {
-        return temprature;
+    public float getTemperature() {
+        return temperature;
     }
 
     public float getHumidity() {
@@ -58,12 +62,14 @@ public class ResultsDataModel {
         return result;
     }
 
-    public Date getCycleTime() throws ParseException {
+    public Date getCycleTime() {
         if (cycleTimeString == null) {
-            return new Date();
+            return null;
         }
-        final DateFormat cycleTimeDateFormatter = new SimpleDateFormat("HH:mm:ss");
-        return cycleTimeDateFormatter.parse(cycleTimeString);
+        try {
+            return ConfigParameters.TIMEONLY_FORMATTER.parse(cycleTimeString);
+        } catch (ParseException parseException) {
+            return null;
+        }
     }
 }
-

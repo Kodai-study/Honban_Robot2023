@@ -2,6 +2,7 @@ package com.example.honban_robot2023.APIModules;
 
 import android.util.Log;
 
+import com.example.honban_robot2023.Models.ConfigParameters;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
@@ -35,7 +36,7 @@ public class StatisticsAPIModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(firstDateOfRangeString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(firstDateOfRangeString);
         } catch (ParseException e) {
             Log.d("APIフェッチエラー",e.getMessage());
             return null;
@@ -47,7 +48,7 @@ public class StatisticsAPIModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(endDateOfRangeString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(endDateOfRangeString);
         } catch (ParseException e) {
             Log.d("APIフェッチエラー",e.getMessage());
             return null;

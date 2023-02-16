@@ -1,5 +1,6 @@
 package com.example.honban_robot2023.APIModules;
 
+import com.example.honban_robot2023.Models.ConfigParameters;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
@@ -33,7 +34,7 @@ public class TimeStumpModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(supplyTimeString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(supplyTimeString);
         } catch (ParseException e) {
             return null;
         }
@@ -44,7 +45,7 @@ public class TimeStumpModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(visual_inTimeString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(visual_inTimeString);
         } catch (ParseException e) {
             return null;
         }
@@ -55,7 +56,7 @@ public class TimeStumpModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(functional_inTimeString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(functional_inTimeString);
         } catch (ParseException e) {
             return null;
         }
@@ -66,7 +67,7 @@ public class TimeStumpModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(assembly_inTimeString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(assembly_inTimeString);
         } catch (ParseException e) {
             return null;
         }
@@ -77,7 +78,7 @@ public class TimeStumpModel {
             return null;
 
         try {
-            return ConfigParameters.DATETIME_FORMATTER.parse(assemblyTimeString);
+            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(assemblyTimeString);
         } catch (ParseException e) {
             return null;
         }

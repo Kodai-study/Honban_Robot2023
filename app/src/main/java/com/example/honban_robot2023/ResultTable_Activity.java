@@ -38,7 +38,7 @@ import retrofit2.Retrofit;
 /**
  * 検査結果の一覧表を表示するアクティビティ
  */
-public class resultTable_Activity extends AppCompatActivity {
+public class ResultTable_Activity extends AppCompatActivity {
 
     /**
      * 一覧表を表示するテーブルレイアウト
@@ -148,7 +148,7 @@ public class resultTable_Activity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<List<SampleAPIModel>> call, @NonNull Throwable t) {
-                Toast.makeText(resultTable_Activity.this,
+                Toast.makeText(ResultTable_Activity.this,
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
@@ -173,7 +173,7 @@ public class resultTable_Activity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<List<ResultsDataModel>> call, @NonNull Throwable t) {
-                Toast.makeText(resultTable_Activity.this,
+                Toast.makeText(ResultTable_Activity.this,
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

@@ -87,4 +87,5 @@ public abstract class  TableResultControl<T> {
         setTitleText(targetTextView,DEFAULT_TITLE_LAYOUT);
     }
 
+
 }

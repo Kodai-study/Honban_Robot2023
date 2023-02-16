@@ -2,9 +2,9 @@ package com.example.honban_robot2023.APIModules;
 
 import android.util.Log;
 
+import com.example.honban_robot2023.Models.ConfigParameters;
 import com.google.gson.annotations.SerializedName;
 
-import java.text.ParseException;
 import java.util.Date;
 
 public class TimeIntervalAPIModel {
