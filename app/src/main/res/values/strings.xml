@@ -23,5 +23,7 @@
     <string name="OK"> OK </string>
     <string name="NG"> NG </string>
     <string name="NULL"> - </string>
-    <string name= "SEARCH"> search </string>>
+    <string name="SEARCH"> search </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>>
 </resources>
