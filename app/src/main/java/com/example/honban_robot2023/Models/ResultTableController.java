@@ -5,9 +5,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.example.honban_robot2023.APIModules.SampleAPIModel;
+import com.example.honban_robot2023.APIModules.ConfigParameters;
+import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
+import com.example.honban_robot2023.APIModules.ResultAPI.VisualInspectionResults;
 
-public class ResultTableController extends TableResultControl<SampleAPIModel>{
+public class ResultTableController extends TableResultControl<ResultsDataModel> {
 
 
     public ResultTableController(Context activityContext, TableLayout tableLayout) {
@@ -15,27 +17,34 @@ public class ResultTableController extends TableResultControl<SampleAPIModel>{
     }
 
     @Override
-    public TableRow addRowFromModule(SampleAPIModel colum) {
+    public TableRow addRowFromModule(ResultsDataModel colum) {
         TableRow tableRow = new TableRow(activityContext);
-        TextView[] textViewCells = new TextView[5];
-        for (int i = 0; i < 5; i++) {
+        TextView[] textViewCells = new TextView[10];
+        for (int i = 0; i < textViewCells.length; i++) {
             textViewCells[i] = new TextView(activityContext);
             setColumText(textViewCells[i]);
         }
 
-        textViewCells[0].setText(String.valueOf(colum.getUserId()));
-        textViewCells[1].setText(String.valueOf(colum.getId()));
-        textViewCells[2].setText(String.valueOf(colum.getTitle()));
-        textViewCells[3].setText(String.valueOf(colum.getSubTitle()));
+        VisualInspectionResults workResults = colum.getResult();
 
-        for(TextView textView : textViewCells){
+        textViewCells[0].setText(colum.getStartTime() != null ?
+                colum.getStartTime().toString() : ConfigParameters.TABLEDATA_NOTHING);
+        textViewCells[1].setText(colum.getAllResult().toString());
+        textViewCells[2].setText(String.valueOf(colum.getWorkID()));
+        textViewCells[3].setText(workResults.getWork().getAllResult().toString());
+        textViewCells[4].setText(workResults.getR().getAllResult().toString());
+        textViewCells[5].setText(workResults.getDipSw().getAllResult().toString());
+
+
+        for (TextView textView : textViewCells) {
             tableRow.addView(textView);
         }
         return tableRow;
     }
 
     @Override
-    protected void createTableRow(SampleAPIModel colum) {
+    protected void createTableRow(ResultsDataModel colum) {
 
     }
+
 }

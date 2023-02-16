@@ -9,4 +9,6 @@ public class ConfigParameters {
    public static final SimpleDateFormat DATEFORMATTER_YEAR_TWODIGITS = new SimpleDateFormat("yy/MM/dd",Locale.US);
 
    public static final SimpleDateFormat DATEONLY_FORMATTER = new SimpleDateFormat("yyyy/MM/dd",Locale.US);
+
+   public static final String TABLEDATA_NOTHING = "-";
 }

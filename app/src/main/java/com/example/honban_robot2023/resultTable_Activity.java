@@ -20,8 +20,9 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
-import com.example.honban_robot2023.Models.ResultTableController;
+import com.example.honban_robot2023.Models.SampleTableController;
 import com.example.honban_robot2023.Models.RetrofitFactory;
+import com.example.honban_robot2023.Test.TestFetchAPI;
 import com.example.honban_robot2023.event.DateSelectButtonClickListener;
 
 import java.util.List;
@@ -131,7 +132,7 @@ public class resultTable_Activity extends AppCompatActivity {
         Retrofit retrofit = RetrofitFactory.getApiClient("https://jsonplaceholder.typicode.com/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
         Call<List<SampleAPIModel>> fetchedResultList = retrofitApi.getModels();
-        ResultTableController tableController = new ResultTableController(this, this.resultTable);
+        SampleTableController tableController = new SampleTableController(this, this.resultTable);
         fetchedResultList.enqueue(new Callback<List<SampleAPIModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<SampleAPIModel>> call, @NonNull Response<List<SampleAPIModel>> response) {
@@ -148,7 +149,7 @@ public class resultTable_Activity extends AppCompatActivity {
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-        // new TestFetchAPI(this).fetchSampleAPI();
+         new TestFetchAPI(this).fetchSampleAPI();
     }
 
     @Override

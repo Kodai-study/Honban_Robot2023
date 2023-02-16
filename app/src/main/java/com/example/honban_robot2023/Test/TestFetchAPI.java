@@ -7,7 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.honban_robot2023.APIModules.APIManager;
-import com.example.honban_robot2023.APIModules.ResultsDataModel;
+import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.UtilizationModel;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.google.gson.annotations.SerializedName;
