@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.honban_robot2023.APIModules.APIManager;
+import com.example.honban_robot2023.APIModules.StatisticsAPIModel;
 import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
 import com.example.honban_robot2023.APIModules.TimeStumpModel;
 import com.example.honban_robot2023.APIModules.UtilizationModel;
@@ -105,6 +106,31 @@ public class TestFetchAPI {
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Call<List<StatisticsAPIModel>> apiTimeIntervalData = retrofitApi.getStatisticsData();
+        apiTimeIntervalData.enqueue(new Callback<List<StatisticsAPIModel>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<StatisticsAPIModel>> call, @NonNull Response<List<StatisticsAPIModel>> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                assert response.body() != null;
+                StatisticsAPIModel one = response.body().get(0);
+                Log.d("hoge",one.toString());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<StatisticsAPIModel>> call, @NonNull Throwable t) {
+                Toast.makeText(activityContext,
+                        t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     public static class Sample_OneParameterModel {
