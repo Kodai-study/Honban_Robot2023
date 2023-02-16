@@ -8,14 +8,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="-16dp" />
-
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="wrap_content"
@@ -64,7 +56,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="48dp"
         app:layout_constraintStart_toEndOf="@+id/radioGroup2"
-        app:layout_constraintTop_toTopOf="@+id/textView19">
+        app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/radioButton15"
