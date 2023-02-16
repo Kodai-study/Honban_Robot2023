@@ -25,4 +25,10 @@ public interface APIManager {
 
     @GET(value = "stationUtilization")
     Call<List<UtilizationModel>> getUtilizationData();
+
+    @GET(value = "times")
+    Call<List<TimeIntervalAPIModel>> getTimeIntervalData();
+
+    @GET(value = "times/timestump")
+    Call<List<TimeStumpModel>> getTimeStumpData();
 }

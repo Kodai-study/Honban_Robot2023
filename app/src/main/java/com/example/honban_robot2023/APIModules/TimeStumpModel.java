@@ -8,19 +8,20 @@ import java.util.Date;
 public class TimeStumpModel {
     private int workId;
 
-    @SerializedName(value = "startTime")
+
+    @SerializedName(value = "supply")
     private String supplyTimeString;
 
-    @SerializedName(value = "startTime")
+    @SerializedName(value = "visal_in")
     private String visual_inTimeString;
 
-    @SerializedName(value = "startTime")
+    @SerializedName(value = "functional_in")
     private String functional_inTimeString;
 
-    @SerializedName(value = "startTime")
+    @SerializedName(value = "assembly_in")
     private String assembly_inTimeString;
 
-    @SerializedName(value = "startTime")
+    @SerializedName(value = "assembly")
     private String assemblyTimeString;
 
     public int getWorkId() {

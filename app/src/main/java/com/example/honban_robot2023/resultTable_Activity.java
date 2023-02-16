@@ -19,7 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
+import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
+import com.example.honban_robot2023.Models.ResultTableController;
 import com.example.honban_robot2023.Models.SampleTableController;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.example.honban_robot2023.Test.TestFetchAPI;
@@ -39,7 +41,7 @@ import retrofit2.Retrofit;
 public class resultTable_Activity extends AppCompatActivity {
 
     /**
-     *  一覧表を表示するテーブルレイアウト
+     * 一覧表を表示するテーブルレイアウト
      */
     TableLayout resultTable;
 
@@ -90,8 +92,10 @@ public class resultTable_Activity extends AppCompatActivity {
         for (int i = 0; i < button.length; i++) {
             button[i].setOnClickListener(new ColumButtonClickListener(i));
         }
-        fetchAPISample();
+        // fetchAPISample();
+            setResultTable();
 
+        new TestFetchAPI(this).debugFetchAPI();
         firstDateSelect = findViewById(R.id.imageButton_selectFirstTime);
         lastDateSelect = findViewById(R.id.imageButton_selectLastTime);
         firstDateInput = findViewById(R.id.editText_firstDate);
@@ -139,7 +143,6 @@ public class resultTable_Activity extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     return;
                 }
-                tableController.setTableTitle(new String[]{"after", "gawewga"});
                 tableController.tableInit(Objects.requireNonNull(response.body()));
             }
 
@@ -149,7 +152,31 @@ public class resultTable_Activity extends AppCompatActivity {
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-         new TestFetchAPI(this).fetchSampleAPI();
+        new TestFetchAPI(this).debugFetchAPI();
+    }
+
+    private void setResultTable() {
+
+        Retrofit retrofit = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/");
+        APIManager retrofitApi = retrofit.create(APIManager.class);
+
+        Call<List<ResultsDataModel>> fetchedResultList = retrofitApi.getResults();
+        ResultTableController tableController = new ResultTableController(this, this.resultTable);
+        fetchedResultList.enqueue(new Callback<List<ResultsDataModel>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<ResultsDataModel>> call, @NonNull Response<List<ResultsDataModel>> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                tableController.tableInit(Objects.requireNonNull(response.body()));
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<ResultsDataModel>> call, @NonNull Throwable t) {
+                Toast.makeText(resultTable_Activity.this,
+                        t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -167,7 +194,7 @@ public class resultTable_Activity extends AppCompatActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
-        new ResultTableSettingDialog().show(getSupportFragmentManager(),"dialog");
+        new ResultTableSettingDialog().show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 
