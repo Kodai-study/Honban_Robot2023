@@ -23,4 +23,5 @@
     <string name="OK"> OK </string>
     <string name="NG"> NG </string>
     <string name="NULL"> - </string>
+    <string name= "SEARCH"> search </string>>
 </resources>
