@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="tableTitle_textSize">40</integer>
+    <integer name="tableTitle_paddingAll">20</integer>
+    <integer name="tableColum_textSize">34</integer>
+</resources>

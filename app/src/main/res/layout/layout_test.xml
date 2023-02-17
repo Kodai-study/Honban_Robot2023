@@ -27,7 +27,6 @@
                 android:padding="20dp"
                 android:text="ID"
                 android:textAlignment="center"
-                android:textAllCaps="false"
                 android:textColor="@color/title"
                 android:textSize="40sp" />
 

@@ -12,6 +12,7 @@
     <color name="red">#FF0000</color>
     <color name="limegreen">#32CD32</color>
     <color name="title"> #FF000000</color>
+    <color name="colum"> #FF000000</color>
     <color name="OK"> #32CD32</color>
     <color name="NG"> #FF0000</color>
     <color name="NULL">#FF000000</color>

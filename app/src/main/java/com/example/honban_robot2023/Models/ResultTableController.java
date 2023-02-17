@@ -5,8 +5,11 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.ResultAPI.VisualInspectionResults;
+import com.example.honban_robot2023.R;
 
 public class ResultTableController extends TableResultControl<ResultsDataModel> {
 
@@ -14,9 +17,15 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
     private String ok_String = null;
     private String ng_String = null;
 
+    private int ok_Color;
+    private int ng_Color;
 
     public ResultTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);
+        ok_Color = resources.getColor(R.color.OK, activityContext.getTheme());
+        ng_Color = resources.getColor(R.color.NG, activityContext.getTheme());
+        ok_String = resources.getString(R.string.OK);
+        ng_String = resources.getString(R.string.NG);
     }
 
     @Override
@@ -25,7 +34,6 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
         TextView[] textViewCells = new TextView[ResultsDataModel.COLUM_NUMBER];
         for (int i = 0; i < ResultsDataModel.COLUM_NUMBER; i++) {
             textViewCells[i] = new TextView(activityContext);
-            setColumText(textViewCells[i]);
         }
 
         VisualInspectionResults workResults = colum.getResult();
@@ -62,6 +70,7 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
 
         for (TextView textView : textViewCells) {
             tableRow.addView(textView);
+            setColumText(textView);
         }
         return tableRow;
     }
@@ -71,13 +80,17 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
 
     }
 
+    @Override
+    protected void setColumText(@NonNull TextView targetTextView) {
+        super.setColumText(targetTextView);
+        if (targetTextView.getText().toString().equals(ok_String)) {
+            targetTextView.setTextColor(ok_Color);
+        } else if (targetTextView.getText().toString().equals(ng_String)) {
+            targetTextView.setTextColor(ng_Color);
+        }
+    }
 
     protected String resultCodeToString(Character character) {
-        if (ok_String == null) {
-            //TODO アンドロイドのリソースから取ってくる
-            ok_String = "OK";
-            ng_String = "NG";
-        }
         Character okCharactor = '〇';
         Character ngCharactor = '×';
         if (character.equals(okCharactor)) {

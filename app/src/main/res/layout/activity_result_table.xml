@@ -97,6 +97,7 @@
             android:id="@+id/imageButton_selectLastTime"
             android:layout_width="50dp"
             android:layout_height="match_parent"
+
             app:srcCompat="@drawable/baseline_edit_calendar_24" />
 
         <androidx.constraintlayout.utils.widget.ImageFilterButton
@@ -127,7 +128,8 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp">
+                    android:paddingTop="10dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/textView"

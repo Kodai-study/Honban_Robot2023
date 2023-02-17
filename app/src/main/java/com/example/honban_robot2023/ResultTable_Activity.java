@@ -162,6 +162,10 @@ public class ResultTable_Activity extends AppCompatActivity {
 
         Call<List<ResultsDataModel>> fetchedResultList = retrofitApi.getResults();
         ResultTableController tableController = new ResultTableController(this, this.resultTable);
+
+        tableController.setTableTitle(new String[]{"fae","fae","fae","fae","fae","fae","fae","fae","fae","fae","fae",
+                "fae","fae","fae","fae","fae","fae","fae","fae"});
+
         fetchedResultList.enqueue(new Callback<List<ResultsDataModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<ResultsDataModel>> call, @NonNull Response<List<ResultsDataModel>> response) {

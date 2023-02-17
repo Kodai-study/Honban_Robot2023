@@ -140,8 +140,15 @@ public class TimeStampTable_Activity extends AppCompatActivity {
 
         Retrofit retrofit = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
+
+
+
         Call<List<TimeStampModel>> fetchedResultList = retrofitApi.getTimeStumpData();
         TimeStampTableController tableController = new TimeStampTableController(this, this.resultTable);
+
+
+        tableController.setTableTitle(new String[]{"sadfa","sadfa","sadfa","sadfa","sadfa","sadfa"});
+
         fetchedResultList.enqueue(new Callback<List<TimeStampModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<TimeStampModel>> call, @NonNull Response<List<TimeStampModel>> response) {
@@ -156,6 +163,8 @@ public class TimeStampTable_Activity extends AppCompatActivity {
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
+
     }
 
     @Override
