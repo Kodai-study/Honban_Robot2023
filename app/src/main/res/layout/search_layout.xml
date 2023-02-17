@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/reset_sea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="340dp"
+        android:text="reset"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="213dp"
@@ -19,7 +29,7 @@
             android:layout_height="287dp">
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/OK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -29,7 +39,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/IC1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -39,52 +49,52 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RadioButton
-                android:id="@+id/radioButton8"
+                android:id="@+id/IC2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
                 android:text="IC2"
-                app:layout_constraintStart_toEndOf="@+id/radioButton"
+                app:layout_constraintStart_toEndOf="@+id/IC1"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/DIPSW"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DIPSW"
-                app:layout_constraintStart_toEndOf="@+id/radioButton3"
-                app:layout_constraintTop_toBottomOf="@+id/radioButton5" />
+                app:layout_constraintStart_toEndOf="@+id/R"
+                app:layout_constraintTop_toBottomOf="@+id/Freq" />
 
             <RadioButton
-                android:id="@+id/radioButton3"
+                android:id="@+id/R"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="9dp"
                 android:text="R"
-                app:layout_constraintBaseline_toBaselineOf="@+id/radioButton2"
+                app:layout_constraintBaseline_toBaselineOf="@+id/DIPSW"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/Volt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="3dp"
                 android:text="Volt"
-                app:layout_constraintBottom_toTopOf="@+id/radioButton2"
-                app:layout_constraintEnd_toEndOf="@+id/radioButton2" />
+                app:layout_constraintBottom_toTopOf="@+id/DIPSW"
+                app:layout_constraintEnd_toEndOf="@+id/DIPSW" />
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/Freq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Freq"
-                app:layout_constraintStart_toEndOf="@+id/radioButton2"
-                app:layout_constraintTop_toBottomOf="@+id/radioButton8" />
+                app:layout_constraintStart_toEndOf="@+id/DIPSW"
+                app:layout_constraintTop_toBottomOf="@+id/IC2" />
 
             <RadioButton
-                android:id="@+id/radioButton7"
+                android:id="@+id/NG"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="52dp"

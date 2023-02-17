@@ -8,63 +8,45 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <RadioGroup
-        android:id="@+id/radioGroup5"
-        android:layout_width="128dp"
-        android:layout_height="164dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RadioButton
-            android:id="@+id/radioButton16"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="日" />
-
-        <RadioButton
-            android:id="@+id/radioButton9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="週" />
-
-        <RadioButton
-            android:id="@+id/radioButton23"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="月" />
-
-    </RadioGroup>
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:text="reset"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup3"
+        app:layout_constraintTop_toBottomOf="@+id/ASC_uti" />
 
     <ToggleButton
-        android:id="@+id/toggleButton4"
+        android:id="@+id/ASC_uti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="100dp"
         android:text="ToggleButton"
         android:textOff="昇順"
         android:textOn="降順"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup5" />
+        app:layout_constraintStart_toEndOf="@+id/radioGroup3"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
+        android:id="@+id/radioGroup3"
         android:layout_width="138dp"
         android:layout_height="107dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup5"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton24"
+            android:id="@+id/continuity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="連続動作時間" />
 
         <RadioButton
-            android:id="@+id/radioButton26"
+            android:id="@+id/date_uti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="日付順" />

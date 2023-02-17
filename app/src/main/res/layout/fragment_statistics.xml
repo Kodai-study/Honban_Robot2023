@@ -9,54 +9,54 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ToggleButton
-        android:id="@+id/toggleButton"
+        android:id="@+id/ASC_sta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="44dp"
         android:checked="false"
         android:text="ToggleButton"
         android:textOff="昇順"
         android:textOn="降順"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+        app:layout_constraintStart_toEndOf="@+id/radioGroup2"
+        app:layout_constraintTop_toBottomOf="@+id/date_sta" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
-        android:layout_width="121dp"
-        android:layout_height="143dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="114dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/radioButton10"
+            android:id="@+id/good_per"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="良品率" />
 
         <RadioButton
-            android:id="@+id/radioButton11"
+            android:id="@+id/defective_per"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="不良品率"
             android:textAlignment="viewStart" />
 
         <RadioButton
-            android:id="@+id/radioButton12"
+            android:id="@+id/scan"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
+            android:layout_height="wrap_content"
             android:text="検査数" />
 
     </RadioGroup>
 
     <CheckBox
-        android:id="@+id/radioButton22"
+        android:id="@+id/date_sta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="60dp"
         android:text="日付順"
         app:layout_constraintStart_toEndOf="@+id/radioGroup2"
         app:layout_constraintTop_toTopOf="parent" />
