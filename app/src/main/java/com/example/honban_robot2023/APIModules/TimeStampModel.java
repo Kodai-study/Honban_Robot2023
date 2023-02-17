@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.text.ParseException;
 import java.util.Date;
 
-public class TimeStumpModel {
+public class TimeStampModel {
     private int workId;
 
 

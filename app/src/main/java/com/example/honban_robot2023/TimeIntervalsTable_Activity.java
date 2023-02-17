@@ -95,7 +95,7 @@ public class TimeIntervalsTable_Activity extends AppCompatActivity {
             button[i].setOnClickListener(new ColumButtonClickListener(i));
         }
         // fetchAPISample();
-            setResultTable();
+        setResultTable();
 
         firstDateSelect = findViewById(R.id.imageButton_selectFirstTime);
         lastDateSelect = findViewById(R.id.imageButton_selectLastTime);

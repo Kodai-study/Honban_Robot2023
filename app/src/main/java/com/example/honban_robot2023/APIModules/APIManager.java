@@ -54,7 +54,7 @@ public interface APIManager {
      * ワークごとの、検査工程ごとに、工程が始まった時刻の一覧を取得する
      */
     @GET(value = "times/timestump")
-    Call<List<TimeStumpModel>> getTimeStumpData();
+    Call<List<TimeStampModel>> getTimeStumpData();
 
     /**
      * 単位時間(1日、1週間、1か月)ごとで、検査数などの統計データを表示する

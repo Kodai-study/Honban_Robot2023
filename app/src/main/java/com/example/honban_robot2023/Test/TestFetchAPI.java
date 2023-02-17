@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.APIModules.StatisticsAPIModel;
 import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
-import com.example.honban_robot2023.APIModules.TimeStumpModel;
+import com.example.honban_robot2023.APIModules.TimeStampModel;
 import com.example.honban_robot2023.APIModules.UtilizationModel;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.google.gson.annotations.SerializedName;
@@ -65,20 +65,20 @@ public class TestFetchAPI {
             throw new RuntimeException(e);
         }
 
-        Call<List<TimeStumpModel>> listCall = retrofitApi.getTimeStumpData();
-        listCall.enqueue(new Callback<List<TimeStumpModel>>() {
+        Call<List<TimeStampModel>> listCall = retrofitApi.getTimeStumpData();
+        listCall.enqueue(new Callback<List<TimeStampModel>>() {
             @Override
-            public void onResponse(@NonNull Call<List<TimeStumpModel>> call, @NonNull Response<List<TimeStumpModel>> response) {
+            public void onResponse(@NonNull Call<List<TimeStampModel>> call, @NonNull Response<List<TimeStampModel>> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
                 assert response.body() != null;
-                TimeStumpModel one = response.body().get(0);
+                TimeStampModel one = response.body().get(0);
                 Log.d("hoge",one.toString());
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<TimeStumpModel>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<TimeStampModel>> call, @NonNull Throwable t) {
                 Toast.makeText(activityContext,
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }

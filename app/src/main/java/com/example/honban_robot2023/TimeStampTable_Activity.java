@@ -19,13 +19,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
-import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
-import com.example.honban_robot2023.APIModules.SampleAPIModel;
-import com.example.honban_robot2023.APIModules.StatisticsAPIModel;
-import com.example.honban_robot2023.Models.ResultTableController;
+import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
+import com.example.honban_robot2023.APIModules.TimeStampModel;
 import com.example.honban_robot2023.Models.RetrofitFactory;
-import com.example.honban_robot2023.Models.SampleTableController;
-import com.example.honban_robot2023.Models.StatisticsTableController;
+import com.example.honban_robot2023.Models.TimeIntervalTableController;
+import com.example.honban_robot2023.Models.TimeStampTableController;
 import com.example.honban_robot2023.Test.TestFetchAPI;
 import com.example.honban_robot2023.event.DateSelectButtonClickListener;
 
@@ -40,7 +38,7 @@ import retrofit2.Retrofit;
 /**
  * 検査結果の一覧表を表示するアクティビティ
  */
-public class StatisticsTable_Activity extends AppCompatActivity {
+public class TimeStampTable_Activity extends AppCompatActivity {
 
     /**
      * 一覧表を表示するテーブルレイアウト
@@ -134,25 +132,7 @@ public class StatisticsTable_Activity extends AppCompatActivity {
      */
     private void fetchAPISample() {
 
-        Retrofit retrofit = RetrofitFactory.getApiClient("https://jsonplaceholder.typicode.com/");
-        APIManager retrofitApi = retrofit.create(APIManager.class);
-        Call<List<SampleAPIModel>> fetchedResultList = retrofitApi.getModels();
-        SampleTableController tableController = new SampleTableController(this, this.resultTable);
-        fetchedResultList.enqueue(new Callback<List<SampleAPIModel>>() {
-            @Override
-            public void onResponse(@NonNull Call<List<SampleAPIModel>> call, @NonNull Response<List<SampleAPIModel>> response) {
-                if (!response.isSuccessful()) {
-                    return;
-                }
-                tableController.tableInit(Objects.requireNonNull(response.body()));
-            }
 
-            @Override
-            public void onFailure(@NonNull Call<List<SampleAPIModel>> call, @NonNull Throwable t) {
-                Toast.makeText(StatisticsTable_Activity.this,
-                        t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
         new TestFetchAPI(this).debugFetchAPI();
     }
 
@@ -160,21 +140,19 @@ public class StatisticsTable_Activity extends AppCompatActivity {
 
         Retrofit retrofit = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/");
         APIManager retrofitApi = retrofit.create(APIManager.class);
-
-        Call<List<StatisticsAPIModel>> fetchedResultList = retrofitApi.getStatisticsData();
-        StatisticsTableController tableController = new StatisticsTableController(this, this.resultTable);
-        fetchedResultList.enqueue(new Callback<List<StatisticsAPIModel>>() {
+        Call<List<TimeStampModel>> fetchedResultList = retrofitApi.getTimeStumpData();
+        TimeStampTableController tableController = new TimeStampTableController(this, this.resultTable);
+        fetchedResultList.enqueue(new Callback<List<TimeStampModel>>() {
             @Override
-            public void onResponse(@NonNull Call<List<StatisticsAPIModel>> call, @NonNull Response<List<StatisticsAPIModel>> response) {
+            public void onResponse(@NonNull Call<List<TimeStampModel>> call, @NonNull Response<List<TimeStampModel>> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
                 tableController.tableInit(Objects.requireNonNull(response.body()));
             }
-
             @Override
-            public void onFailure(@NonNull Call<List<StatisticsAPIModel>> call, @NonNull Throwable t) {
-                Toast.makeText(StatisticsTable_Activity.this,
+            public void onFailure(@NonNull Call<List<TimeStampModel>> call, @NonNull Throwable t) {
+                Toast.makeText(TimeStampTable_Activity.this,
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
