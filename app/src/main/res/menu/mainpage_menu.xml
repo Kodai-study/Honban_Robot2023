@@ -4,6 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_moveToResultTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="結果一覧" />
+    <item
+        android:id="@+id/menu_moveStatisticsTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="統計データ" />
+    <item
         android:id="@+id/action_user"
         android:icon="@drawable/baseline_access_time_24"
         android:orderInCategory="2"
@@ -17,17 +27,12 @@
         android:title="ホーム"
         app:showAsAction="ifRoom" />
 
-    <item android:title="お問い合わせ">
-        <menu>
-            <item
-                android:id="@+id/action_tel"
-                android:icon="@drawable/ic_search_black_24dp"
-                android:title="電話" />
-            <item
-                android:id="@+id/action_mail"
-                android:icon="@drawable/baseline_format_list_bulleted_24"
-                android:title="メール" />
-        </menu>
-    </item>
+    <item android:title="検査時刻データ"
+        android:id="@+id/menu_moveToTimeTable"/>
+    <item
+        android:id="@+id/menu_moveToUtilizationTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="稼働時間データ" />
 
 </menu>
