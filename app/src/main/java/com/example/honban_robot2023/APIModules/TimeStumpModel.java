@@ -25,6 +25,8 @@ public class TimeStumpModel {
     @SerializedName(value = "assembly")
     private String assemblyTimeString;
 
+    public static final int COLUM_NUMBER = 6;
+
     public int getWorkId() {
         return workId;
     }

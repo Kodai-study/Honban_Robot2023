@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class TimeIntervalAPIModel {
+   public static final int COLUM_NUMBER = 6;
    private int cycleID;
 
    @SerializedName(value = "startTime")
