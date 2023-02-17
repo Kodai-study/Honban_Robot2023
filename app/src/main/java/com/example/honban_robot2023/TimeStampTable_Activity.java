@@ -19,10 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
-import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
 import com.example.honban_robot2023.APIModules.TimeStampModel;
+import com.example.honban_robot2023.Fragment.ResultTableSettingDialog;
 import com.example.honban_robot2023.Models.RetrofitFactory;
-import com.example.honban_robot2023.Models.TimeIntervalTableController;
 import com.example.honban_robot2023.Models.TimeStampTableController;
 import com.example.honban_robot2023.Test.TestFetchAPI;
 import com.example.honban_robot2023.event.DateSelectButtonClickListener;

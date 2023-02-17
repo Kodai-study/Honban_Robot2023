@@ -16,7 +16,7 @@ either express or implied. See the License for the specific language governing p
 and limitations under the License.
  */
 
-package com.example.honban_robot2023;
+package com.example.honban_robot2023.Test;
 
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +26,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;

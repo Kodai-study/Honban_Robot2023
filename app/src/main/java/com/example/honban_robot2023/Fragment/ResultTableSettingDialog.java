@@ -1,4 +1,4 @@
-package com.example.honban_robot2023;
+package com.example.honban_robot2023.Fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +10,9 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.honban_robot2023.R;
+import com.example.honban_robot2023.ResultTable_Activity;
 
 public class ResultTableSettingDialog extends DialogFragment {
 

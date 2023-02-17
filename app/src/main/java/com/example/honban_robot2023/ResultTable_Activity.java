@@ -21,6 +21,7 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
+import com.example.honban_robot2023.Fragment.ResultTableSettingDialog;
 import com.example.honban_robot2023.Models.ResultTableController;
 import com.example.honban_robot2023.Models.SampleTableController;
 import com.example.honban_robot2023.Models.RetrofitFactory;
