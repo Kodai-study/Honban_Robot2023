@@ -9,9 +9,9 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import com.example.honban_robot2023.Fragment.ResultTableSettingDialog;
+import com.example.honban_robot2023.Fragment.ResultTableSetting_Fragment;
+import com.example.honban_robot2023.Fragment.UtilizationDisplaySetting_Fragment;
 import com.example.honban_robot2023.Models.ConfigParameters;
-import com.example.honban_robot2023.Models.ResultTableController;
 import com.example.honban_robot2023.Models.UtilizationTableController;
 import com.example.honban_robot2023.Test.Test_dummyAPIData;
 
@@ -44,7 +44,7 @@ public class UtilizationTable_Activity extends TableBaseActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
-        new ResultTableSettingDialog().show(getSupportFragmentManager(), "dialog");
+        new UtilizationDisplaySetting_Fragment().show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 
