@@ -11,12 +11,7 @@ public class SampleAPIModel {
     @SerializedName(value = "body")
     private final String subTitle;
 
-    public SampleAPIModel(int userId, int id, String title, String subTitle) {
-        this.userId = userId;
-        this.id = id;
-        this.title = title;
-        this.subTitle = subTitle;
-    }
+
 
     public int getUserId() {
         return userId;
@@ -34,5 +29,10 @@ public class SampleAPIModel {
         return subTitle;
     }
 
-
+    public SampleAPIModel(int userId, int id, String title, String subTitle) {
+        this.userId = userId;
+        this.id = id;
+        this.title = title;
+        this.subTitle = subTitle;
+    }
 }

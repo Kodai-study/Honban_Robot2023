@@ -78,4 +78,12 @@ public class UtilizationModel {
             return null;
         }
     }
+
+    public UtilizationModel(String currentDateString, String timeOfOperationString, String timeOfStopSumString, String timeOfSupplyPauseString, String timeOfPauseString) {
+        this.currentDateString = currentDateString;
+        this.timeOfOperationString = timeOfOperationString;
+        this.timeOfStopSumString = timeOfStopSumString;
+        this.timeOfSupplyPauseString = timeOfSupplyPauseString;
+        this.timeOfPauseString = timeOfPauseString;
+    }
 }

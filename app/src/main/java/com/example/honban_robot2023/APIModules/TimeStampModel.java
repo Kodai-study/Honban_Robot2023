@@ -85,4 +85,13 @@ public class TimeStampModel {
             return null;
         }
     }
+
+    public TimeStampModel(int workId, String supplyTimeString, String visual_inTimeString, String functional_inTimeString, String assembly_inTimeString, String assemblyTimeString) {
+        this.workId = workId;
+        this.supplyTimeString = supplyTimeString;
+        this.visual_inTimeString = visual_inTimeString;
+        this.functional_inTimeString = functional_inTimeString;
+        this.assembly_inTimeString = assembly_inTimeString;
+        this.assemblyTimeString = assemblyTimeString;
+    }
 }

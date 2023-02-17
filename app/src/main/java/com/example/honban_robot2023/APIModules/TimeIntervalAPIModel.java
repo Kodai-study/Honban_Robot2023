@@ -35,7 +35,7 @@ public class TimeIntervalAPIModel {
          return null;
 
       try {
-         return ConfigParameters.TIMEONLY_FORMATTER.parse(startTimeString);
+         return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(startTimeString);
       } catch (Exception e) {
          Log.d("APIフェッチエラー",e.getMessage());
          return null;
@@ -88,6 +88,15 @@ public class TimeIntervalAPIModel {
          Log.d("APIフェッチエラー",e.getMessage());
          return null;
       }
+   }
+
+   public TimeIntervalAPIModel(int cycleID, String startTimeString, String time_supplyString, String time_visualStationString, String time_functionalStationString, String time_assemblyStationString) {
+      this.cycleID = cycleID;
+      this.startTimeString = startTimeString;
+      this.time_supplyString = time_supplyString;
+      this.time_visualStationString = time_visualStationString;
+      this.time_functionalStationString = time_functionalStationString;
+      this.time_assemblyStationString = time_assemblyStationString;
    }
 }
 
