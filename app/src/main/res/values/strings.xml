@@ -4,7 +4,6 @@
         <item>1日</item>
         <item>1か月</item>
         <item>1週間</item>
-
     </array>
 
     <array name="visualInspection_detail">
@@ -19,6 +18,10 @@
         <item>R12 無</item>
         <item>R18 無</item>
     </array>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="OK"> OK </string>
+    <string name="NG"> NG </string>
+    <string name="NULL"> - </string>
+    <string name="SEARCH"> search </string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

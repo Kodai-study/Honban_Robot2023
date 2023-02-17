@@ -1,0 +1,17 @@
+package com.example.honban_robot2023.LayoutSample;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.honban_robot2023.R;
+
+public class LayoutActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_test);
+    }
+
+}
