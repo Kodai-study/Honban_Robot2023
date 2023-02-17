@@ -30,6 +30,7 @@ public class StatisticsAPIModel {
     private int ngCount_Voltage;
     private int ngCount_Frequency;
 
+    public static final int COLUM_NUMBER = 14;
 
     public Date getFirstDateOfRange() {
         if (firstDateOfRangeString == null || firstDateOfRangeString.equals(""))
