@@ -16,7 +16,7 @@ import com.example.honban_robot2023.R;
 
 public class TestDialogs extends DialogFragment {
     private final int[] dialogLayouts = new int[] {
-            R.layout.fragment_result_table_setting_,
+            R.layout.search_layout,
             R.layout.fragment_pie_graph,
             R.layout.fragment_statistics,
             R.layout.fragment_utilization

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Utilization">
 
     <!-- TODO: Update blank fragment layout -->
@@ -52,5 +53,18 @@
             android:text="日付順" />
 
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="104dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="32dp"
+        android:text="表示設定"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
