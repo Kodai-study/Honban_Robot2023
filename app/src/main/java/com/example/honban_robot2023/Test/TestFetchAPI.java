@@ -65,7 +65,7 @@ public class TestFetchAPI {
             throw new RuntimeException(e);
         }
 
-        Call<List<TimeStampModel>> listCall = retrofitApi.getTimeStumpData();
+        Call<List<TimeStampModel>> listCall = retrofitApi.getTimeStampData();
         listCall.enqueue(new Callback<List<TimeStampModel>>() {
             @Override
             public void onResponse(@NonNull Call<List<TimeStampModel>> call, @NonNull Response<List<TimeStampModel>> response) {
