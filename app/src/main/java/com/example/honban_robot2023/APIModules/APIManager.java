@@ -50,8 +50,6 @@ public interface APIManager {
     @GET(value = "stationUtilization")
     Call<List<UtilizationModel>> getUtilizationData();
 
-    @GET(value = "stationUtilization")
-    Call<List<UtilizationModel>> getUtilizationDataWithSearch(@Query("startTime") String startTime, @Query("endTime") String endTime);
 
     /**
      * ワークごとの、検査工程ごとにかかった時間の一覧を表示する
@@ -59,8 +57,6 @@ public interface APIManager {
     @GET(value = "times")
     Call<List<TimeIntervalAPIModel>> getTimeIntervalData();
 
-    @GET(value = "times")
-    Call<List<TimeIntervalAPIModel>> getTimeIntervalDataWithSearch(@Query("startTime") String startTime, @Query("endTime") String endTime);
 
     /**
      * ワークごとの、検査工程ごとに、工程が始まった時刻の一覧を取得する
@@ -83,5 +79,29 @@ public interface APIManager {
     @GET(value = "result")
     Call<List<ResultsDataModel>> getResultWithSearch(
             @Query("ng_colum") String ngColum, @Query("result") String result,
-            @Query("startTime") String startTime, @Query("endTime") String endTime);
+            @Query("startTime") String startTime, @Query("endTime") String endTime,
+            @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
+
+    @GET(value = "statistics")
+    Call<List<StatisticsAPIModel>> getStatisticsWithSearch(
+            @Query("dateTimeKind") String dateTimeKind,
+            @Query("startTime") String startTime, @Query("endTime") String endTime,
+            @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
+
+    @GET(value = "times")
+    Call<List<TimeIntervalAPIModel>> getTimeIntervalWithSearch(
+            @Query("startTime") String startTime, @Query("endTime") String endTime,
+            @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
+
+    @GET(value = "times/timestump")
+    Call<List<TimeStampModel>> getTimeStampWithSearch(
+            @Query("startTime") String startTime, @Query("endTime") String endTime,
+            @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
+
+    @GET(value = "stationUtilization")
+    Call<List<UtilizationModel>> getUtilizationDataWithSearch(
+            @Query("startTime") String startTime, @Query("endTime") String endTime,
+            @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
+
+
 }

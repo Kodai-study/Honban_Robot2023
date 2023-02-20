@@ -1,6 +1,7 @@
 package com.example.honban_robot2023.Models;
 
 import android.content.Context;
+import android.view.MenuItem;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -31,7 +32,7 @@ public class TimeIntervalTableController extends TableResultControl<TimeInterval
         }
 
         textViewCells[0].setText(String.valueOf(colum.getCycleID()));
-        textViewCells[1].setText(changeTimeToString(colum.getStartTime()));
+        textViewCells[1].setText(ConfigParameters.DATETIME_FORMATTER.format(colum.getStartTime()));
         textViewCells[2].setText(changeTimeToString(colum.getTime_supply()));
         textViewCells[3].setText(changeTimeToString(colum.getTime_visualStation()));
         textViewCells[4].setText(changeTimeToString(colum.getTime_functionalStation()));
@@ -51,4 +52,6 @@ public class TimeIntervalTableController extends TableResultControl<TimeInterval
     protected void createTableRow(TimeIntervalAPIModel colum) {
 
     }
+
+
 }

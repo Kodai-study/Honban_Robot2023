@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 
@@ -41,13 +42,14 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.app_bar_switch).setVisible(true);
+        ToggleButton menuSwitch = (ToggleButton) menu.findItem(R.id.app_bar_switch).getActionView();
+        menuSwitch.setChecked(true);
         return super.onPrepareOptionsMenu(menu);
     }
 
