@@ -13,6 +13,6 @@ public class ConfigParameters {
 
    public static final String TABLEDATA_NOTHING = "-";
 
-   public static final boolean IS_DEBUG_MODE = true;
+   public static final boolean IS_DEBUG_MODE = false;
 
 }

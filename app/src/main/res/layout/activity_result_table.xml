@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ResultTable_Activity">
+    <!-- FIXME 画面遷移した時にテキスト入力にフォーカスが入るのを無くす-->
 
     <LinearLayout
         android:id="@+id/layout_timeSearch"
@@ -20,7 +21,7 @@
         <EditText
             android:id="@+id/editText_firstDate"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1.5"
             android:ems="10"
             android:gravity="center"
