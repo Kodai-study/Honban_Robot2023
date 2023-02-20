@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="タイムスタンプで表示"
+        app:showAsAction="ifRoom"
+        app:actionViewClass="android.widget.TextView" />
     <item
-        android:id="@+id/app_bar_switch"
-        android:title="Switch"
-        app:actionLayout="@layout/switch_item"
         android:visible="false"
-        app:showAsAction="always" />
+        android:id="@+id/app_bar_switch2"
+        android:title="Switch!"
+        app:actionViewClass="androidx.appcompat.widget.SwitchCompat"
+        android:checkable="true"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/search_with_time"
         android:title="unti"

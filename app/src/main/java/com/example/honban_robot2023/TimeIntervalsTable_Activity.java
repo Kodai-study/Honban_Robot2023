@@ -6,13 +6,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.honban_robot2023.Fragment.ResultTableSetting_Fragment;
 import com.example.honban_robot2023.Models.ConfigParameters;
@@ -36,20 +35,23 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
             tableController.tableInit(Test_dummyAPIData.getTimeIntervalDummy());
         else
             setResultTable(this.retrofitApi.getTimeIntervalData());
-
-
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        MenuItem switchItem = menu.findItem(R.id.app_bar_switch2);
+        switchItem.setVisible(true);
+        SwitchCompat mySwitch = (SwitchCompat) switchItem.getActionView();
+        mySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Toast.makeText(this, String.valueOf(isChecked), Toast.LENGTH_SHORT).show();
+        });
+        return false;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.app_bar_switch).setVisible(true);
-        ToggleButton menuSwitch = (ToggleButton) menu.findItem(R.id.app_bar_switch).getActionView();
-        menuSwitch.setChecked(true);
+        menu.findItem(R.id.app_bar_switch2).setVisible(true);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -63,6 +65,9 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
             layout.setVisibility(View.GONE);
         }
         new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
+
+        boolean b =item.isChecked();
+        Toast.makeText(this, String.valueOf(b), Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
 

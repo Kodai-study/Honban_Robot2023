@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         Statistics.setOnClickListener(new clickToMove(StatisticsTable_Activity.class));
         TimeInterval.setOnClickListener(new clickToMove(TimeIntervalsTable_Activity.class));
         Utilization.setOnClickListener(new clickToMove(UtilizationTable_Activity.class));
-        new TestFetchAPI(this).debugFetchAPI();
+        //new TestFetchAPI(this).debugFetchAPI();
     }
 
     class clickToMove implements View.OnClickListener {
