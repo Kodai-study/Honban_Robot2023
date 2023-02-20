@@ -28,6 +28,7 @@
         android:text="ToggleButton"
         android:textOff="昇順"
         android:textOn="降順"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/radioGroup3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,13 +45,15 @@
             android:id="@+id/continuity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="連続動作時間" />
+            android:text="連続動作時間"
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/date_uti"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="日付順" />
+            android:text="日付順"
+            android:textSize="16sp" />
 
     </RadioGroup>
 

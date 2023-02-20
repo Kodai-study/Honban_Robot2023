@@ -10,11 +10,11 @@
 
     <TextView
         android:id="@+id/textView27"
-        android:layout_width="322dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:text="抽出したいものを選択してください"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="36dp"
+        android:text="抽出したいものの選択"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -39,8 +39,8 @@
         android:id="@+id/radioGroup2"
         android:layout_width="114dp"
         android:layout_height="158dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

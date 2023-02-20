@@ -46,25 +46,29 @@
                 android:id="@+id/DIPSW"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DIPSW" />
+                android:text="DIPSW"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/R"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R" />
+                android:text="R"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/IC2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IC2" />
+                android:text="IC2"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/IC1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="IC1" />
+                android:text="IC1"
+                android:textSize="16sp" />
 
         </RadioGroup>
 
@@ -78,14 +82,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Volt" />
+                android:text="Volt"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/Freq"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="Freq" />
+                android:text="Freq"
+                android:textSize="16sp" />
 
         </RadioGroup>
 
@@ -98,13 +104,15 @@
                 android:id="@+id/OK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/OK" />
+                android:text="@string/OK"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/NG"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/NG" />
+                android:text="@string/NG"
+                android:textSize="16sp" />
         </RadioGroup>
     </LinearLayout>
 
