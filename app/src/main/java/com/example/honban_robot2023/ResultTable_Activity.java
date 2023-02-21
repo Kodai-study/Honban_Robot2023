@@ -17,7 +17,7 @@ import com.example.honban_robot2023.Models.ResultTableController;
  */
 public class ResultTable_Activity extends TableBaseActivity {
 
-
+    ResultTableSetting_Fragment settingDialog = new ResultTableSetting_Fragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +38,7 @@ public class ResultTable_Activity extends TableBaseActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
-        new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
+        settingDialog.show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 

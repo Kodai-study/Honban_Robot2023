@@ -436,13 +436,15 @@
 
         android:id="@+id/imageView4"
         android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:rotation="270"
+        android:layout_height="0dp"
+        android:layout_marginTop="-20dp"
+        android:layout_marginBottom="-20dp"
+        android:rotation="-90"
         android:rotationY="0"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:srcCompat="@drawable/baseline_trending_flat_24" />
 
