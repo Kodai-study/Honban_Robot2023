@@ -68,7 +68,7 @@
         <item>組立ステーションでかかった時間</item>
     </array>
 
-        <array name="tableTitle_TimeStamp">
+    <array name="tableTitle_TimeStamp">
         <item>ワークID</item>
         <item>開始時刻</item>
         <item>供給工程開始時刻</item>
@@ -84,7 +84,6 @@
         <item>供給停止時間の合計</item>
         <item>稼働停止時間の合計</item>
     </array>
-
 
 
     <string name="OK"> OK </string>
