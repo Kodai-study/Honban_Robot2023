@@ -13,23 +13,36 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.example.honban_robot2023.APIModules.TimeStampModel;
 import com.example.honban_robot2023.Fragment.ResultTableSetting_Fragment;
 import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.Models.TableResultControl;
 import com.example.honban_robot2023.Models.TimeIntervalTableController;
+import com.example.honban_robot2023.Models.TimeStampTableController;
 import com.example.honban_robot2023.Test.Test_dummyAPIData;
+
+import java.util.List;
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * 検査結果の一覧表を表示するアクティビティ
  */
 public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
-    Switch aSwitch;
+    SwitchCompat tableSwitchToggle;
+
+    TableResultControl<TimeStampModel> timeStampTableController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         tableController = new TimeIntervalTableController(this, this.resultTable);
+        this.timeStampTableController = new TimeStampTableController(this, this.resultTable);
         tableController.setTableTitle(new String[]{"fae", "fae"});
         if (ConfigParameters.IS_DEBUG_MODE)
             tableController.tableInit(Test_dummyAPIData.getTimeIntervalDummy());
@@ -39,20 +52,43 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        super.onCreateOptionsMenu(menu);
+        boolean superResult = super.onCreateOptionsMenu(menu);
         MenuItem switchItem = menu.findItem(R.id.app_bar_switch2);
         switchItem.setVisible(true);
-        SwitchCompat mySwitch = (SwitchCompat) switchItem.getActionView();
-        mySwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Toast.makeText(this, String.valueOf(isChecked), Toast.LENGTH_SHORT).show();
+        this.tableSwitchToggle = (SwitchCompat) switchItem.getActionView();
+        tableSwitchToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            switchTableKind(isChecked);
         });
-        return false;
+        return superResult;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.findItem(R.id.app_bar_switch2).setVisible(true);
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    private void switchTableKind(boolean isViewTimeStamp) {
+        resultTable.removeAllViews();
+        if (isViewTimeStamp) {
+            super.setResultTable(this.retrofitApi.getTimeIntervalData());
+            return;
+        }
+        retrofitApi.getTimeStampData().enqueue(new Callback<List<TimeStampModel>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<TimeStampModel>> call, @NonNull Response<List<TimeStampModel>> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                timeStampTableController.tableInit(Objects.requireNonNull(response.body()));
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<TimeStampModel>> call, @NonNull Throwable t) {
+                Toast.makeText(TimeIntervalsTable_Activity.this,
+                        t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @Override
@@ -66,7 +102,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         }
         new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
 
-        boolean b =item.isChecked();
+        boolean b = item.isChecked();
         Toast.makeText(this, String.valueOf(b), Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }

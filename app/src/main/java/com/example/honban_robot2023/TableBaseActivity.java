@@ -77,8 +77,6 @@ public abstract class TableBaseActivity extends AppCompatActivity {
 
 
     protected <T> void setResultTable(Call<List<T>> list) {
-
-
         list.enqueue(new Callback<List<T>>() {
             @Override
             public void onResponse(@NonNull Call<List<T>> call, @NonNull Response<List<T>> response) {
