@@ -20,6 +20,8 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
     private int ok_Color;
     private int ng_Color;
 
+    private String searchColum;
+
     public ResultTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);
         ok_Color = resources.getColor(R.color.OK, activityContext.getTheme());
@@ -87,11 +89,11 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
     }
 
     protected String resultCodeToString(Character character) {
-        Character okCharactor = '〇';
-        Character ngCharactor = '×';
-        if (character.equals(okCharactor)) {
+        Character okCharacter = '〇';
+        Character ngCharacter = '×';
+        if (character.equals(okCharacter)) {
             return ok_String;
-        } else if (character.equals(ngCharactor)) {
+        } else if (character.equals(ngCharacter)) {
             return ng_String;
         } else {
             return ConfigParameters.TABLEDATA_NOTHING;

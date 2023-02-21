@@ -12,12 +12,15 @@ import androidx.annotation.NonNull;
 import com.example.honban_robot2023.Fragment.ResultTableSetting_Fragment;
 import com.example.honban_robot2023.Models.ResultTableController;
 
+import java.util.Locale;
+
 /**
  * 検査結果の一覧表を表示するアクティビティ
  */
 public class ResultTable_Activity extends TableBaseActivity {
 
     ResultTableSetting_Fragment settingDialog = new ResultTableSetting_Fragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +30,15 @@ public class ResultTable_Activity extends TableBaseActivity {
         setResultTable(this.retrofitApi.getResults());
     }
 
+    public void updateTable(String selectColum) {
 
+        if (selectColum == null || selectColum.equals("")) {
+            refreshTable(retrofitApi.getResultWithSearch(null, null,
+                    getFirstDate(), getLastDate(), null, null));
+        } else if (selectColum.equalsIgnoreCase("OK") || selectColum.equalsIgnoreCase("NG"))
+            refreshTable(retrofitApi.getResultWithSearch(null, selectColum,
+                    getFirstDate(), getLastDate(), null, null));
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

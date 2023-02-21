@@ -50,8 +50,8 @@ public abstract class TableBaseActivity extends AppCompatActivity {
      * 表示する結果を検査日時で範囲指定する時の下限値を入力する
      * テキストボックス。ダイアログによって自動で入力される
      */
-    protected EditText firstDateInput;
-    protected EditText lastDateInput;
+    protected EditText firstDateInput = null;
+    protected EditText lastDateInput = null;
 
     protected APIManager retrofitApi;
 
@@ -93,10 +93,43 @@ public abstract class TableBaseActivity extends AppCompatActivity {
     }
 
 
+    protected <T> void refreshTable(Call<List<T>> list) {
+        list.enqueue(new Callback<List<T>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<T>> call, @NonNull Response<List<T>> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                tableController.refresh(Objects.requireNonNull(response.body()));
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<T>> call, @NonNull Throwable t) {
+                Toast.makeText(TableBaseActivity.this,
+                        t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.list_table_menu, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    protected String getFirstDate(){
+        String firstDateInputText =  firstDateInput.getText().toString();
+        if(firstDateInputText.equals(""))
+            return null;
+        return firstDateInputText;
+    }
+    protected String getLastDate(){
+        String lastDateInputText = lastDateInput.getText().toString();
+        if(lastDateInput.equals(""))
+            return null;
+        return lastDateInputText;
     }
 
 }

@@ -4,24 +4,19 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.honban_robot2023.R;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.List;
 
 public class ResultTableSetting_Fragment extends DialogFragment {
@@ -46,7 +41,6 @@ public class ResultTableSetting_Fragment extends DialogFragment {
         checkedColumName.add("OK");
         checkedColumName.add("NG");
     }
-
 
 
     @NonNull
@@ -93,4 +87,7 @@ public class ResultTableSetting_Fragment extends DialogFragment {
 
         return builder.create();
     }
+
+
+
 }
