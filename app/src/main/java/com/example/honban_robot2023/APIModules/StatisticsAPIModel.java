@@ -19,6 +19,9 @@ public class StatisticsAPIModel {
     private int count_Scan;
     private int count_Ok;
     private int count_Ng;
+    private float defectRate;
+
+
     private int ngCount_IC1;
     private int ngCount_IC2;
     private int ngCount_R5;
@@ -30,7 +33,7 @@ public class StatisticsAPIModel {
     private int ngCount_Voltage;
     private int ngCount_Frequency;
 
-    public static final int COLUM_NUMBER = 14;
+    public static final int COLUM_NUMBER = 15;
 
     public Date getFirstDateOfRange() {
         if (firstDateOfRangeString == null || firstDateOfRangeString.equals(""))
@@ -39,7 +42,7 @@ public class StatisticsAPIModel {
         try {
             return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(firstDateOfRangeString);
         } catch (ParseException e) {
-            Log.d("APIフェッチエラー",e.getMessage());
+            Log.d("APIフェッチエラー", e.getMessage());
             return null;
         }
     }
@@ -51,7 +54,7 @@ public class StatisticsAPIModel {
         try {
             return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(endDateOfRangeString);
         } catch (ParseException e) {
-            Log.d("APIフェッチエラー",e.getMessage());
+            Log.d("APIフェッチエラー", e.getMessage());
             return null;
         }
     }
@@ -66,6 +69,10 @@ public class StatisticsAPIModel {
 
     public int getCount_Ng() {
         return count_Ng;
+    }
+
+    public float getDefectRate() {
+        return defectRate;
     }
 
     public int getNgCount_IC1() {

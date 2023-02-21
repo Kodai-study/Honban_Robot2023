@@ -44,9 +44,4 @@ public class TimeStampTableController extends TableResultControl<TimeStampModel>
         else
             return ConfigParameters.TIMEONLY_FORMATTER.format(date);
     }
-
-    @Override
-    protected void createTableRow(TimeStampModel colum) {
-
-    }
 }

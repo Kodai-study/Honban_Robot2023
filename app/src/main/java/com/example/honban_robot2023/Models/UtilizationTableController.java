@@ -38,8 +38,4 @@ public class UtilizationTableController extends TableResultControl<UtilizationMo
         return tableRow;
     }
 
-    @Override
-    protected void createTableRow(UtilizationModel colum) {
-
-    }
 }

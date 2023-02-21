@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import com.example.honban_robot2023.Fragment.ResultTableSetting_Fragment;
 import com.example.honban_robot2023.Fragment.UtilizationDisplaySetting_Fragment;
 import com.example.honban_robot2023.Models.ConfigParameters;
 import com.example.honban_robot2023.Models.UtilizationTableController;
@@ -26,10 +25,9 @@ public class UtilizationTable_Activity extends TableBaseActivity {
         super.onCreate(savedInstanceState);
 
         tableController = new UtilizationTableController(this, this.resultTable);
-        tableController.setTableTitle(new String[]{"fae", "fae", "fae", "fae", "fae", "fae", "fae", "fae", "fae", "fae", "fae",
-                "fae", "fae", "fae", "fae", "fae", "fae", "fae", "fae"});
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Utilization));
         if (ConfigParameters.IS_DEBUG_MODE)
-            tableController.tableInit(Test_dummyAPIData.getUtilizationDummy());
+            tableController.tableColumInit(Test_dummyAPIData.getUtilizationDummy());
         else
             setResultTable(this.retrofitApi.getUtilizationData());
     }

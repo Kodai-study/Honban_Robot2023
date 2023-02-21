@@ -19,6 +19,74 @@
         <item>R18 無</item>
     </array>
 
+    <array name="tableTitle_Statistics">
+        <item>日付</item>
+        <item>検査数</item>
+        <item>合格数</item>
+        <item>不合格数</item>
+        <item>合格率</item>
+        <item>IC1 不合格数</item>
+        <item>IC2 不合格数</item>
+        <item>R05 不合格数</item>
+        <item>R10 不合格数</item>
+        <item>R11 不合格数</item>
+        <item>R12 不合格数</item>
+        <item>R18 不合格数</item>
+        <item>DIPスイッチ 不合格数</item>
+        <item>電圧検査 不合格数</item>
+        <item>周波数検査 不合格数</item>
+    </array>
+
+    <array name="tableTitle_Result">
+        <item>検査日付、時刻</item>
+        <item>合格・不合格</item>
+        <item>ワークID</item>
+        <item>IC検査の合否</item>
+        <item>IC1の向き</item>
+        <item>IC2の向き</item>
+        <item>IC1の有無</item>
+        <item>IC2の有無</item>
+        <item>ワーク検査の合否</item>
+        <item>ワーク向き</item>
+        <item>ワークの有無</item>
+        <item>抵抗検査の合否</item>
+        <item>R05の有無</item>
+        <item>R10の有無</item>
+        <item>R11の有無</item>
+        <item>R12の有無</item>
+        <item>R18の有無</item>
+        <item>DIPスイッチ検査の合否</item>
+        <item>DIPスイッチのパターン</item>
+        <item>サイクルタイム</item>
+    </array>
+    <array name="tableTitle_TimeInterval">
+        <item>ワークID</item>
+        <item>開始時刻</item>
+        <item>供給工程</item>
+        <item>外観検査ステーションでかかった時間</item>
+        <item>機能検査ステーションでかかった時間</item>
+        <item>組立ステーションでかかった時間</item>
+    </array>
+
+        <array name="tableTitle_TimeStamp">
+        <item>ワークID</item>
+        <item>開始時刻</item>
+        <item>供給工程開始時刻</item>
+        <item>外観検査工程開始時刻</item>
+        <item>機能検査工程開始時刻</item>
+        <item>組立工程開始時刻</item>
+    </array>
+
+    <array name="tableTitle_Utilization">
+        <item>日付</item>
+        <item>稼働時間</item>
+        <item>停止時間の合計</item>
+        <item>供給停止時間の合計</item>
+        <item>稼働停止時間の合計</item>
+    </array>
+
+
+
     <string name="OK"> OK </string>
     <string name="NG"> NG </string>
     <string name="NULL"> - </string>

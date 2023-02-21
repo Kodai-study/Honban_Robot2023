@@ -22,8 +22,7 @@ public class TimeStampTable_Activity extends TableBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tableController = new TimeStampTableController(this, this.resultTable);
-        tableController.setTableTitle(new String[]{"fae","fae","fae","fae","fae","fae","fae","fae","fae","fae","fae",
-                "fae","fae","fae","fae","fae","fae","fae","fae"});
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
         setResultTable(this.retrofitApi.getTimeStampData());
     }
 

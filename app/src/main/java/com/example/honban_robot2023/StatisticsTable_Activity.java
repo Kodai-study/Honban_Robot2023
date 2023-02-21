@@ -25,9 +25,10 @@ public class StatisticsTable_Activity extends TableBaseActivity {
         super.onCreate(savedInstanceState);
 
         tableController = new StatisticsTableController(this, this.resultTable);
-        tableController.setTableTitle(new String[]{"fae", "fae", "fae", "fae", "fae", "fae"});
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Statistics));
+
         if (ConfigParameters.IS_DEBUG_MODE) {
-            tableController.tableInit(Test_dummyAPIData.getResultDummy());
+            tableController.tableColumInit(Test_dummyAPIData.getResultDummy());
         } else
             setResultTable(this.retrofitApi.getStatisticsData());
     }

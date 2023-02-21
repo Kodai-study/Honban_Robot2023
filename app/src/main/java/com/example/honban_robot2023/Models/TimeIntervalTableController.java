@@ -48,10 +48,6 @@ public class TimeIntervalTableController extends TableResultControl<TimeInterval
             return ConfigParameters.TIMEONLY_FORMATTER.format(date);
     }
 
-    @Override
-    protected void createTableRow(TimeIntervalAPIModel colum) {
-
-    }
 
 
 }

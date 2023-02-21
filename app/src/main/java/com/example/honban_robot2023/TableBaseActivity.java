@@ -69,8 +69,6 @@ public abstract class TableBaseActivity extends AppCompatActivity {
         lastDateInput = findViewById(R.id.editText_lastDate);
         firstDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, firstDateInput));
         lastDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, lastDateInput, firstDateInput));
-
-
         retrofitApi =  RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
 
     }
@@ -83,7 +81,7 @@ public abstract class TableBaseActivity extends AppCompatActivity {
                 if (!response.isSuccessful()) {
                     return;
                 }
-                tableController.tableInit(Objects.requireNonNull(response.body()));
+                tableController.tableColumInit(Objects.requireNonNull(response.body()));
             }
 
             @Override
@@ -92,7 +90,6 @@ public abstract class TableBaseActivity extends AppCompatActivity {
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
-
     }
 
 

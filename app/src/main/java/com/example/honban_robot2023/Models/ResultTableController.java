@@ -14,8 +14,8 @@ import com.example.honban_robot2023.R;
 public class ResultTableController extends TableResultControl<ResultsDataModel> {
 
 
-    private String ok_String = null;
-    private String ng_String = null;
+    private String ok_String;
+    private String ng_String;
 
     private int ok_Color;
     private int ng_Color;
@@ -75,10 +75,6 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
         return tableRow;
     }
 
-    @Override
-    protected void createTableRow(ResultsDataModel colum) {
-
-    }
 
     @Override
     protected void setColumText(@NonNull TextView targetTextView) {

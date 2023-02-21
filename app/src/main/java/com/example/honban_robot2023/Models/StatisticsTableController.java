@@ -37,22 +37,19 @@ public class StatisticsTableController extends TableResultControl<StatisticsAPIM
         textViewCells[1].setText(String.valueOf(colum.getCount_Scan()));
         textViewCells[2].setText(String.valueOf(colum.getCount_Ok()));
         textViewCells[3].setText(String.valueOf(colum.getCount_Ng()));
-        textViewCells[4].setText(String.valueOf(colum.getNgCount_IC1()));
-        textViewCells[5].setText(String.valueOf(colum.getNgCount_IC2()));
-        textViewCells[6].setText(String.valueOf(colum.getNgCount_R5()));
-        textViewCells[7].setText(String.valueOf(colum.getNgCount_R10()));
-        textViewCells[8].setText(String.valueOf(colum.getNgCount_R11()));
-        textViewCells[9].setText(String.valueOf(colum.getNgCount_R12()));
-        textViewCells[10].setText(String.valueOf(colum.getNgCount_R18()));
-        textViewCells[11].setText(String.valueOf(colum.getNgCount_DIPSW()));
-        textViewCells[12].setText(String.valueOf(colum.getNgCount_Voltage()));
-        textViewCells[13].setText(String.valueOf(colum.getNgCount_Frequency()));
+        textViewCells[4].setText(String.valueOf(colum.getDefectRate()));
+        textViewCells[5].setText(String.valueOf(colum.getNgCount_IC1()));
+        textViewCells[6].setText(String.valueOf(colum.getNgCount_IC2()));
+        textViewCells[7].setText(String.valueOf(colum.getNgCount_R5()));
+        textViewCells[8].setText(String.valueOf(colum.getNgCount_R10()));
+        textViewCells[9].setText(String.valueOf(colum.getNgCount_R11()));
+        textViewCells[10].setText(String.valueOf(colum.getNgCount_R12()));
+        textViewCells[11].setText(String.valueOf(colum.getNgCount_R18()));
+        textViewCells[12].setText(String.valueOf(colum.getNgCount_DIPSW()));
+        textViewCells[13].setText(String.valueOf(colum.getNgCount_Voltage()));
+        textViewCells[14].setText(String.valueOf(colum.getNgCount_Frequency()));
 
         return tableRow;
     }
 
-    @Override
-    protected void createTableRow(StatisticsAPIModel colum) {
-
-    }
 }

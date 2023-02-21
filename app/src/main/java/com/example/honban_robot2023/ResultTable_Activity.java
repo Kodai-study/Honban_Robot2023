@@ -23,8 +23,7 @@ public class ResultTable_Activity extends TableBaseActivity {
         super.onCreate(savedInstanceState);
 
         tableController = new ResultTableController(this, this.resultTable);
-        tableController.setTableTitle(new String[]{"fae","fae","fae","fae","fae","fae","fae","fae","fae","fae","fae",
-                "fae","fae","fae","fae","fae","fae","fae","fae"});
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Result));
         setResultTable(this.retrofitApi.getResults());
     }
 

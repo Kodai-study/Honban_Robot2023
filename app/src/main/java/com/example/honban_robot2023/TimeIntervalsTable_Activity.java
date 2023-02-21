@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,7 +44,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         this.timeStampTableController = new TimeStampTableController(this, this.resultTable);
         tableController.setTableTitle(new String[]{"fae", "fae"});
         if (ConfigParameters.IS_DEBUG_MODE)
-            tableController.tableInit(Test_dummyAPIData.getTimeIntervalDummy());
+            tableController.tableColumInit(Test_dummyAPIData.getTimeIntervalDummy());
         else
             setResultTable(this.retrofitApi.getTimeIntervalData());
     }
@@ -59,6 +58,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         tableSwitchToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             switchTableKind(isChecked);
         });
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeInterval));
         return superResult;
     }
 
@@ -71,16 +71,20 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
     private void switchTableKind(boolean isViewTimeStamp) {
         resultTable.removeAllViews();
         if (isViewTimeStamp) {
+            timeStampTableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
             super.setResultTable(this.retrofitApi.getTimeIntervalData());
             return;
         }
+
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeInterval));
         retrofitApi.getTimeStampData().enqueue(new Callback<List<TimeStampModel>>() {
+
             @Override
             public void onResponse(@NonNull Call<List<TimeStampModel>> call, @NonNull Response<List<TimeStampModel>> response) {
                 if (!response.isSuccessful()) {
                     return;
                 }
-                timeStampTableController.tableInit(Objects.requireNonNull(response.body()));
+                timeStampTableController.tableColumInit(Objects.requireNonNull(response.body()));
             }
 
             @Override

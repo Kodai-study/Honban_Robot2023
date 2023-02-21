@@ -34,8 +34,4 @@ public class SampleTableController extends TableResultControl<SampleAPIModel>{
         return tableRow;
     }
 
-    @Override
-    protected void createTableRow(SampleAPIModel colum) {
-
-    }
 }

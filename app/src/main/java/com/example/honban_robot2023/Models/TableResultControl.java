@@ -3,15 +3,12 @@ package com.example.honban_robot2023.Models;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.example.honban_robot2023.R;
 
@@ -55,7 +52,7 @@ public abstract class  TableResultControl<T> {
         tableLayout.addView(titleRow);
     }
 
-    public void tableInit(List<T> itemModelList) {
+    public void tableColumInit(List<T> itemModelList) {
         this.itemModelList = itemModelList;
         for (T item : itemModelList) {
             tableLayout.addView(addRowFromModule(item));
@@ -66,12 +63,11 @@ public abstract class  TableResultControl<T> {
         TableRow titleTableRow = (TableRow) tableLayout.getChildAt(0);
         tableLayout.removeAllViews();
         tableLayout.addView(titleTableRow);
-        tableInit(items);
+        tableColumInit(items);
     }
 
     public abstract TableRow addRowFromModule(T colum);
 
-    protected abstract void createTableRow(T colum);
 
     protected static class TextLayout {
         int textSize = 24;
