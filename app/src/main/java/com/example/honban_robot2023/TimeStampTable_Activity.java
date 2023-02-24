@@ -35,7 +35,7 @@ public class TimeStampTable_Activity extends TableBaseActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
-        new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
+//        new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 

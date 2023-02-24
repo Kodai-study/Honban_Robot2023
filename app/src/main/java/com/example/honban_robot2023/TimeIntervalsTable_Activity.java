@@ -104,7 +104,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
-        new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
+        //new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
 
         boolean b = item.isChecked();
         Toast.makeText(this, String.valueOf(b), Toast.LENGTH_SHORT).show();

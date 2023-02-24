@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.ResultAPI.VisualInspectionResults;
 import com.example.honban_robot2023.R;
+import com.example.honban_robot2023.ResultTable_Activity;
 
 public class ResultTableController extends TableResultControl<ResultsDataModel> {
 
@@ -20,7 +21,6 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
     private int ok_Color;
     private int ng_Color;
 
-    private String searchColum;
 
     public ResultTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);
@@ -29,6 +29,7 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
         ok_String = resources.getString(R.string.OK);
         ng_String = resources.getString(R.string.NG);
     }
+
 
     @Override
     public TableRow addRowFromModule(ResultsDataModel colum) {
