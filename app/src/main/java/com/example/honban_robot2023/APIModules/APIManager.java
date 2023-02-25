@@ -103,5 +103,7 @@ public interface APIManager {
             @Query("startTime") String startTime, @Query("endTime") String endTime,
             @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
 
-
+    //TODO システムの現在の状態を取ってくるAPIの実装
+    @GET(value = "hoge")
+    Call<List<StationStateAPIModel>> getStationState();
 }

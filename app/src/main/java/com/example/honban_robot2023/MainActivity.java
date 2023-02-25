@@ -6,11 +6,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.honban_robot2023.Test.TestFetchAPI;
+import com.example.honban_robot2023.event.TimerTaskMonitorSystem;
+
+import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     Button TimeInterval;
     Button Utilization;
 
+    Timer t = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
         Statistics.setOnClickListener(new clickToMove(StatisticsTable_Activity.class));
         TimeInterval.setOnClickListener(new clickToMove(TimeIntervalsTable_Activity.class));
         Utilization.setOnClickListener(new clickToMove(UtilizationTable_Activity.class));
-        //new TestFetchAPI(this).debugFetchAPI();
+        t.scheduleAtFixedRate(new TimerTaskMonitorSystem(this), 1000, 1000);
     }
 
     class clickToMove implements View.OnClickListener {
 
-        Class<?extends AppCompatActivity> activity;
+        Class<? extends AppCompatActivity> activity;
 
-        public clickToMove(Class<?extends AppCompatActivity> activity) {
+        public clickToMove(Class<? extends AppCompatActivity> activity) {
             this.activity = activity;
         }
 
@@ -71,6 +75,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

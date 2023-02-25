@@ -24,7 +24,6 @@ public class ResultTable_Activity extends TableBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         tableController = new ResultTableController(this, this.resultTable);
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Result));
         setResultTable(this.retrofitApi.getResults());
