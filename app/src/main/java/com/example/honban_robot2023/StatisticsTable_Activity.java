@@ -33,18 +33,10 @@ public class StatisticsTable_Activity extends TableBaseActivity {
             setResultTable(this.retrofitApi.getStatisticsData());
     }
 
-    public void updateTable(String dateTimeKind,String sortColum,String orderBy) {
-/*
-        if (selectColum == null || selectColum.equals("")) {
-            refreshTable(retrofitApi.getResultWithSearch(null, null,
-                    getFirstDate(), getLastDate(), null, null));
-        } else if (selectColum.equalsIgnoreCase("OK") || selectColum.equalsIgnoreCase("NG"))
-            refreshTable(retrofitApi.getResultWithSearch(null, selectColum,
-                    getFirstDate(), getLastDate(), null, null));
-                    */
+    public void updateTable(String dateTimeKind, String sortColum, String orderBy) {
 
         refreshTable(retrofitApi.getStatisticsWithSearch(dateTimeKind, getFirstDate(),
-                getLastDate(),sortColum,orderBy));
+                getLastDate(), sortColum, orderBy));
     }
 
     @Override

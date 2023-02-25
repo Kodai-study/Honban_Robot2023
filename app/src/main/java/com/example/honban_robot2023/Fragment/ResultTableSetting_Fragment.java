@@ -54,14 +54,13 @@ public class ResultTableSetting_Fragment extends DialogFragment {
         final View dialogView = LayoutInflater.from(activity).inflate(R.layout.fragment_result_table_setting_, null);
         builder.setView(dialogView);
         builder.setPositiveButton("適用", (dialog, which) -> {
-            for(int i = 0;i < radioButtons.length;i++){
-                if(!radioButtons[i].isChecked())
+            for (int i = 0; i < radioButtons.length; i++) {
+                if (!radioButtons[i].isChecked())
                     continue;
                 if (radioButtons[i].getId() == R.id.OK || radioButtons[i].getId() == R.id.NG) {
-                    baseActivity.updateTable(null,checkedColumName.get(i));
-                }
-                else {
-                    baseActivity.updateTable(checkedColumName.get(i),null);
+                    baseActivity.updateTable(null, checkedColumName.get(i));
+                } else {
+                    baseActivity.updateTable(checkedColumName.get(i), null);
                 }
             }
             dismiss();
@@ -101,7 +100,4 @@ public class ResultTableSetting_Fragment extends DialogFragment {
 
         return builder.create();
     }
-
-
-
 }

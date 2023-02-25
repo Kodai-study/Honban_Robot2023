@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
@@ -23,6 +22,7 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
     RadioGroup sortColumSelect;
     StatisticsTable_Activity baseActivity;
     ToggleButton selectSortMethod;
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -35,18 +35,28 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
         selectSortMethod = dialogView.findViewById(R.id.ASC_sta);
         builder.setPositiveButton("適用", (dialog, which) -> {
 
-            String sortColum = null;
+            String sortColum;
             switch (sortColumSelect.getCheckedRadioButtonId()) {
                 case R.id.orderBy_date:
+                    sortColum = "DATE";
                     break;
-                case R.id.good_per : break;
-                case R.id.defective_per : break;
-                case R.id.scan:break;
+                case R.id.good_per:
+                    sortColum = "";
+                    break;
+                case R.id.defective_per:
+                    sortColum = "";
+                    break;
+                case R.id.scan:
+                    sortColum = "Scan";
+                    break;
+                default:
+                    sortColum = null;
+                    break;
             }
-            if(selectSortMethod.isSelected()){
-
-            }
-            baseActivity.updateTable(null,sortColum,"ASC");
+            if (selectSortMethod.isSelected())
+                baseActivity.updateTable(null, sortColum, "ASC");
+            else
+                baseActivity.updateTable(null, sortColum, "DESC");
 
             dismiss();
         });

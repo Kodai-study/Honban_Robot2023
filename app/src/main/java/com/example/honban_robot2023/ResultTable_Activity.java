@@ -30,18 +30,10 @@ public class ResultTable_Activity extends TableBaseActivity {
         setResultTable(this.retrofitApi.getResults());
     }
 
-    public void updateTable(String selectColum,String selectResult) {
-/*
-        if (selectColum == null || selectColum.equals("")) {
-            refreshTable(retrofitApi.getResultWithSearch(null, null,
-                    getFirstDate(), getLastDate(), null, null));
-        } else if (selectColum.equalsIgnoreCase("OK") || selectColum.equalsIgnoreCase("NG"))
-            refreshTable(retrofitApi.getResultWithSearch(null, selectColum,
-                    getFirstDate(), getLastDate(), null, null));
-                    */
+    public void updateTable(String selectColum, String selectResult) {
 
-        refreshTable(retrofitApi.getResultWithSearch(selectColum,selectResult,getFirstDate(),
-                getLastDate(),null,null));
+        refreshTable(retrofitApi.getResultWithSearch(selectColum, selectResult, getFirstDate(),
+                getLastDate(), null, null));
     }
 
     @Override

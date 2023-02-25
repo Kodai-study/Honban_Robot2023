@@ -32,6 +32,10 @@ public class UtilizationTable_Activity extends TableBaseActivity {
             setResultTable(this.retrofitApi.getUtilizationData());
     }
 
+    public void updateTable(String sortColum, String orderBy) {
+
+        refreshTable(retrofitApi.getUtilizationDataWithSearch(getFirstDate(), getLastDate(), sortColum, orderBy));
+    }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -42,7 +46,7 @@ public class UtilizationTable_Activity extends TableBaseActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
-        new UtilizationDisplaySetting_Fragment().show(getSupportFragmentManager(), "dialog");
+        new UtilizationDisplaySetting_Fragment(this).show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 
