@@ -105,5 +105,5 @@ public interface APIManager {
 
     //TODO システムの現在の状態を取ってくるAPIの実装
     @GET(value = "hoge")
-    Call<List<StationStateAPIModel>> getStationState();
+    Call<StationStateAPIModel> getStationState();
 }

@@ -17,4 +17,56 @@ public class StationStateAPIModel {
     private int resultFrequency;
     private float resultVoltage;
     private String visualInspectionData;
+
+    public int getNumberOfOKStock() {
+        return numberOfOKStock;
+    }
+
+    public int getNumberOfNGStock() {
+        return numberOfNGStock;
+    }
+
+    public String getSystemState() {
+        return systemState;
+    }
+
+    public String getStationState_Supply() {
+        return stationState_Supply;
+    }
+
+    public String getStationState_Visual() {
+        return stationState_Visual;
+    }
+
+    public String getStationState_Function() {
+        return stationState_Function;
+    }
+
+    public String getStationState_Assembly() {
+        return stationState_Assembly;
+    }
+
+    public boolean isSystemPause() {
+        return isSystemPause;
+    }
+
+    public String getSystemPauseCause() {
+        return systemPauseCause;
+    }
+
+    public boolean isInspectedJustBefore() {
+        return isInspectedJustBefore;
+    }
+
+    public int getResultFrequency() {
+        return resultFrequency;
+    }
+
+    public float getResultVoltage() {
+        return resultVoltage;
+    }
+
+    public String getVisualInspectionData() {
+        return visualInspectionData;
+    }
 }
