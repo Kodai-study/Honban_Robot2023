@@ -102,7 +102,7 @@ public abstract class  TableResultControl<T> {
         targetTextView.setTextColor(textLayout.textColor);
         targetTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         targetTextView.setPadding(textLayout.padding, textLayout.padding, textLayout.padding, textLayout.padding);
-        targetTextView.setBackground(resources.getDrawable(R.drawable.midasi, activityContext.getTheme()));
+        targetTextView.setBackground(resources.getDrawable(R.drawable.table_title_background, activityContext.getTheme()));
     }
 
     protected void setTitleText(@NonNull TextView targetTextView) {
