@@ -16,4 +16,11 @@
     <color name="OK"> #32CD32</color>
     <color name="NG"> #FF0000</color>
     <color name="NULL">#FF000000</color>
+    <color name="anomaly_state">#ff0000</color>
+    <color name="standby_state"> #FFF450</color>
+    <color name="alignment_state"> #32CD32</color>
+    <color name="UR"> #90d7ec</color>
+    <color name="VISAL"> #8B52A1</color>
+    <color name="FUNC"> #EC008C</color>
+    <color name="ASSEM"> #F68B1E</color>
 </resources>
