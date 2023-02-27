@@ -25,7 +25,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * 検査結果の一覧表を表示するアクティビティ
+ * テーブルでデータの一覧を表示するアクティビティのベースとなるアクティビティクラス。
+ * テーブル表示のアクティビティは、このクラスを実装の後、{@link #tableController}に
+ * 各自のコントローラを実装する。
  */
 public abstract class TableBaseActivity extends AppCompatActivity {
 

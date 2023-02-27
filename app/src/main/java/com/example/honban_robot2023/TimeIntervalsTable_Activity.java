@@ -25,12 +25,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * 検査結果の一覧表を表示するアクティビティ
+ * ワークごとの検査工程それぞれにかかった時間と、
+ * 工程の開始、終了時刻の表示を行うアクティビティ。
+ * {@link #tableSwitchToggle}のスイッチを切り替えることで、
+ * 工程時間:OFF  と  工程切り替え時間:ON  で表示が切り替わる
  */
 public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
+    /**
+     * 表示項目を切り替える、メニューバーの中のトグルスイッチ。
+     * スイッチ操作時に、 工程時間:OFF  と  工程切り替え時間:ON
+     * が切り替わる
+     */
     SwitchCompat tableSwitchToggle;
 
+    /**
+     * 工程切り替え時間で表示する時のテーブル表示のコントローラ。
+     * デフォルトは工程時間の{@link TimeIntervalTableController}
+     */
     TableItemsControl<TimeStampModel> timeStampTableController;
 
     @Override
@@ -39,19 +51,26 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
         tableController = new TimeIntervalTableController(this, this.resultTable);
         this.timeStampTableController = new TimeStampTableController(this, this.resultTable);
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeInterval));
+
+        /* デバッグモードでは、APIからではなく一定のサンプルデータを使ってテーブルの表示 */
         if (ConfigParameters.IS_DEBUG_MODE)
             tableController.tableColumInit(Test_dummyAPIData.getTimeIntervalDummy());
         else
             setTableBody(this.retrofitApi.getTimeIntervalData());
 
+        /* 日付入力画面横のボタンで、日付による絞り込みを行う。 ダイアログの設定項目を引き継ぐ */
         searchButton.setOnClickListener( view -> {
             updateTable();
         });
     }
 
+    /**
+     * 絞り込み、並び替え条件を指定してテーブルを作成しなおし、再描写を行う。
+     * {@link #tableSwitchToggle}の値によって、表示項目が変わる
+     */
     public void updateTable() {
         if (tableSwitchToggle.isChecked()) {
-
             resultTable.removeAllViews();
             setTimeStampTable();
         }
@@ -61,23 +80,24 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
-        boolean superResult = super.onCreateOptionsMenu(menu);
+        boolean superResult = super.onCreateOptionsMenu(menu);  //スーパークラスの処理と戻り値を引き継ぐ
+        /* メニューバーの中ののスイッチを表示させる */
         MenuItem switchItem = menu.findItem(R.id.app_bar_switch2);
         switchItem.setVisible(true);
         this.tableSwitchToggle = (SwitchCompat) switchItem.getActionView();
+
+        /* スイッチの操作に、表示項目が切り替わる処理を割り当てる。 */
         tableSwitchToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
             switchTableKind(isChecked);
         });
-        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeInterval));
         return superResult;
     }
 
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.app_bar_switch2).setVisible(true);
-        return super.onPrepareOptionsMenu(menu);
-    }
-
+    /**
+     * 表示項目を工程時間と工程切り替え時間で切り替える。
+     * @param isViewTimeStamp true:工程切り替え時間
+     *                        false:工程時間 {@link #tableSwitchToggle}の値に等しい
+     */
     private void switchTableKind(boolean isViewTimeStamp) {
         resultTable.removeAllViews();
         if (isViewTimeStamp) {
@@ -88,22 +108,10 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         super.setTableBody(this.retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(),getLastDate()));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        boolean b = item.isChecked();
-        Toast.makeText(this, String.valueOf(b), Toast.LENGTH_SHORT).show();
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        saveSearchSettings = getSharedPreferences("resultTableSettings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor saveSettingEditor = saveSearchSettings.edit();
-        saveSettingEditor.putString("searchTimeFirst", "g");
-        saveSettingEditor.apply();
-    }
-
+    /**
+     * タイムスタンプ、工程切り替わり時刻のデータをテーブルの項目に表示する。
+     * デフォルトは工程時間の{@link #tableController}
+     */
     private void setTimeStampTable(){
 
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
