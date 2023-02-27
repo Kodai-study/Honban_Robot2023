@@ -18,21 +18,21 @@
         android:paddingRight="20dp"
         android:text="組立ST"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" >
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView39"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="組立ST"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textColor="@color/ASSEM"
+            android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,8 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
                 android:text="00:00:00"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/Assem_con"
@@ -62,7 +63,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="状態"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -76,11 +78,11 @@
 
             <TextView
                 android:id="@+id/cause_bad"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="停止要因 : 不良品満"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/good_num"
@@ -89,7 +91,7 @@
                 android:layout_marginTop="6dp"
                 android:text="良品 : 個"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/bad_num"
@@ -98,7 +100,7 @@
                 android:layout_marginTop="6dp"
                 android:text="不良品 : 個"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -130,8 +132,8 @@
             android:layout_height="wrap_content"
             android:text="供給工程"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textColor="@color/UR"
+            android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +155,8 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
                 android:text="00:00:00"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/Supply_con"
@@ -161,7 +164,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="状態"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -208,8 +212,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" >
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -227,7 +233,8 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
                 android:text="00:00:00"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/Visal_con"
@@ -235,7 +242,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="状態"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -248,12 +256,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView41">
 
             <TextView
-                android:id="@+id/Visal_ST"
+                android:id="@+id/Visal_Test"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="検査結果 : OK"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -262,8 +270,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="外観検査ST"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textColor="@color/VISAL"
+            android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -306,7 +314,8 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="4dp"
                 android:text="00:00:00"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/Func_con"
@@ -314,7 +323,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:text="状態"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="24sp" />
         </LinearLayout>
 
         <TextView
@@ -322,8 +332,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="機能検査ST"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            android:textColor="@color/FUNC"
+            android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -346,15 +356,16 @@
                 android:layout_height="wrap_content"
                 android:text="周波数 : "
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/Volt_ST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:text="電圧 : "
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="20sp" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -435,9 +446,9 @@
     <ImageView
 
         android:id="@+id/imageView4"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:rotation="270"
+        android:layout_width="113dp"
+        android:layout_height="122dp"
+        android:rotation="-90"
         android:rotationY="0"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -447,8 +458,8 @@
         app:srcCompat="@drawable/baseline_trending_flat_24" />
 
     <LinearLayout
-        android:layout_width="192dp"
-        android:layout_height="105dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -460,26 +471,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="システム全体の状態 "
-            android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textColor="@color/teal_200"
+            android:textSize="21sp" />
 
         <TextView
             android:id="@+id/anomaly_state"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="異常状態" />
+            android:text="異常状態"
+            android:textColor="@color/anomaly_state"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/standby_state"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="動作開始待機中" />
+            android:background="@color/white"
+            android:shadowColor="@color/NULL"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:text="動作開始待機中"
+            android:textColor="@color/standby_state"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/alig_state"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="連携動作中" />
+            android:text="連携動作中"
+            android:textColor="@color/alignment_state"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <!--TODO 上矢印の調整-->
