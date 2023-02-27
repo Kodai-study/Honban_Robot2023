@@ -20,6 +20,8 @@ import com.example.honban_robot2023.Test.Test_dummyAPIData;
 public class UtilizationTable_Activity extends TableBaseActivity {
 
     UtilizationDisplaySetting_Fragment settingDialog;
+    String lastSortColum = null;
+    String lastOrderBy = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,15 @@ public class UtilizationTable_Activity extends TableBaseActivity {
             tableController.tableColumInit(Test_dummyAPIData.getUtilizationDummy());
         else
             setResultTable(this.retrofitApi.getUtilizationData());
+
+        searchButton.setOnClickListener(view -> {
+            updateTable(lastSortColum, lastOrderBy);
+        });
     }
 
     public void updateTable(String sortColum, String orderBy) {
-
+        lastSortColum = sortColum;
+        lastOrderBy = orderBy;
         refreshTable(retrofitApi.getUtilizationDataWithSearch(getFirstDate(), getLastDate(), sortColum, orderBy));
     }
 

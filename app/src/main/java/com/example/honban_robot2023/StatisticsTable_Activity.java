@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
@@ -19,6 +17,9 @@ import com.example.honban_robot2023.Test.Test_dummyAPIData;
  */
 public class StatisticsTable_Activity extends TableBaseActivity {
 
+    String lastDateTimeKind = null;
+    String lastSortColum = null;
+    String lastOrderBy = null;
     StatisticsDisplaySetting_Fragment settingDialog;
 
     @Override
@@ -33,10 +34,16 @@ public class StatisticsTable_Activity extends TableBaseActivity {
             tableController.tableColumInit(Test_dummyAPIData.getResultDummy());
         } else
             setResultTable(this.retrofitApi.getStatisticsData());
+
+        searchButton.setOnClickListener(view -> {
+            updateTable(lastDateTimeKind, lastSortColum, lastOrderBy);
+        });
     }
 
     public void updateTable(String dateTimeKind, String sortColum, String orderBy) {
-
+       lastDateTimeKind = dateTimeKind;
+       lastSortColum = sortColum;
+       lastOrderBy = orderBy;
         refreshTable(retrofitApi.getStatisticsWithSearch(dateTimeKind, getFirstDate(),
                 getLastDate(), sortColum, orderBy));
     }

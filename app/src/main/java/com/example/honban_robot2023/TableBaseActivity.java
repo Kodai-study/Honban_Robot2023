@@ -57,6 +57,9 @@ public abstract class TableBaseActivity extends AppCompatActivity {
 
     protected TableResultControl tableController;
 
+
+    protected ImageFilterButton searchButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,9 +70,10 @@ public abstract class TableBaseActivity extends AppCompatActivity {
         lastDateSelect = findViewById(R.id.imageButton_selectLastTime);
         firstDateInput = findViewById(R.id.editText_firstDate);
         lastDateInput = findViewById(R.id.editText_lastDate);
+        searchButton = findViewById(R.id.imageButton_sortByDateRange);
         firstDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, firstDateInput));
         lastDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, lastDateInput, firstDateInput));
-        retrofitApi =  RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
+        retrofitApi = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
 
     }
 
@@ -112,22 +116,22 @@ public abstract class TableBaseActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.list_table_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    protected String getFirstDate(){
-        String firstDateInputText =  firstDateInput.getText().toString();
-        if(firstDateInputText.equals(""))
+    protected String getFirstDate() {
+        String firstDateInputText = firstDateInput.getText().toString();
+        if (firstDateInputText.equals(""))
             return null;
         return firstDateInputText;
     }
-    protected String getLastDate(){
+
+    protected String getLastDate() {
         String lastDateInputText = lastDateInput.getText().toString();
-        if(lastDateInputText.equals(""))
+        if (lastDateInputText.equals(""))
             return null;
         return lastDateInputText;
     }

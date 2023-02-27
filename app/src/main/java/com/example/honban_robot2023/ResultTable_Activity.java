@@ -20,6 +20,8 @@ import java.util.Locale;
 public class ResultTable_Activity extends TableBaseActivity {
 
     ResultTableSetting_Fragment settingDialog = new ResultTableSetting_Fragment(this);
+    String lastSelectColum = null;
+    String lastSelectResult = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +29,14 @@ public class ResultTable_Activity extends TableBaseActivity {
         tableController = new ResultTableController(this, this.resultTable);
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Result));
         setResultTable(this.retrofitApi.getResults());
+        searchButton.setOnClickListener(view -> {
+            updateTable(lastSelectColum, lastSelectResult);
+        });
     }
 
     public void updateTable(String selectColum, String selectResult) {
-
+        lastSelectColum = selectColum;
+        lastSelectResult = selectResult;
         refreshTable(retrofitApi.getResultWithSearch(selectColum, selectResult, getFirstDate(),
                 getLastDate(), null, null));
     }

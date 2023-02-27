@@ -57,6 +57,9 @@ public interface APIManager {
     @GET(value = "times")
     Call<List<TimeIntervalAPIModel>> getTimeIntervalData();
 
+    @GET(value = "times")
+    Call<List<TimeIntervalAPIModel>> getTimeIntervalDataWithSearch(@Query("startTime") String startTime, @Query("endTime") String endTime);
+
 
     /**
      * ワークごとの、検査工程ごとに、工程が始まった時刻の一覧を取得する

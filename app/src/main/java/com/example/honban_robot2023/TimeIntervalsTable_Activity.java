@@ -46,6 +46,20 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
             tableController.tableColumInit(Test_dummyAPIData.getTimeIntervalDummy());
         else
             setResultTable(this.retrofitApi.getTimeIntervalData());
+
+        searchButton.setOnClickListener( view -> {
+            updateTable();
+        });
+    }
+
+    public void updateTable() {
+        if (tableSwitchToggle.isChecked()) {
+
+            resultTable.removeAllViews();
+            setTimeStampTable();
+        }
+        else
+            refreshTable(retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(), getLastDate()));
     }
 
     @Override
@@ -70,28 +84,11 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
     private void switchTableKind(boolean isViewTimeStamp) {
         resultTable.removeAllViews();
         if (isViewTimeStamp) {
-            timeStampTableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
-            super.setResultTable(this.retrofitApi.getTimeIntervalData());
+            setTimeStampTable();
             return;
         }
-
-        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeInterval));
-        retrofitApi.getTimeStampData().enqueue(new Callback<List<TimeStampModel>>() {
-
-            @Override
-            public void onResponse(@NonNull Call<List<TimeStampModel>> call, @NonNull Response<List<TimeStampModel>> response) {
-                if (!response.isSuccessful()) {
-                    return;
-                }
-                timeStampTableController.tableColumInit(Objects.requireNonNull(response.body()));
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<List<TimeStampModel>> call, @NonNull Throwable t) {
-                Toast.makeText(TimeIntervalsTable_Activity.this,
-                        t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
+        super.setResultTable(this.retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(),getLastDate()));
     }
 
     @Override
@@ -108,6 +105,27 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         SharedPreferences.Editor saveSettingEditor = saveSearchSettings.edit();
         saveSettingEditor.putString("searchTimeFirst", "g");
         saveSettingEditor.apply();
+    }
+
+    private void setTimeStampTable(){
+
+        tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
+        Call<List<TimeStampModel>> timeStamps = retrofitApi.getTimeStampDataWithSearch(getFirstDate(),getLastDate());
+        timeStamps.enqueue(new Callback<List<TimeStampModel>>() {
+            @Override
+            public void onResponse(Call<List<TimeStampModel>> call, Response<List<TimeStampModel>> response) {
+                if (!response.isSuccessful()) {
+                    return;
+                }
+                timeStampTableController.tableColumInit(Objects.requireNonNull(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<List<TimeStampModel>> call, Throwable t) {
+                Toast.makeText(TimeIntervalsTable_Activity.this,
+                        t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
