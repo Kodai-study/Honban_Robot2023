@@ -8,9 +8,7 @@ import android.widget.TextView;
 import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
 import com.example.honban_robot2023.APIModules.UtilizationModel;
 
-import java.util.Date;
-
-public class UtilizationTableController extends TableResultControl<UtilizationModel> {
+public class UtilizationTableController extends TableItemsControl<UtilizationModel> {
 
     public UtilizationTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);

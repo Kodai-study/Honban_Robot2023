@@ -12,7 +12,7 @@ import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.ResultAPI.VisualInspectionResults;
 import com.example.honban_robot2023.R;
 
-public class ResultTableController extends TableResultControl<ResultsDataModel> {
+public class ResultTableController extends TableItemsControl<ResultsDataModel> {
 
 
     private String ok_String;

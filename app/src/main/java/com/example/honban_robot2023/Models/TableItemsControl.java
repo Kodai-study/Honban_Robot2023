@@ -14,7 +14,7 @@ import com.example.honban_robot2023.R;
 
 import java.util.List;
 
-public abstract class  TableResultControl<T> {
+public abstract class TableItemsControl<T> {
 
     protected List<T> itemModelList;
     protected Context activityContext;
@@ -28,7 +28,7 @@ public abstract class  TableResultControl<T> {
     protected TextLayout DEFAULT_TITLE_LAYOUT;
 
 
-    public TableResultControl(Context activityContext, TableLayout tableLayout) {
+    public TableItemsControl(Context activityContext, TableLayout tableLayout) {
         this.activityContext = activityContext;
         this.tableLayout = tableLayout;
         this.resources = activityContext.getResources();

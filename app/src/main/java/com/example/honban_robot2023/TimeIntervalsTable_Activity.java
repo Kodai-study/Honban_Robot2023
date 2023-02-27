@@ -5,17 +5,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.honban_robot2023.APIModules.TimeStampModel;
-import com.example.honban_robot2023.Fragment.ResultTableSetting_Fragment;
 import com.example.honban_robot2023.Models.ConfigParameters;
-import com.example.honban_robot2023.Models.TableResultControl;
+import com.example.honban_robot2023.Models.TableItemsControl;
 import com.example.honban_robot2023.Models.TimeIntervalTableController;
 import com.example.honban_robot2023.Models.TimeStampTableController;
 import com.example.honban_robot2023.Test.Test_dummyAPIData;
@@ -34,7 +31,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
     SwitchCompat tableSwitchToggle;
 
-    TableResultControl<TimeStampModel> timeStampTableController;
+    TableItemsControl<TimeStampModel> timeStampTableController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +42,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         if (ConfigParameters.IS_DEBUG_MODE)
             tableController.tableColumInit(Test_dummyAPIData.getTimeIntervalDummy());
         else
-            setResultTable(this.retrofitApi.getTimeIntervalData());
+            setTableBody(this.retrofitApi.getTimeIntervalData());
 
         searchButton.setOnClickListener( view -> {
             updateTable();
@@ -88,7 +85,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
             return;
         }
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
-        super.setResultTable(this.retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(),getLastDate()));
+        super.setTableBody(this.retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(),getLastDate()));
     }
 
     @Override

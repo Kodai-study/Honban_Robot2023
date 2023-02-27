@@ -14,7 +14,7 @@ import androidx.constraintlayout.utils.widget.ImageFilterButton;
 
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.Models.RetrofitFactory;
-import com.example.honban_robot2023.Models.TableResultControl;
+import com.example.honban_robot2023.Models.TableItemsControl;
 import com.example.honban_robot2023.event.DateSelectButtonClickListener;
 
 import java.util.List;
@@ -34,6 +34,9 @@ public abstract class TableBaseActivity extends AppCompatActivity {
      */
     protected TableLayout resultTable;
 
+    /**
+     * 設定項目を、アプリ終了後も引き継ぐためのデータアクセサ
+     */
     protected SharedPreferences saveSearchSettings;
 
     /**
@@ -51,13 +54,27 @@ public abstract class TableBaseActivity extends AppCompatActivity {
      * テキストボックス。ダイアログによって自動で入力される
      */
     protected EditText firstDateInput = null;
+    /**
+     * 表示する結果を検査日時で範囲指定する時の上限値を入力する
+     * テキストボックス。ダイアログによって自動で入力される
+     */
     protected EditText lastDateInput = null;
 
+    /**
+     * APIによってデータを取得するAPIを集めたクラス
+     */
     protected APIManager retrofitApi;
 
-    protected TableResultControl tableController;
+    /**
+     *  テーブルの項目を切り替えるコントローラ。テーブルの種類によって、
+     * {@link TableItemsControl}を継承したそれぞれのコントローラを割り当てる。
+     */
+    protected TableItemsControl tableController;
 
-
+    /**
+     * 日付入力部分の横にある検索ボタン。このボタンを押すと、
+     * 検査日付による絞り込みが行われる
+     */
     protected ImageFilterButton searchButton;
 
     @Override
@@ -71,14 +88,21 @@ public abstract class TableBaseActivity extends AppCompatActivity {
         firstDateInput = findViewById(R.id.editText_firstDate);
         lastDateInput = findViewById(R.id.editText_lastDate);
         searchButton = findViewById(R.id.imageButton_sortByDateRange);
+
+        /* 日付入力ボックスの横にあるボタンをクリックすると、日付入力のダイアログが表示される */
         firstDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, firstDateInput));
         lastDateSelect.setOnClickListener(new DateSelectButtonClickListener(this, lastDateInput, firstDateInput));
         retrofitApi = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
-
     }
 
-
-    protected <T> void setResultTable(Call<List<T>> list) {
+    /**
+     * テーブルの中身、項目以外の部分をセットする
+     * @param list APIで取得したデータのリスト。
+     *  {@link #retrofitApi}から取得した、Callオブジェクトのまま
+     * @param <T> 取得したい型の、APIのデータをまとめたモデルクラス。
+     */
+    protected <T> void setTableBody(Call<List<T>> list) {
+        /* APIデータの取得が成功したらテーブル項目の更新、失敗したらトーストの表示 */
         list.enqueue(new Callback<List<T>>() {
             @Override
             public void onResponse(@NonNull Call<List<T>> call, @NonNull Response<List<T>> response) {
@@ -96,7 +120,12 @@ public abstract class TableBaseActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * テーブルの一番上、項目名のみを残してテーブルの中身のみを切り替える。
+     * @param list APIで取得したデータのリスト。
+     *  {@link #retrofitApi}から取得した、Callオブジェクトのまま
+     * @param <T> 取得したい型の、APIのデータをまとめたモデルクラス。
+     */
     protected <T> void refreshTable(Call<List<T>> list) {
         list.enqueue(new Callback<List<T>>() {
             @Override
@@ -115,13 +144,18 @@ public abstract class TableBaseActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.list_table_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * {@link #firstDateInput}日付入力部で入力した、検査日付絞り込みの下限値
+     * を、クエリ文字列として取得する。
+     * @return 日付指定で、クエリとして表示する文字列。
+     *  入力部が空なら、null
+     */
     protected String getFirstDate() {
         String firstDateInputText = firstDateInput.getText().toString();
         if (firstDateInputText.equals(""))
@@ -129,6 +163,12 @@ public abstract class TableBaseActivity extends AppCompatActivity {
         return firstDateInputText;
     }
 
+    /**
+     * {@link #lastDateInput}日付入力部で入力した、検査日付絞り込みの上限値
+     * を、クエリ文字列として取得する
+     * @return 日付指定で、クエリとして表示する文字列。
+     *  入力部が空なら、null
+     */
     protected String getLastDate() {
         String lastDateInputText = lastDateInput.getText().toString();
         if (lastDateInputText.equals(""))

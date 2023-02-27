@@ -1,18 +1,15 @@
 package com.example.honban_robot2023.Models;
 
 import android.content.Context;
-import android.view.MenuItem;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
-import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
-import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
 
 import java.util.Date;
 
-public class TimeIntervalTableController extends TableResultControl<TimeIntervalAPIModel> {
+public class TimeIntervalTableController extends TableItemsControl<TimeIntervalAPIModel> {
 
     public TimeIntervalTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);

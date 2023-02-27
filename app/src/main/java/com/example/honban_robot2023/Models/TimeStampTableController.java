@@ -10,7 +10,7 @@ import com.example.honban_robot2023.APIModules.TimeStampModel;
 
 import java.util.Date;
 
-public class TimeStampTableController extends TableResultControl<TimeStampModel> {
+public class TimeStampTableController extends TableItemsControl<TimeStampModel> {
 
     public TimeStampTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);

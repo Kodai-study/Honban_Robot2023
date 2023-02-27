@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
@@ -32,7 +30,7 @@ public class UtilizationTable_Activity extends TableBaseActivity {
         if (ConfigParameters.IS_DEBUG_MODE)
             tableController.tableColumInit(Test_dummyAPIData.getUtilizationDummy());
         else
-            setResultTable(this.retrofitApi.getUtilizationData());
+            setTableBody(this.retrofitApi.getUtilizationData());
 
         searchButton.setOnClickListener(view -> {
             updateTable(lastSortColum, lastOrderBy);

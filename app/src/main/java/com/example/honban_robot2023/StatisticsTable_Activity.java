@@ -1,7 +1,5 @@
 package com.example.honban_robot2023;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -20,6 +18,9 @@ public class StatisticsTable_Activity extends TableBaseActivity {
     String lastDateTimeKind = null;
     String lastSortColum = null;
     String lastOrderBy = null;
+    /**
+     * 表示の絞り込み、並び替えを行う設定ダイアログ
+     */
     StatisticsDisplaySetting_Fragment settingDialog;
 
     @Override
@@ -30,16 +31,25 @@ public class StatisticsTable_Activity extends TableBaseActivity {
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Statistics));
         settingDialog = new StatisticsDisplaySetting_Fragment(this);
 
+        /* デバッグモードでは、APIからではなく一定のサンプルデータを使ってテーブルの表示 */
         if (ConfigParameters.IS_DEBUG_MODE) {
             tableController.tableColumInit(Test_dummyAPIData.getResultDummy());
         } else
-            setResultTable(this.retrofitApi.getStatisticsData());
-
+            setTableBody(this.retrofitApi.getStatisticsData());
+        /* 日付入力画面横のボタンで、日付による絞り込みを行う。 ダイアログの設定項目を引き継ぐ */
         searchButton.setOnClickListener(view -> {
             updateTable(lastDateTimeKind, lastSortColum, lastOrderBy);
         });
     }
 
+    /**
+     * 絞り込み、並び替え条件を指定してテーブルを作成しなおし、再描写を行う。
+     * @param dateTimeKind 表示する日付の単位が、日、週、月のいずれかを指定
+     * @param sortColum 並び替えの項目を指定。・日付:DATE ・良品率:PASSRATE
+     *                 ・不良品率:DEFECTRATE
+     * @param orderBy 並び替えが昇順、降順の指定
+     *                ・昇順:ASC  ・降順:DESC
+     */
     public void updateTable(String dateTimeKind, String sortColum, String orderBy) {
        lastDateTimeKind = dateTimeKind;
        lastSortColum = sortColum;
@@ -48,19 +58,11 @@ public class StatisticsTable_Activity extends TableBaseActivity {
                 getLastDate(), sortColum, orderBy));
     }
 
+    /* メニューバーのアイコンを押すことで設定ダイアログの表示 */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         settingDialog.show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        saveSearchSettings = getSharedPreferences("resultTableSettings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor saveSettingEditor = saveSearchSettings.edit();
-        saveSettingEditor.putString("searchTimeFirst", "g");
-        saveSettingEditor.apply();
     }
 
 }
