@@ -82,48 +82,7 @@
             <TableLayout
                 android:id="@+id/table_resultDatas"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="10dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:text="TextView1"
-                        android:textSize="34sp" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:text="TextView2"
-                        android:textSize="34sp" />
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:text="TextView3"
-                        android:textSize="34sp" />
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:text="s;fjasfbae@nfoasif@oshfoabf@oawfoashfooiah@ofih"
-                        android:textSize="34sp" />
-                </TableRow>
-
-            </TableLayout>
+                android:layout_height="match_parent"/>
         </HorizontalScrollView>
     </ScrollView>
 

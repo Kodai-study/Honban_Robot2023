@@ -127,7 +127,7 @@ public abstract class TableBaseActivity extends AppCompatActivity {
     }
     protected String getLastDate(){
         String lastDateInputText = lastDateInput.getText().toString();
-        if(lastDateInput.equals(""))
+        if(lastDateInputText.equals(""))
             return null;
         return lastDateInputText;
     }

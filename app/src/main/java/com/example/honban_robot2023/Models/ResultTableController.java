@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.ResultAPI.VisualInspectionResults;
 import com.example.honban_robot2023.R;
-import com.example.honban_robot2023.ResultTable_Activity;
 
 public class ResultTableController extends TableResultControl<ResultsDataModel> {
 
@@ -39,7 +38,7 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
             textViewCells[i] = new TextView(activityContext);
         }
 
-        VisualInspectionResults workResults = colum.getResult();
+        VisualInspectionResults workResults = colum.getResult_visualInspection();
         if (colum.getStartTime() == null)
             textViewCells[0].setText(ConfigParameters.TABLEDATA_NOTHING);
         else

@@ -48,7 +48,7 @@ public class StatisticsTable_Activity extends TableBaseActivity {
         } else {
             layout.setVisibility(View.GONE);
         }
-        new StatisticsDisplaySetting_Fragment().show(getSupportFragmentManager(), "dialog");
+        new StatisticsDisplaySetting_Fragment(this).show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 

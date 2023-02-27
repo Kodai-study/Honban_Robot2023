@@ -23,6 +23,10 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
     StatisticsTable_Activity baseActivity;
     ToggleButton selectSortMethod;
 
+    public StatisticsDisplaySetting_Fragment(StatisticsTable_Activity baseActivity) {
+        this.baseActivity = baseActivity;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -41,10 +45,10 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
                     sortColum = "DATE";
                     break;
                 case R.id.good_per:
-                    sortColum = "";
+                    sortColum = "PASSRATE";
                     break;
                 case R.id.defective_per:
-                    sortColum = "";
+                    sortColum = "DEFECTRATE";
                     break;
                 case R.id.scan:
                     sortColum = "Scan";
@@ -53,7 +57,7 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
                     sortColum = null;
                     break;
             }
-            if (selectSortMethod.isSelected())
+            if (selectSortMethod.isChecked())
                 baseActivity.updateTable(null, sortColum, "ASC");
             else
                 baseActivity.updateTable(null, sortColum, "DESC");

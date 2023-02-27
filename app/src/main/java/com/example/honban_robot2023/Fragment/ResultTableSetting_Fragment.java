@@ -17,7 +17,6 @@ import com.example.honban_robot2023.R;
 import com.example.honban_robot2023.ResultTable_Activity;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
 
 public class ResultTableSetting_Fragment extends DialogFragment {
@@ -26,8 +25,6 @@ public class ResultTableSetting_Fragment extends DialogFragment {
     Button settingResetButton;
 
     List<String> checkedColumName = new ArrayList<>();
-
-    String searchColumNames[] = new String[]{"DS", "R", "IC2", "IC1", "Volt", "Freq", "OK", "NG"};
     int checkedButtonIndex = -1;
 
     ResultTable_Activity baseActivity;
@@ -54,15 +51,20 @@ public class ResultTableSetting_Fragment extends DialogFragment {
         final View dialogView = LayoutInflater.from(activity).inflate(R.layout.fragment_result_table_setting_, null);
         builder.setView(dialogView);
         builder.setPositiveButton("適用", (dialog, which) -> {
+            boolean isAnyRadioChecked = false;
             for (int i = 0; i < radioButtons.length; i++) {
                 if (!radioButtons[i].isChecked())
                     continue;
+
+                isAnyRadioChecked = true;
                 if (radioButtons[i].getId() == R.id.OK || radioButtons[i].getId() == R.id.NG) {
                     baseActivity.updateTable(null, checkedColumName.get(i));
                 } else {
                     baseActivity.updateTable(checkedColumName.get(i), null);
                 }
             }
+            if(!isAnyRadioChecked)
+                baseActivity.updateTable(null,null);
             dismiss();
         });
         builder.setNegativeButton("キャンセル", (dialog, which) -> dismiss());

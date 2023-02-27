@@ -4,11 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class StationStateAPIModel {
 
-
     private boolean isSuccessConnect;
-
-
-
     private int numberOfWork_VisualStation;
     private int numberOfWork_FunctionalStation;
     private int numberOfWork_AssemblyStation;

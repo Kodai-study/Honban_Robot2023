@@ -48,7 +48,7 @@ public class UtilizationDisplaySetting_Fragment extends DialogFragment {
             if (orderByOperatingTime.isChecked())
                 sortColum = "operationTime";
 
-            if (selectSortMethod.isSelected())
+            if (selectSortMethod.isChecked())
                 base_Activity.updateTable(sortColum, "ASC");
             else
                 base_Activity.updateTable(sortColum, "DESC");
