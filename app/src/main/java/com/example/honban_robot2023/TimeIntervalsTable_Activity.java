@@ -42,7 +42,6 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
         tableController = new TimeIntervalTableController(this, this.resultTable);
         this.timeStampTableController = new TimeStampTableController(this, this.resultTable);
-        tableController.setTableTitle(new String[]{"fae", "fae"});
         if (ConfigParameters.IS_DEBUG_MODE)
             tableController.tableColumInit(Test_dummyAPIData.getTimeIntervalDummy());
         else
@@ -97,15 +96,6 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        LinearLayout layout = findViewById(R.id.layout_timeSearch);
-        if (layout.getVisibility() == View.GONE) {
-            layout.setVisibility(View.VISIBLE);
-        } else {
-            layout.setVisibility(View.GONE);
-        }
-        //new ResultTableSetting_Fragment().show(getSupportFragmentManager(), "dialog");
-
         boolean b = item.isChecked();
         Toast.makeText(this, String.valueOf(b), Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
@@ -119,4 +109,5 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         saveSettingEditor.putString("searchTimeFirst", "g");
         saveSettingEditor.apply();
     }
+
 }

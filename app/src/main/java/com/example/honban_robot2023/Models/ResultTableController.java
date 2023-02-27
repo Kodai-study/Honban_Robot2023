@@ -70,18 +70,18 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
 
         textViewCells[19].setText(resultCodeToString(functionResults.getVoltage_result()));
 
-        textViewCells[21].setText(resultCodeToString(functionResults.getFrequency_result()));
         if (functionResults.getVoltage_value() < 0)
 
             textViewCells[20].setText(null_String);
         else
             textViewCells[20].setText(String.format("%.2fV", functionResults.getVoltage_value()));
 
+        textViewCells[21].setText(resultCodeToString(functionResults.getFrequency_result()));
 
         if (functionResults.getFrequency_value() < 0)
             textViewCells[22].setText(null_String);
         else
-        textViewCells[22].setText(String.format("%dHz", functionResults.getFrequency_value()));
+            textViewCells[22].setText(String.format("%dHz", functionResults.getFrequency_value()));
 
         if (colum.getCycleTime() == null)
             textViewCells[23].setText(ConfigParameters.TABLEDATA_NOTHING);

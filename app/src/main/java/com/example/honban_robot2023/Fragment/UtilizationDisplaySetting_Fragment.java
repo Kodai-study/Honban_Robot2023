@@ -21,6 +21,8 @@ import com.example.honban_robot2023.UtilizationTable_Activity;
 
 public class UtilizationDisplaySetting_Fragment extends DialogFragment {
 
+    private int sortColumIndex = 0;
+    private boolean isSortMethodSelect = false;
     private UtilizationTable_Activity base_Activity;
 
     RadioButton orderByOperatingTime;
@@ -43,6 +45,25 @@ public class UtilizationDisplaySetting_Fragment extends DialogFragment {
         orderByOperatingTime = dialogView.findViewById(R.id.continuity);
         orderByDate = dialogView.findViewById(R.id.date_uti);
         selectSortMethod = dialogView.findViewById(R.id.ASC_uti);
+
+        orderByDate.setOnCheckedChangeListener((id, checked) -> {
+            if (checked) this.sortColumIndex = 0;
+        });
+        orderByOperatingTime.setOnCheckedChangeListener((id, checked) -> {
+            if (checked) this.sortColumIndex = 1;
+        });
+
+        selectSortMethod.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.isSortMethodSelect = isChecked;
+        });
+
+        selectSortMethod.setChecked(isSortMethodSelect);
+
+        if (sortColumIndex == 0)
+            orderByDate.setChecked(true);
+        else
+            orderByOperatingTime.setChecked(true);
+
         builder.setPositiveButton("適用", (dialog, which) -> {
             String sortColum = "DATE";
             if (orderByOperatingTime.isChecked())

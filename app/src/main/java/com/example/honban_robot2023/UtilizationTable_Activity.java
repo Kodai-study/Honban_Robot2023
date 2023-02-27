@@ -19,11 +19,12 @@ import com.example.honban_robot2023.Test.Test_dummyAPIData;
  */
 public class UtilizationTable_Activity extends TableBaseActivity {
 
+    UtilizationDisplaySetting_Fragment settingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        settingDialog = new UtilizationDisplaySetting_Fragment(this);
         tableController = new UtilizationTableController(this, this.resultTable);
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Utilization));
         if (ConfigParameters.IS_DEBUG_MODE)
@@ -40,13 +41,7 @@ public class UtilizationTable_Activity extends TableBaseActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        LinearLayout layout = findViewById(R.id.layout_timeSearch);
-        if (layout.getVisibility() == View.GONE) {
-            layout.setVisibility(View.VISIBLE);
-        } else {
-            layout.setVisibility(View.GONE);
-        }
-        new UtilizationDisplaySetting_Fragment(this).show(getSupportFragmentManager(), "dialog");
+        settingDialog.show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 
@@ -58,4 +53,5 @@ public class UtilizationTable_Activity extends TableBaseActivity {
         saveSettingEditor.putString("searchTimeFirst", "g");
         saveSettingEditor.apply();
     }
+
 }

@@ -37,13 +37,6 @@ public class ResultTable_Activity extends TableBaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        LinearLayout layout = findViewById(R.id.layout_timeSearch);
-        if (layout.getVisibility() == View.GONE) {
-            layout.setVisibility(View.VISIBLE);
-        } else {
-            layout.setVisibility(View.GONE);
-        }
         settingDialog.show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
@@ -56,4 +49,5 @@ public class ResultTable_Activity extends TableBaseActivity {
         saveSettingEditor.putString("searchTimeFirst", "g");
         saveSettingEditor.apply();
     }
+
 }

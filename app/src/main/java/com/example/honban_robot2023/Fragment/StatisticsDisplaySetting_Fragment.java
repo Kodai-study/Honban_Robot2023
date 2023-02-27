@@ -6,6 +6,8 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
@@ -16,6 +18,9 @@ import androidx.fragment.app.DialogFragment;
 import com.example.honban_robot2023.R;
 import com.example.honban_robot2023.StatisticsTable_Activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class StatisticsDisplaySetting_Fragment extends DialogFragment {
 
@@ -23,8 +28,18 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
     StatisticsTable_Activity baseActivity;
     ToggleButton selectSortMethod;
 
+    List<Integer> radioButtonIdList = new ArrayList<>();
+
+    private int sortColumIndex = 0;
+    private boolean isSortMethodSelect = false;
+
     public StatisticsDisplaySetting_Fragment(StatisticsTable_Activity baseActivity) {
         this.baseActivity = baseActivity;
+
+        radioButtonIdList.add(R.id.orderBy_date);
+        radioButtonIdList.add(R.id.good_per);
+        radioButtonIdList.add(R.id.defective_per);
+        radioButtonIdList.add(R.id.scan);
     }
 
     @NonNull
@@ -37,6 +52,18 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
         builder.setView(dialogView);
         sortColumSelect = dialogView.findViewById(R.id.radioGroup2);
         selectSortMethod = dialogView.findViewById(R.id.ASC_sta);
+
+        ((RadioButton) sortColumSelect.getChildAt(sortColumIndex)).setChecked(true);
+        selectSortMethod.setChecked(isSortMethodSelect);
+
+        selectSortMethod.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.isSortMethodSelect = isChecked;
+        });
+
+        sortColumSelect.setOnCheckedChangeListener((group, checkedId) -> {
+            this.sortColumIndex = radioButtonIdList.indexOf(checkedId);
+        });
+
         builder.setPositiveButton("適用", (dialog, which) -> {
 
             String sortColum;

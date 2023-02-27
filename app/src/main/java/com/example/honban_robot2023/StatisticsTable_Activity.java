@@ -19,6 +19,7 @@ import com.example.honban_robot2023.Test.Test_dummyAPIData;
  */
 public class StatisticsTable_Activity extends TableBaseActivity {
 
+    StatisticsDisplaySetting_Fragment settingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class StatisticsTable_Activity extends TableBaseActivity {
 
         tableController = new StatisticsTableController(this, this.resultTable);
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Statistics));
+        settingDialog = new StatisticsDisplaySetting_Fragment(this);
 
         if (ConfigParameters.IS_DEBUG_MODE) {
             tableController.tableColumInit(Test_dummyAPIData.getResultDummy());
@@ -41,14 +43,7 @@ public class StatisticsTable_Activity extends TableBaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        LinearLayout layout = findViewById(R.id.layout_timeSearch);
-        if (layout.getVisibility() == View.GONE) {
-            layout.setVisibility(View.VISIBLE);
-        } else {
-            layout.setVisibility(View.GONE);
-        }
-        new StatisticsDisplaySetting_Fragment(this).show(getSupportFragmentManager(), "dialog");
+        settingDialog.show(getSupportFragmentManager(), "dialog");
         return super.onOptionsItemSelected(item);
     }
 
@@ -60,4 +55,5 @@ public class StatisticsTable_Activity extends TableBaseActivity {
         saveSettingEditor.putString("searchTimeFirst", "g");
         saveSettingEditor.apply();
     }
+
 }
