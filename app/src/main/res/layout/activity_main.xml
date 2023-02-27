@@ -124,7 +124,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="0.0" >
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textView40"
@@ -167,6 +167,18 @@
                 android:textColor="@color/black"
                 android:textSize="24sp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="供給個数 : 個"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -340,10 +352,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/linearLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="21dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -354,7 +365,7 @@
                 android:id="@+id/Freq_ST"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周波数 : "
+                android:text="周波数 : 400Hz"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -363,10 +374,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="電圧 : "
+                android:text="電圧 : 1.6V"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="※300~400Hz,1.55~1.7Vが良品" />
         </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -374,6 +392,7 @@
         android:layout_width="157dp"
         android:layout_height="89dp"
         android:orientation="horizontal"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.129"
@@ -458,6 +477,7 @@
         app:srcCompat="@drawable/baseline_trending_flat_24" />
 
     <LinearLayout
+        android:id="@+id/linearLayout5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -490,7 +510,7 @@
             android:shadowColor="@color/NULL"
             android:shadowDx="0"
             android:shadowDy="0"
-            android:shadowRadius="5"
+            android:shadowRadius="3"
             android:text="動作開始待機中"
             android:textColor="@color/standby_state"
             android:textSize="24sp" />
@@ -503,6 +523,32 @@
             android:textColor="@color/alignment_state"
             android:textSize="24sp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/standby_state"
+        android:text="停止"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/limegreen"
+        android:text="動作"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout5"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.495" />
 
     <!--TODO 上矢印の調整-->
 

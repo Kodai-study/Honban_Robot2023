@@ -36,7 +36,7 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
             textViewCells[i] = new TextView(activityContext);
         }
 
-        VisualInspectionResults workResults = colum.getResult();
+        VisualInspectionResults workResults = colum.getResult_visualInspection();
         if (colum.getStartTime() == null)
             textViewCells[0].setText(ConfigParameters.TABLEDATA_NOTHING);
         else
