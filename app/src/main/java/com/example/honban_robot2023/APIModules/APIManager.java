@@ -104,6 +104,6 @@ public interface APIManager {
             @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
 
     //TODO システムの現在の状態を取ってくるAPIの実装
-    @GET(value = "hoge")
+    @GET(value = "stationStatus")
     Call<StationStateAPIModel> getStationState();
 }

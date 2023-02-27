@@ -62,6 +62,13 @@ public class TimerTaskMonitorSystem extends TimerTask {
             @Override
             public void onResponse(Call<StationStateAPIModel> call, Response<StationStateAPIModel> response) {
                 StationStateAPIModel s = response.body();
+
+                if (!s.isSuccessConnect()) {
+                    Toast.makeText(baseActivityView, "システム状態の取得に失敗", Toast.LENGTH_LONG).show();
+                    TimerTaskMonitorSystem.super.cancel();
+                    return;
+                }
+
                 numberOfStock_good.setText(String.format("良品:%d個", s.getNumberOfOKStock()));
                 numberOfStock_bad.setText(String.format("不良品:%d個", s.getNumberOfNGStock()));
                 stationState_Supply.setText("状態:" + s.getStationState_Supply());
@@ -69,7 +76,7 @@ public class TimerTaskMonitorSystem extends TimerTask {
                 stationState_Function.setText("状態:" + s.getStationState_Function());
                 stationState_Assembly.setText("状態:" + s.getStationState_Assembly());
                 String systemState = s.getSystemState();
-                if (systemState.equals("")) {
+                if (systemState == null || systemState.equals("")) {
                     systemState_anomaly.setText("");
                     systemState_standby.setVisibility(View.GONE);
                     systemState_cooperation.setVisibility(View.GONE);
@@ -86,6 +93,7 @@ public class TimerTaskMonitorSystem extends TimerTask {
                     previousResult_Frequency.setText("周波数" + s.getResultFrequency());
                 }
                 String visualInspectionData = s.getVisualInspectionData();
+
                 if (visualInspectionData == null || visualInspectionData.equals(""))
                     previousResult_VisualInspection.setVisibility(View.GONE);
                 else {
@@ -96,7 +104,9 @@ public class TimerTaskMonitorSystem extends TimerTask {
 
             @Override
             public void onFailure(Call<StationStateAPIModel> call, Throwable t) {
-                Toast.makeText(baseActivityView, "あれだな", Toast.LENGTH_SHORT).show();
+                Toast.makeText(baseActivityView, "システム状態の取得に失敗", Toast.LENGTH_LONG).show();
+                TimerTaskMonitorSystem.super.cancel();
+                return;
             }
         });
     }

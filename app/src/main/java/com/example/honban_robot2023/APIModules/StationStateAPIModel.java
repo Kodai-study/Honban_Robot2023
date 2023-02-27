@@ -4,6 +4,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class StationStateAPIModel {
 
+
+    private boolean isSuccessConnect;
+
+
+
+    private int numberOfWork_VisualStation;
+    private int numberOfWork_FunctionalStation;
+    private int numberOfWork_AssemblyStation;
+
     private int numberOfOKStock;
     private int numberOfNGStock;
     private String systemState;
@@ -18,6 +27,9 @@ public class StationStateAPIModel {
     private float resultVoltage;
     private String visualInspectionData;
 
+    public boolean isSuccessConnect() {
+        return isSuccessConnect;
+    }
     public int getNumberOfOKStock() {
         return numberOfOKStock;
     }
