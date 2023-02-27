@@ -49,7 +49,7 @@ public class TimerTaskMonitorSystem extends TimerTask {
         numberOfStock_bad = baseActivityView.findViewById(R.id.bad_num);
         previousResult_Voltage = baseActivityView.findViewById(R.id.Volt_ST);
         previousResult_Frequency = baseActivityView.findViewById(R.id.Freq_ST);
-        previousResult_VisualInspection = baseActivityView.findViewById(R.id.Visal_ST);
+        previousResult_VisualInspection = baseActivityView.findViewById(R.id.Visal_Test);
         systemState_anomaly = baseActivityView.findViewById(R.id.anomaly_state);
         systemState_standby = baseActivityView.findViewById(R.id.standby_state);
         systemState_cooperation = baseActivityView.findViewById(R.id.alig_state);
