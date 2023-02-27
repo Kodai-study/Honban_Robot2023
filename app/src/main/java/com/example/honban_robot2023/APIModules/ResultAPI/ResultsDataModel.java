@@ -19,11 +19,13 @@ public class ResultsDataModel {
     private float humidity;
     private float brightness;
     private VisualInspectionResults result_visualInspection;
+    private FunctionInspectionResults result_functionalInspection;
 
     @SerializedName(value = "cycleTime")
     private String cycleTimeString;
 
-    public static final int COLUM_NUMBER = 20;
+
+    public static final int COLUM_NUMBER = 24;
 
     public Date getStartTime() {
         if (startTimeString == null) {
@@ -60,6 +62,10 @@ public class ResultsDataModel {
         return result_visualInspection;
     }
 
+    public FunctionInspectionResults getResult_functionalInspection() {
+        return result_functionalInspection;
+    }
+
     public Date getCycleTime() {
         if (cycleTimeString == null) {
             return null;
@@ -70,4 +76,6 @@ public class ResultsDataModel {
             return null;
         }
     }
+
+
 }
