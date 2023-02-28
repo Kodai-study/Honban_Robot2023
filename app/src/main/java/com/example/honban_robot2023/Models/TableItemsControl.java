@@ -14,7 +14,7 @@ import com.example.honban_robot2023.R;
 
 import java.util.List;
 
-public abstract class  TableResultControl<T> {
+public abstract class TableItemsControl<T> {
 
     protected List<T> itemModelList;
     protected Context activityContext;
@@ -28,7 +28,7 @@ public abstract class  TableResultControl<T> {
     protected TextLayout DEFAULT_TITLE_LAYOUT;
 
 
-    public TableResultControl(Context activityContext, TableLayout tableLayout) {
+    public TableItemsControl(Context activityContext, TableLayout tableLayout) {
         this.activityContext = activityContext;
         this.tableLayout = tableLayout;
         this.resources = activityContext.getResources();
@@ -102,7 +102,7 @@ public abstract class  TableResultControl<T> {
         targetTextView.setTextColor(textLayout.textColor);
         targetTextView.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         targetTextView.setPadding(textLayout.padding, textLayout.padding, textLayout.padding, textLayout.padding);
-        targetTextView.setBackground(resources.getDrawable(R.drawable.midasi, activityContext.getTheme()));
+        targetTextView.setBackground(resources.getDrawable(R.drawable.table_title_background, activityContext.getTheme()));
     }
 
     protected void setTitleText(@NonNull TextView targetTextView) {

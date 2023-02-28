@@ -10,7 +10,9 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.honban_robot2023.Test.TestFetchAPI;
+import com.example.honban_robot2023.event.TimerTaskMonitorSystem;
+
+import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button TimeInterval;
     Button Utilization;
 
+    Timer stateObserveTimer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,19 +32,22 @@ public class MainActivity extends AppCompatActivity {
         Statistics = findViewById(R.id.button_moveStatistics);
         TimeInterval = findViewById(R.id.button_moveTimeInterval);
         Utilization = findViewById(R.id.button_moveUtilization);
-
+        // デバッグ用のボタンに、画面遷移の処理を割り当てる
         result.setOnClickListener(new clickToMove(ResultTable_Activity.class));
         Statistics.setOnClickListener(new clickToMove(StatisticsTable_Activity.class));
         TimeInterval.setOnClickListener(new clickToMove(TimeIntervalsTable_Activity.class));
         Utilization.setOnClickListener(new clickToMove(UtilizationTable_Activity.class));
-        //new TestFetchAPI(this).debugFetchAPI();
+        stateObserveTimer.scheduleAtFixedRate(new TimerTaskMonitorSystem(this), 1000, 1000);
     }
 
+    /**
+     * 別のアクティビティ、画面に移行する処理を行うクリックイベントリスナー
+     */
     class clickToMove implements View.OnClickListener {
 
-        Class<?extends AppCompatActivity> activity;
+        Class<? extends AppCompatActivity> activity;
 
-        public clickToMove(Class<?extends AppCompatActivity> activity) {
+        public clickToMove(Class<? extends AppCompatActivity> activity) {
             this.activity = activity;
         }
 
@@ -52,12 +58,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
         getMenuInflater().inflate(R.menu.mainpage_menu, menu);
         return true;
     }
 
+    /* メニューをクリックすると画面遷移を行う */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (R.id.menu_moveToResultTable == item.getItemId())
@@ -71,6 +79,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

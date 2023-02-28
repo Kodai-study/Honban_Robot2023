@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.example.honban_robot2023.APIModules.SampleAPIModel;
 
-public class SampleTableController extends TableResultControl<SampleAPIModel>{
+public class SampleTableController extends TableItemsControl<SampleAPIModel> {
 
 
     public SampleTableController(Context activityContext, TableLayout tableLayout) {

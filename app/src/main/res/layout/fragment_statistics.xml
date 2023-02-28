@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
-            android:id="@+id/orderby_date"
+            android:id="@+id/orderBy_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="日付順"

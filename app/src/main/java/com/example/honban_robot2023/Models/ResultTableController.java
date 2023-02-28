@@ -7,26 +7,31 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.honban_robot2023.APIModules.ResultAPI.FunctionInspectionResults;
 import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.ResultAPI.VisualInspectionResults;
 import com.example.honban_robot2023.R;
 
-public class ResultTableController extends TableResultControl<ResultsDataModel> {
+public class ResultTableController extends TableItemsControl<ResultsDataModel> {
 
 
     private String ok_String;
     private String ng_String;
+    private String null_String;
 
     private int ok_Color;
     private int ng_Color;
+
 
     public ResultTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);
         ok_Color = resources.getColor(R.color.OK, activityContext.getTheme());
         ng_Color = resources.getColor(R.color.NG, activityContext.getTheme());
+        null_String = resources.getString(R.string.NULL);
         ok_String = resources.getString(R.string.OK);
         ng_String = resources.getString(R.string.NG);
     }
+
 
     @Override
     public TableRow addRowFromModule(ResultsDataModel colum) {
@@ -36,7 +41,8 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
             textViewCells[i] = new TextView(activityContext);
         }
 
-        VisualInspectionResults workResults = colum.getResult();
+        VisualInspectionResults workResults = colum.getResult_visualInspection();
+        FunctionInspectionResults functionResults = colum.getResult_functionalInspection();
         if (colum.getStartTime() == null)
             textViewCells[0].setText(ConfigParameters.TABLEDATA_NOTHING);
         else
@@ -62,10 +68,25 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
         textViewCells[17].setText(resultCodeToString(workResults.getDipSw().getAllResult()));
         textViewCells[18].setText(workResults.getDipSw().getPattern());
 
-        if (colum.getCycleTime() == null)
-            textViewCells[19].setText(ConfigParameters.TABLEDATA_NOTHING);
+        textViewCells[19].setText(resultCodeToString(functionResults.getVoltage_result()));
+
+        if (functionResults.getVoltage_value() < 0)
+
+            textViewCells[20].setText(null_String);
         else
-            textViewCells[19].setText(ConfigParameters.TIMEONLY_FORMATTER.format(colum.getCycleTime()));
+            textViewCells[20].setText(String.format("%.2fV", functionResults.getVoltage_value()));
+
+        textViewCells[21].setText(resultCodeToString(functionResults.getFrequency_result()));
+
+        if (functionResults.getFrequency_value() < 0)
+            textViewCells[22].setText(null_String);
+        else
+            textViewCells[22].setText(String.format("%dHz", functionResults.getFrequency_value()));
+
+        if (colum.getCycleTime() == null)
+            textViewCells[23].setText(ConfigParameters.TABLEDATA_NOTHING);
+        else
+            textViewCells[23].setText(ConfigParameters.TIMEONLY_FORMATTER.format(colum.getCycleTime()));
 
 
         for (TextView textView : textViewCells) {
@@ -87,11 +108,11 @@ public class ResultTableController extends TableResultControl<ResultsDataModel> 
     }
 
     protected String resultCodeToString(Character character) {
-        Character okCharactor = '〇';
-        Character ngCharactor = '×';
-        if (character.equals(okCharactor)) {
+        Character okCharacter = '〇';
+        Character ngCharacter = '×';
+        if (character.equals(okCharacter)) {
             return ok_String;
-        } else if (character.equals(ngCharactor)) {
+        } else if (character.equals(ngCharacter)) {
             return ng_String;
         } else {
             return ConfigParameters.TABLEDATA_NOTHING;

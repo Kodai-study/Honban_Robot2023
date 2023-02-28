@@ -57,6 +57,9 @@ public interface APIManager {
     @GET(value = "times")
     Call<List<TimeIntervalAPIModel>> getTimeIntervalData();
 
+    @GET(value = "times")
+    Call<List<TimeIntervalAPIModel>> getTimeIntervalDataWithSearch(@Query("startTime") String startTime, @Query("endTime") String endTime);
+
 
     /**
      * ワークごとの、検査工程ごとに、工程が始まった時刻の一覧を取得する
@@ -103,5 +106,10 @@ public interface APIManager {
             @Query("startTime") String startTime, @Query("endTime") String endTime,
             @Query("sortColum") String sortColum, @Query("orderBy") String orderBy);
 
+    //TODO システムの現在の状態を取ってくるAPIの実装
+    @GET(value = "stationStatus")
+    Call<StationStateAPIModel> getStationState();
 
+    @GET(value = "totalInspectionData")
+    Call<InspectionTotalAPIModel> getTotalInspectionData();
 }

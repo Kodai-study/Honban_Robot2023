@@ -57,6 +57,10 @@
         <item>R18の有無</item>
         <item>DIPスイッチ検査の合否</item>
         <item>DIPスイッチのパターン</item>
+        <item>電圧の合否</item>
+        <item>電圧値</item>
+        <item>周波数の合否</item>
+        <item>周波数</item>
         <item>サイクルタイム</item>
     </array>
     <array name="tableTitle_TimeInterval">

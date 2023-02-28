@@ -12,13 +12,27 @@ import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.ToggleButton;
 
 import com.example.honban_robot2023.R;
+import com.example.honban_robot2023.UtilizationTable_Activity;
 
 
 public class UtilizationDisplaySetting_Fragment extends DialogFragment {
 
+    private int sortColumIndex = 0;
+    private boolean isSortMethodSelect = false;
+    private UtilizationTable_Activity base_Activity;
 
+    RadioButton orderByOperatingTime;
+    RadioButton orderByDate;
+
+    ToggleButton selectSortMethod;
+
+    public UtilizationDisplaySetting_Fragment(UtilizationTable_Activity base_Activity) {
+        this.base_Activity = base_Activity;
+    }
 
     @NonNull
     @Override
@@ -28,7 +42,39 @@ public class UtilizationDisplaySetting_Fragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final View dialogView = LayoutInflater.from(activity).inflate(R.layout.fragment_utilization, null);
         builder.setView(dialogView);
-        builder.setPositiveButton("適用", (dialog, which) -> dismiss());
+        orderByOperatingTime = dialogView.findViewById(R.id.continuity);
+        orderByDate = dialogView.findViewById(R.id.date_uti);
+        selectSortMethod = dialogView.findViewById(R.id.ASC_uti);
+
+        orderByDate.setOnCheckedChangeListener((id, checked) -> {
+            if (checked) this.sortColumIndex = 0;
+        });
+        orderByOperatingTime.setOnCheckedChangeListener((id, checked) -> {
+            if (checked) this.sortColumIndex = 1;
+        });
+
+        selectSortMethod.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            this.isSortMethodSelect = isChecked;
+        });
+
+        selectSortMethod.setChecked(isSortMethodSelect);
+
+        if (sortColumIndex == 0)
+            orderByDate.setChecked(true);
+        else
+            orderByOperatingTime.setChecked(true);
+
+        builder.setPositiveButton("適用", (dialog, which) -> {
+            String sortColum = "DATE";
+            if (orderByOperatingTime.isChecked())
+                sortColum = "operationTime";
+
+            if (selectSortMethod.isChecked())
+                base_Activity.updateTable(sortColum, "ASC");
+            else
+                base_Activity.updateTable(sortColum, "DESC");
+            dismiss();
+        });
         builder.setNegativeButton("キャンセル", (dialog, which) -> dismiss());
         return builder.create();
     }

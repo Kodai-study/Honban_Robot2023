@@ -3,9 +3,7 @@ package com.example.honban_robot2023.APIModules.ResultAPI;
 import com.example.honban_robot2023.Models.ConfigParameters;
 import com.google.gson.annotations.SerializedName;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ResultsDataModel {
@@ -20,12 +18,14 @@ public class ResultsDataModel {
     private float temperature;
     private float humidity;
     private float brightness;
-    private VisualInspectionResults result;
+    private VisualInspectionResults result_visualInspection;
+    private FunctionInspectionResults result_functionalInspection;
 
     @SerializedName(value = "cycleTime")
     private String cycleTimeString;
 
-    public static final int COLUM_NUMBER = 20;
+
+    public static final int COLUM_NUMBER = 24;
 
     public Date getStartTime() {
         if (startTimeString == null) {
@@ -58,8 +58,12 @@ public class ResultsDataModel {
         return brightness;
     }
 
-    public VisualInspectionResults getResult() {
-        return result;
+    public VisualInspectionResults getResult_visualInspection() {
+        return result_visualInspection;
+    }
+
+    public FunctionInspectionResults getResult_functionalInspection() {
+        return result_functionalInspection;
     }
 
     public Date getCycleTime() {
@@ -72,4 +76,5 @@ public class ResultsDataModel {
             return null;
         }
     }
+
 }

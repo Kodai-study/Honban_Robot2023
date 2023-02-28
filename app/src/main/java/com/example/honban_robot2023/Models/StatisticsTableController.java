@@ -9,7 +9,7 @@ import com.example.honban_robot2023.APIModules.StatisticsAPIModel;
 
 import java.util.Date;
 
-public class StatisticsTableController extends TableResultControl<StatisticsAPIModel> {
+public class StatisticsTableController extends TableItemsControl<StatisticsAPIModel> {
 
     public StatisticsTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);

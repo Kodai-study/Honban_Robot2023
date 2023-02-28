@@ -4,24 +4,19 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.honban_robot2023.R;
+import com.example.honban_robot2023.ResultTable_Activity;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.List;
 
 public class ResultTableSetting_Fragment extends DialogFragment {
@@ -29,14 +24,12 @@ public class ResultTableSetting_Fragment extends DialogFragment {
     RadioButton[] radioButtons = new RadioButton[8];
     Button settingResetButton;
 
-    Dictionary<Integer, String> itemAndColumDictionary;
-
     List<String> checkedColumName = new ArrayList<>();
-
-    String searchColumNames[] = new String[]{"DS", "R", "IC2", "IC1", "Volt", "Freq", "OK", "NG"};
     int checkedButtonIndex = -1;
 
-    public ResultTableSetting_Fragment() {
+    ResultTable_Activity baseActivity;
+
+    public ResultTableSetting_Fragment(ResultTable_Activity baseActivity) {
         checkedColumName.add("DS");
         checkedColumName.add("R");
         checkedColumName.add("IC2");
@@ -45,8 +38,8 @@ public class ResultTableSetting_Fragment extends DialogFragment {
         checkedColumName.add("Freq");
         checkedColumName.add("OK");
         checkedColumName.add("NG");
+        this.baseActivity = baseActivity;
     }
-
 
 
     @NonNull
@@ -57,7 +50,23 @@ public class ResultTableSetting_Fragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final View dialogView = LayoutInflater.from(activity).inflate(R.layout.fragment_result_table_setting_, null);
         builder.setView(dialogView);
-        builder.setPositiveButton("適用", (dialog, which) -> dismiss());
+        builder.setPositiveButton("適用", (dialog, which) -> {
+            boolean isAnyRadioChecked = false;
+            for (int i = 0; i < radioButtons.length; i++) {
+                if (!radioButtons[i].isChecked())
+                    continue;
+
+                isAnyRadioChecked = true;
+                if (radioButtons[i].getId() == R.id.OK || radioButtons[i].getId() == R.id.NG) {
+                    baseActivity.updateTable(null, checkedColumName.get(i));
+                } else {
+                    baseActivity.updateTable(checkedColumName.get(i), null);
+                }
+            }
+            if(!isAnyRadioChecked)
+                baseActivity.updateTable(null,null);
+            dismiss();
+        });
         builder.setNegativeButton("キャンセル", (dialog, which) -> dismiss());
 
         radioButtons[0] = dialogView.findViewById(R.id.DIPSW);
