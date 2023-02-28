@@ -72,6 +72,20 @@
         <item>組立ステーションでかかった時間</item>
     </array>
 
+    <array name="modeSelect_cardViewTitle">
+        <item>結果一覧</item>
+        <item>統計データ</item>
+        <item>検査時刻データ</item>
+        <item>稼働時間データ</item>
+    </array>
+
+    <array name="modeSelect_cardViewExplanation">
+        <item>最新の検査結果を表示します</item>
+        <item>合格率や不良品率など表示します</item>
+        <item>割合の表示</item>
+        <item>割合の表示</item>
+    </array>
+
     <array name="tableTitle_TimeStamp">
         <item>ワークID</item>
         <item>開始時刻</item>

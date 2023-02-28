@@ -104,63 +104,50 @@
             android:layout_height="163dp">
 
             <TextView
-                android:id="@+id/textView36"
+                android:id="@+id/textView_ModeSelectCardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="統計データ"
                 android:textAlignment="viewStart"
                 android:textColor="@color/black"
                 android:textSize="34sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView37"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintBottom_toTopOf="@+id/textView_ModeSelectCardExplanation"
+                app:layout_constraintStart_toStartOf="@+id/guideline_ModeSelectCardView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.695" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:rotation="0"
-                android:scrollbarSize="4dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline7"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/graph01_circle" />
-
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline7"
+                android:id="@+id/guideline_ModeSelectCardView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.4" />
 
             <TextView
-                android:id="@+id/textView37"
+                android:id="@+id/textView_ModeSelectCardExplanation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:text="合格率や不良品率など表示します"
                 android:textAlignment="viewStart"
                 android:textColor="@color/NULL"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/guideline7"
+                app:layout_constraintStart_toStartOf="@+id/guideline_ModeSelectCardView"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.52" />
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/imageButton_ModeSelectCardView"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:backgroundTint="@color/white"
                 android:scaleType="fitStart"
                 android:src="@drawable/graph01_circle"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/guideline7"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_ModeSelectCardView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
