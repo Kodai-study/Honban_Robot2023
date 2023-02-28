@@ -132,4 +132,21 @@ public class StatisticsAPIModel {
         this.ngCount_Voltage = ngCount_Voltage;
         this.ngCount_Frequency = ngCount_Frequency;
     }
+
+    public int ngCount_VisualInspection() {
+        return this.ngCount_IC1 +
+                this.ngCount_IC2 +
+                this.ngCount_R5 +
+                this.ngCount_R10 +
+                this.ngCount_R11 +
+                this.ngCount_R12 +
+                this.ngCount_R18 +
+                this.ngCount_DIPSW;
+    }
+
+    public int ngCount_FunctionalInspection() {
+        return this.ngCount_Voltage +
+                this.ngCount_Frequency;
+    }
+
 }
