@@ -109,4 +109,7 @@ public interface APIManager {
     //TODO システムの現在の状態を取ってくるAPIの実装
     @GET(value = "stationStatus")
     Call<StationStateAPIModel> getStationState();
+
+    @GET(value = "totalInspectionData")
+    Call<InspectionTotalAPIModel> getTotalInspectionData();
 }
