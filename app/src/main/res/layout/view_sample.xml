@@ -284,7 +284,7 @@
                 android:layout_height="0dp"
                 android:backgroundTint="@color/white"
                 android:scaleType="fitStart"
-                android:src="@drawable/graph01_circle"
+                android:src="@drawable/stopwatch"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guideline8"
                 app:layout_constraintStart_toStartOf="parent"

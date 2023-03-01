@@ -42,7 +42,7 @@
             android:text="合格率や不良品率など表示します"
             android:textAlignment="viewStart"
             android:textColor="@color/NULL"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

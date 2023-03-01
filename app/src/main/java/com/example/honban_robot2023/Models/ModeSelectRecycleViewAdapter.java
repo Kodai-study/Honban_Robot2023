@@ -19,7 +19,7 @@ public class ModeSelectRecycleViewAdapter extends RecyclerView.Adapter<ModeSelec
 
     private String[] modeTitles;
     private String[] modeExplanation;
-    int imageResourceIds[] = new int[]{R.drawable.kekka, R.drawable.graph01_circle, R.drawable.img, R.drawable.graph01_circle};
+    int imageResourceIds[] = new int[]{R.drawable.kekka, R.drawable.symbol048, R.drawable.img, R.drawable.stopwatch,R.drawable.graph01_circle};
 
     public ModeSelectRecycleViewAdapter(Resources androidResource) {
         this.androidResource = androidResource;
