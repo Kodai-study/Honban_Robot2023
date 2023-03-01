@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
@@ -21,9 +20,15 @@ import com.example.honban_robot2023.StatisticsTable_Activity;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 単位時間ごとの検査数などの統計データを表示させる {@link com.example.honban_robot2023.StatisticsTable_Activity}
+ * のテーブルの表示項目の絞り込み、並び替えを行う設定ダイアログ
+ */
 public class StatisticsDisplaySetting_Fragment extends DialogFragment {
 
+    /**
+     *
+     */
     RadioGroup sortColumSelect;
     StatisticsTable_Activity baseActivity;
     ToggleButton selectSortMethod;

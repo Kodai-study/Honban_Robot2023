@@ -19,14 +19,38 @@ import com.example.honban_robot2023.ResultTable_Activity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ワークごとの検査結果一覧を表示させる {@link com.example.honban_robot2023.ResultTable_Activity}
+ * のテーブルの表示項目の絞り込み、並び替えを行う設定ダイアログ
+ */
 public class ResultTableSetting_Fragment extends DialogFragment {
 
+    /**
+     * 不合格項目による絞り込みを行うときの、検査項目を選択するラジオボタン群
+     */
     RadioButton[] radioButtons = new RadioButton[8];
+
+    /**
+     * 絞り込みの時の検査項目の選択をリセットし、ラジオボタンの選択を
+     * 全て取り消すリセットボタン
+     */
     Button settingResetButton;
 
+    /**
+     * 不合格項目による絞り込みを行うときに、クエリでAPIに渡す文字列。
+     * {@link #radioButtons} の添え字と一致させる。
+     */
     List<String> checkedColumName = new ArrayList<>();
+
+    /**
+     * 選択されているラジオボタンの番号。
+     * リセットされ、選択されていない時は-1
+     */
     int checkedButtonIndex = -1;
 
+    /**
+     * 絞り込みを行う対象となるテーブルが存在しているアクティビティ
+     */
     ResultTable_Activity baseActivity;
 
     public ResultTableSetting_Fragment(ResultTable_Activity baseActivity) {
