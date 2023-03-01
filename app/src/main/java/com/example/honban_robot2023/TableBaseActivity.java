@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.utils.widget.ImageFilterButton;
+import androidx.fragment.app.DialogFragment;
 
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.Models.RetrofitFactory;
@@ -68,7 +69,7 @@ public abstract class TableBaseActivity extends AppCompatActivity {
     protected APIManager retrofitApi;
 
     /**
-     *  テーブルの項目を切り替えるコントローラ。テーブルの種類によって、
+     * テーブルの項目を切り替えるコントローラ。テーブルの種類によって、
      * {@link TableItemsControl}を継承したそれぞれのコントローラを割り当てる。
      */
     protected TableItemsControl tableController;
@@ -78,6 +79,11 @@ public abstract class TableBaseActivity extends AppCompatActivity {
      * 検査日付による絞り込みが行われる
      */
     protected ImageFilterButton searchButton;
+
+    /**
+     * 表示の絞り込み、並び替えを行う設定ダイアログ
+     */
+    protected DialogFragment settingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,9 +105,10 @@ public abstract class TableBaseActivity extends AppCompatActivity {
 
     /**
      * テーブルの中身、項目以外の部分をセットする
+     *
      * @param list APIで取得したデータのリスト。
-     *  {@link #retrofitApi}から取得した、Callオブジェクトのまま
-     * @param <T> 取得したい型の、APIのデータをまとめたモデルクラス。
+     *             {@link #retrofitApi}から取得した、Callオブジェクトのまま
+     * @param <T>  取得したい型の、APIのデータをまとめたモデルクラス。
      */
     protected <T> void setTableBody(Call<List<T>> list) {
         /* APIデータの取得が成功したらテーブル項目の更新、失敗したらトーストの表示 */
@@ -124,9 +131,10 @@ public abstract class TableBaseActivity extends AppCompatActivity {
 
     /**
      * テーブルの一番上、項目名のみを残してテーブルの中身のみを切り替える。
+     *
      * @param list APIで取得したデータのリスト。
-     *  {@link #retrofitApi}から取得した、Callオブジェクトのまま
-     * @param <T> 取得したい型の、APIのデータをまとめたモデルクラス。
+     *             {@link #retrofitApi}から取得した、Callオブジェクトのまま
+     * @param <T>  取得したい型の、APIのデータをまとめたモデルクラス。
      */
     protected <T> void refreshTable(Call<List<T>> list) {
         list.enqueue(new Callback<List<T>>() {
@@ -155,8 +163,9 @@ public abstract class TableBaseActivity extends AppCompatActivity {
     /**
      * {@link #firstDateInput}日付入力部で入力した、検査日付絞り込みの下限値
      * を、クエリ文字列として取得する。
+     *
      * @return 日付指定で、クエリとして表示する文字列。
-     *  入力部が空なら、null
+     * 入力部が空なら、null
      */
     protected String getFirstDate() {
         String firstDateInputText = firstDateInput.getText().toString();
@@ -168,8 +177,9 @@ public abstract class TableBaseActivity extends AppCompatActivity {
     /**
      * {@link #lastDateInput}日付入力部で入力した、検査日付絞り込みの上限値
      * を、クエリ文字列として取得する
+     *
      * @return 日付指定で、クエリとして表示する文字列。
-     *  入力部が空なら、null
+     * 入力部が空なら、null
      */
     protected String getLastDate() {
         String lastDateInputText = lastDateInput.getText().toString();

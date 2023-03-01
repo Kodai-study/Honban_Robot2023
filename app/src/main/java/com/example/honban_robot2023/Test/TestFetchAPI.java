@@ -2,7 +2,6 @@ package com.example.honban_robot2023.Test;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -12,7 +11,6 @@ import com.example.honban_robot2023.APIModules.StatisticsAPIModel;
 import com.example.honban_robot2023.APIModules.TimeIntervalAPIModel;
 import com.example.honban_robot2023.APIModules.TimeStampModel;
 import com.example.honban_robot2023.APIModules.UtilizationModel;
-import com.example.honban_robot2023.MainActivity;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.google.gson.annotations.SerializedName;
 
@@ -23,6 +21,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+/**
+ * テストデータのAPIモデルクラス
+ */
 public class TestFetchAPI {
 
     private final Context activityContext;

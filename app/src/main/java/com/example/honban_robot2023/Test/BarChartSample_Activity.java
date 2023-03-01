@@ -17,6 +17,7 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BarChartSample_Activity extends AppCompatActivity {
 
     BarChart bar_chart;

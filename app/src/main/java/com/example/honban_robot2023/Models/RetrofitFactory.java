@@ -19,10 +19,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitFactory {
 
     /**
-     *  証明書が無くてもエラーを出さない、セキュリティレベルの低い
-     *  ビルド済みのretrofitオブジェクトを作成する。
+     * 証明書が無くてもエラーを出さない、セキュリティレベルの低い
+     * ビルド済みのretrofitオブジェクトを作成する。
+     *
      * @param baseUrl WebページのURL。/で終わる必要がある
-     * @return {@link Retrofit} ビルド済みの
+     * @return ビルド済みの {@link Retrofit}
      */
     public static Retrofit getApiClient(String baseUrl) {
         return new Retrofit.Builder()
@@ -78,4 +79,5 @@ public class RetrofitFactory {
             throw new RuntimeException(e);
         }
     }
+
 }

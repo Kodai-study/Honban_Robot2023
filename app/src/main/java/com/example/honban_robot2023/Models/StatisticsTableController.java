@@ -9,6 +9,10 @@ import com.example.honban_robot2023.APIModules.StatisticsAPIModel;
 
 import java.util.Date;
 
+/**
+ * 単位時間ごとの検査数などの統計データを表示させる {@link com.example.honban_robot2023.ResultTable_Activity}
+ * のテーブルの書き換えを行うコントローラ
+ */
 public class StatisticsTableController extends TableItemsControl<StatisticsAPIModel> {
 
     public StatisticsTableController(Context activityContext, TableLayout tableLayout) {
@@ -28,11 +32,11 @@ public class StatisticsTableController extends TableItemsControl<StatisticsAPIMo
         Date firstDate = colum.getFirstDateOfRange();
         Date lastDate = colum.getEndDateOfRange();
         if (firstDate.compareTo(lastDate) == 0)
-            textViewCells[0].setText(ConfigParameters.DATEONLY_FORMATTER.format(firstDate));
+            textViewCells[0].setText(CommonParameters.DATEONLY_FORMATTER.format(firstDate));
         else
             textViewCells[0].setText(
-                    String.format("%s\n~\n%s", ConfigParameters.DATEONLY_FORMATTER.format(firstDate),
-                            ConfigParameters.DATEONLY_FORMATTER.format(lastDate)));
+                    String.format("%s\n~\n%s", CommonParameters.DATEONLY_FORMATTER.format(firstDate),
+                            CommonParameters.DATEONLY_FORMATTER.format(lastDate)));
 
         textViewCells[1].setText(String.valueOf(colum.getCount_Scan()));
         textViewCells[2].setText(String.valueOf(colum.getCount_Ok()));

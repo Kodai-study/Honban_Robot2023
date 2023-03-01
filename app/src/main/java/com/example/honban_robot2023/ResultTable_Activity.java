@@ -13,16 +13,13 @@ import com.example.honban_robot2023.Models.ResultTableController;
  */
 public class ResultTable_Activity extends TableBaseActivity {
 
-    /**
-     * 表示の絞り込み、並び替えを行う設定ダイアログ
-     */
-    ResultTableSetting_Fragment settingDialog = new ResultTableSetting_Fragment(this);
     String lastSelectColum = null;
     String lastSelectResult = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        settingDialog = new ResultTableSetting_Fragment(this);
         tableController = new ResultTableController(this, this.resultTable);
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Result));
         setTableBody(this.retrofitApi.getResults());  //最初に、クエリなしの結果を表示する
@@ -33,7 +30,8 @@ public class ResultTable_Activity extends TableBaseActivity {
 
     /**
      * 絞り込み、並び替え条件を指定してテーブルを作成しなおし、再描写を行う。
-     * @param selectColum NGになった検査項目を指定して絞り込み
+     *
+     * @param selectColum  NGになった検査項目を指定して絞り込み
      * @param selectResult ワークの良品、不良品で絞り込み
      */
     public void updateTable(String selectColum, String selectResult) {

@@ -1,6 +1,6 @@
 package com.example.honban_robot2023.APIModules;
 
-import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.Models.CommonParameters;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
@@ -29,7 +29,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(currentDateString);
+            return CommonParameters.APISTRING_TO_DATETIME_FORMATTER.parse(currentDateString);
         } catch (ParseException e) {
             return null;
         }
@@ -40,7 +40,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfOperationString);
+            return CommonParameters.TIMEONLY_FORMATTER.parse(timeOfOperationString);
         } catch (ParseException e) {
             return null;
         }
@@ -51,7 +51,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfStopSumString);
+            return CommonParameters.TIMEONLY_FORMATTER.parse(timeOfStopSumString);
         } catch (ParseException e) {
             return null;
         }
@@ -62,7 +62,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfSupplyPauseString);
+            return CommonParameters.TIMEONLY_FORMATTER.parse(timeOfSupplyPauseString);
         } catch (ParseException e) {
             return null;
         }
@@ -73,7 +73,7 @@ public class UtilizationModel {
             return null;
 
         try {
-            return ConfigParameters.TIMEONLY_FORMATTER.parse(timeOfPauseString);
+            return CommonParameters.TIMEONLY_FORMATTER.parse(timeOfPauseString);
         } catch (ParseException e) {
             return null;
         }

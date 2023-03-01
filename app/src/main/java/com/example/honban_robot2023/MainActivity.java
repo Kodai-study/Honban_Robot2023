@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         // デバッグ用のボタンに、画面遷移の処理を割り当てる
         result.setOnClickListener(new clickToMove(ResultTable_Activity.class));
         Statistics.setOnClickListener(new clickToMove(StatisticsTable_Activity.class));
-        TimeInterval.setOnClickListener(new clickToMove(TimeIntervalsTable_Activity.class));
+        TimeInterval.setOnClickListener(new clickToMove(InspectionTimeTable_Activity.class));
         Utilization.setOnClickListener(new clickToMove(UtilizationTable_Activity.class));
         stateObserveTimer.scheduleAtFixedRate(new TimerTaskMonitorSystem(this), 1000, 1000);
     }
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         else if (R.id.menu_moveStatisticsTable == item.getItemId())
             startActivity(new Intent(MainActivity.this, StatisticsTable_Activity.class));
         else if (R.id.menu_moveToTimeTable == item.getItemId())
-            startActivity(new Intent(MainActivity.this, TimeIntervalsTable_Activity.class));
+            startActivity(new Intent(MainActivity.this, InspectionTimeTable_Activity.class));
         else if (R.id.menu_moveToUtilizationTable == item.getItemId())
             startActivity(new Intent(MainActivity.this, UtilizationTable_Activity.class));
 

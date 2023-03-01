@@ -1,6 +1,6 @@
 package com.example.honban_robot2023.APIModules.ResultAPI;
 
-import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.Models.CommonParameters;
 import com.google.gson.annotations.SerializedName;
 
 import java.text.ParseException;
@@ -32,7 +32,7 @@ public class ResultsDataModel {
             return new Date();
         }
         try {
-            return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(startTimeString);
+            return CommonParameters.APISTRING_TO_DATETIME_FORMATTER.parse(startTimeString);
         } catch (ParseException parseException) {
             return null;
         }
@@ -71,7 +71,7 @@ public class ResultsDataModel {
             return null;
         }
         try {
-            return ConfigParameters.TIMEONLY_FORMATTER.parse(cycleTimeString);
+            return CommonParameters.TIMEONLY_FORMATTER.parse(cycleTimeString);
         } catch (ParseException parseException) {
             return null;
         }

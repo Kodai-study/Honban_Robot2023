@@ -6,7 +6,7 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 
 import com.example.honban_robot2023.Fragment.StatisticsDisplaySetting_Fragment;
-import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.Models.CommonParameters;
 import com.example.honban_robot2023.Models.StatisticsTableController;
 import com.example.honban_robot2023.Test.Test_dummyAPIData;
 
@@ -18,21 +18,18 @@ public class StatisticsTable_Activity extends TableBaseActivity {
     String lastDateTimeKind = null;
     String lastSortColum = null;
     String lastOrderBy = null;
-    /**
-     * 表示の絞り込み、並び替えを行う設定ダイアログ
-     */
-    StatisticsDisplaySetting_Fragment settingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        settingDialog = new StatisticsDisplaySetting_Fragment(this);
         tableController = new StatisticsTableController(this, this.resultTable);
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_Statistics));
         settingDialog = new StatisticsDisplaySetting_Fragment(this);
 
         /* デバッグモードでは、APIからではなく一定のサンプルデータを使ってテーブルの表示 */
-        if (ConfigParameters.IS_DEBUG_MODE) {
+        if (CommonParameters.IS_API_DEBUG_MODE) {
             tableController.tableColumInit(Test_dummyAPIData.getResultDummy());
         } else
             setTableBody(this.retrofitApi.getStatisticsData());
@@ -44,16 +41,17 @@ public class StatisticsTable_Activity extends TableBaseActivity {
 
     /**
      * 絞り込み、並び替え条件を指定してテーブルを作成しなおし、再描写を行う。
+     *
      * @param dateTimeKind 表示する日付の単位が、日、週、月のいずれかを指定
-     * @param sortColum 並び替えの項目を指定。・日付:DATE ・良品率:PASSRATE
-     *                 ・不良品率:DEFECTRATE
-     * @param orderBy 並び替えが昇順、降順の指定
-     *                ・昇順:ASC  ・降順:DESC
+     * @param sortColum    並び替えの項目を指定。・日付:DATE ・良品率:PASSRATE
+     *                     ・不良品率:DEFECTRATE
+     * @param orderBy      並び替えが昇順、降順の指定
+     *                     ・昇順:ASC  ・降順:DESC
      */
     public void updateTable(String dateTimeKind, String sortColum, String orderBy) {
-       lastDateTimeKind = dateTimeKind;
-       lastSortColum = sortColum;
-       lastOrderBy = orderBy;
+        lastDateTimeKind = dateTimeKind;
+        lastSortColum = sortColum;
+        lastOrderBy = orderBy;
         refreshTable(retrofitApi.getStatisticsWithSearch(dateTimeKind, getFirstDate(),
                 getLastDate(), sortColum, orderBy));
     }

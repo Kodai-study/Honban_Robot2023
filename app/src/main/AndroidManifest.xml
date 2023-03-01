@@ -42,7 +42,7 @@
             android:exported="true"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".TimeIntervalsTable_Activity"
+            android:name=".InspectionTimeTable_Activity"
             android:exported="true"
             android:parentActivityName=".MainActivity"/>
         <activity

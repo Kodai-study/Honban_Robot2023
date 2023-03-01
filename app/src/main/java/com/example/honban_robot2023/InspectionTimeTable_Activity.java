@@ -1,7 +1,5 @@
 package com.example.honban_robot2023;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.honban_robot2023.APIModules.TimeStampModel;
-import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.Models.CommonParameters;
 import com.example.honban_robot2023.Models.TableItemsControl;
 import com.example.honban_robot2023.Models.TimeIntervalTableController;
 import com.example.honban_robot2023.Models.TimeStampTableController;
@@ -30,7 +28,7 @@ import retrofit2.Response;
  * {@link #tableSwitchToggle}のスイッチを切り替えることで、
  * 工程時間:OFF  と  工程切り替え時間:ON  で表示が切り替わる
  */
-public class TimeIntervalsTable_Activity extends TableBaseActivity {
+public class InspectionTimeTable_Activity extends TableBaseActivity {
 
     /**
      * 表示項目を切り替える、メニューバーの中のトグルスイッチ。
@@ -54,13 +52,13 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeInterval));
 
         /* デバッグモードでは、APIからではなく一定のサンプルデータを使ってテーブルの表示 */
-        if (ConfigParameters.IS_DEBUG_MODE)
+        if (CommonParameters.IS_API_DEBUG_MODE)
             tableController.tableColumInit(Test_dummyAPIData.getTimeIntervalDummy());
         else
             setTableBody(this.retrofitApi.getTimeIntervalData());
 
         /* 日付入力画面横のボタンで、日付による絞り込みを行う。 ダイアログの設定項目を引き継ぐ */
-        searchButton.setOnClickListener( view -> {
+        searchButton.setOnClickListener(view -> {
             updateTable();
         });
     }
@@ -73,8 +71,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
         if (tableSwitchToggle.isChecked()) {
             resultTable.removeAllViews();
             setTimeStampTable();
-        }
-        else
+        } else
             refreshTable(retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(), getLastDate()));
     }
 
@@ -95,6 +92,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
     /**
      * 表示項目を工程時間と工程切り替え時間で切り替える。
+     *
      * @param isViewTimeStamp true:工程切り替え時間
      *                        false:工程時間 {@link #tableSwitchToggle}の値に等しい
      */
@@ -105,17 +103,17 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
             return;
         }
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
-        super.setTableBody(this.retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(),getLastDate()));
+        super.setTableBody(this.retrofitApi.getTimeIntervalDataWithSearch(getFirstDate(), getLastDate()));
     }
 
     /**
      * タイムスタンプ、工程切り替わり時刻のデータをテーブルの項目に表示する。
      * デフォルトは工程時間の{@link #tableController}
      */
-    private void setTimeStampTable(){
+    private void setTimeStampTable() {
 
         tableController.setTableTitle(getResources().getStringArray(R.array.tableTitle_TimeStamp));
-        Call<List<TimeStampModel>> timeStamps = retrofitApi.getTimeStampDataWithSearch(getFirstDate(),getLastDate());
+        Call<List<TimeStampModel>> timeStamps = retrofitApi.getTimeStampDataWithSearch(getFirstDate(), getLastDate());
         timeStamps.enqueue(new Callback<List<TimeStampModel>>() {
             @Override
             public void onResponse(Call<List<TimeStampModel>> call, Response<List<TimeStampModel>> response) {
@@ -127,7 +125,7 @@ public class TimeIntervalsTable_Activity extends TableBaseActivity {
 
             @Override
             public void onFailure(Call<List<TimeStampModel>> call, Throwable t) {
-                Toast.makeText(TimeIntervalsTable_Activity.this,
+                Toast.makeText(InspectionTimeTable_Activity.this,
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

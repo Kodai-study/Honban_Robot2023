@@ -25,7 +25,7 @@ import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.Models.CommonParameters;
 import com.example.honban_robot2023.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -92,7 +92,7 @@ public class LineChartSample_Activity extends AppCompatActivity {
             public String getFormattedValue(float value) {
                 Calendar calendar = (Calendar) currentTime.clone();
                 calendar.add(timeRange, (int) value);
-                return ConfigParameters.DATEFORMATTER_YEAR_TWODIGITS.format(calendar.getTime());
+                return CommonParameters.DATEFORMATTER_YEAR_TWODIGITS.format(calendar.getTime());
             }
         });
 

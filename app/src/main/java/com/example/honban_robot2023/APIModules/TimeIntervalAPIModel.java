@@ -2,7 +2,7 @@ package com.example.honban_robot2023.APIModules;
 
 import android.util.Log;
 
-import com.example.honban_robot2023.Models.ConfigParameters;
+import com.example.honban_robot2023.Models.CommonParameters;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
@@ -35,7 +35,7 @@ public class TimeIntervalAPIModel {
          return null;
 
       try {
-         return ConfigParameters.APISTRING_TO_DATETIME_FORMATTER.parse(startTimeString);
+         return CommonParameters.APISTRING_TO_DATETIME_FORMATTER.parse(startTimeString);
       } catch (Exception e) {
          Log.d("APIフェッチエラー",e.getMessage());
          return null;
@@ -47,7 +47,7 @@ public class TimeIntervalAPIModel {
          return null;
 
       try {
-         return ConfigParameters.TIMEONLY_FORMATTER.parse(time_supplyString);
+         return CommonParameters.TIMEONLY_FORMATTER.parse(time_supplyString);
       } catch (Exception e) {
          Log.d("APIフェッチエラー",e.getMessage());
          return null;
@@ -59,7 +59,7 @@ public class TimeIntervalAPIModel {
          return null;
 
       try {
-         return ConfigParameters.TIMEONLY_FORMATTER.parse(time_visualStationString);
+         return CommonParameters.TIMEONLY_FORMATTER.parse(time_visualStationString);
       } catch (Exception e) {
          Log.d("APIフェッチエラー",e.getMessage());
          return null;
@@ -71,7 +71,7 @@ public class TimeIntervalAPIModel {
          return null;
 
       try {
-         return ConfigParameters.TIMEONLY_FORMATTER.parse(time_functionalStationString);
+         return CommonParameters.TIMEONLY_FORMATTER.parse(time_functionalStationString);
       } catch (Exception e) {
          Log.d("APIフェッチエラー",e.getMessage());
          return null;
@@ -83,7 +83,7 @@ public class TimeIntervalAPIModel {
          return null;
 
       try {
-         return ConfigParameters.TIMEONLY_FORMATTER.parse(time_assemblyStationString);
+         return CommonParameters.TIMEONLY_FORMATTER.parse(time_assemblyStationString);
       } catch (Exception e) {
          Log.d("APIフェッチエラー",e.getMessage());
          return null;

@@ -13,19 +13,50 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
+/**
+ * {@link com.example.honban_robot2023.TableBaseActivity}のテーブル表示で、検査日付で表示の
+ * 絞り込みを行うときの、日付を入力させるカレンダーダイアログを表示するボタン
+ */
 public class DateSelectButtonClickListener implements View.OnClickListener{
 
+    /**
+     * カレンダーダイアログで取得した日付データを、テキストボックス入力させるフォーマッター
+     */
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
+    /**
+     * 対象となる、日付を入力させるテキストボックス。
+     */
     TextView timeInputTextView;
+    /**
+     * (対象のテキストボックスが、選択期限の下限値だった時はNULL)
+     * 上限値を入力させるとき、下限値が入力されているテキストボックス。
+     * このテキストボックスに入力されている日付より後の日付のみが有効になる。
+     */
     TextView beforeTimeInputTextView = null;
+
+    /**
+     * 絞り込み先のテーブルが表示されているアクティビティ
+     */
     Context activityContext;
     final private Calendar CURRENT_TIME = Calendar.getInstance();
 
+    /**
+     * 絞り込み期間の下限値を入力させるときのクリック処理。
+     * @param activityContext 元のアクティビティデータ
+     * @param timeInputTextView ダイアログを選択したときに書き込まれるテキストボックス
+     */
     public DateSelectButtonClickListener(Context activityContext, TextView timeInputTextView) {
         this.activityContext = activityContext;
         this.timeInputTextView = timeInputTextView;
     }
 
+    /**
+     *
+     * 絞り込み期間の上限値を入力させるときのクリック処理。
+     * @param activityContext 元のアクティビティデータ
+     * @param timeInputTextView ダイアログを選択したときに書き込まれるテキストボックス
+     * @param beforeTimeInputTextView 下限値が入力されているテキストボックス。この日付より後のみ入力できる
+     */
     public DateSelectButtonClickListener(Context activityContext, TextView timeInputTextView,TextView beforeTimeInputTextView) {
         this.activityContext = activityContext;
         this.timeInputTextView = timeInputTextView;

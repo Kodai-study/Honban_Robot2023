@@ -9,7 +9,6 @@ import com.example.honban_robot2023.APIModules.SampleAPIModel;
 
 public class SampleTableController extends TableItemsControl<SampleAPIModel> {
 
-
     public SampleTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);
     }
@@ -28,7 +27,7 @@ public class SampleTableController extends TableItemsControl<SampleAPIModel> {
         textViewCells[2].setText(String.valueOf(colum.getTitle()));
         textViewCells[3].setText(String.valueOf(colum.getSubTitle()));
 
-        for(TextView textView : textViewCells){
+        for (TextView textView : textViewCells) {
             tableRow.addView(textView);
         }
         return tableRow;

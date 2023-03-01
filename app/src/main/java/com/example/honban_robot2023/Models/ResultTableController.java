@@ -12,17 +12,38 @@ import com.example.honban_robot2023.APIModules.ResultAPI.ResultsDataModel;
 import com.example.honban_robot2023.APIModules.ResultAPI.VisualInspectionResults;
 import com.example.honban_robot2023.R;
 
+/**
+ * ワークごとの検査結果一覧を表示させる {@link com.example.honban_robot2023.ResultTable_Activity}
+ * のテーブルの書き換えを行うコントローラ
+ */
 public class ResultTableController extends TableItemsControl<ResultsDataModel> {
 
-
+    /**
+     * 結果がOKだった時に、テーブルの項目に表示させる文字列
+     */
     private String ok_String;
+    /**
+     * 結果がNGだった時に、テーブルの項目に表示させる文字列
+     */
     private String ng_String;
+    /**
+     * 結果がNULL(検査していない)だった時に、テーブルの項目に表示させる文字列
+     */
     private String null_String;
 
+    /**
+     * OK表示の文字列に適用させる、文字のカラー
+     */
     private int ok_Color;
+
+    /**
+     * NG表示の文字列に適用させる、文字のカラー
+     */
     private int ng_Color;
 
-
+    /**
+     * @see TableItemsControl
+     */
     public ResultTableController(Context activityContext, TableLayout tableLayout) {
         super(activityContext, tableLayout);
         ok_Color = resources.getColor(R.color.OK, activityContext.getTheme());
@@ -44,9 +65,9 @@ public class ResultTableController extends TableItemsControl<ResultsDataModel> {
         VisualInspectionResults workResults = colum.getResult_visualInspection();
         FunctionInspectionResults functionResults = colum.getResult_functionalInspection();
         if (colum.getStartTime() == null)
-            textViewCells[0].setText(ConfigParameters.TABLEDATA_NOTHING);
+            textViewCells[0].setText(CommonParameters.TABLEDATA_NOTHING);
         else
-            textViewCells[0].setText(ConfigParameters.DATETIME_FORMATTER.format(colum.getStartTime()));
+            textViewCells[0].setText(CommonParameters.DATETIME_FORMATTER.format(colum.getStartTime()));
 
         textViewCells[1].setText(resultCodeToString(colum.getAllResult()));
 
@@ -84,9 +105,9 @@ public class ResultTableController extends TableItemsControl<ResultsDataModel> {
             textViewCells[22].setText(String.format("%dHz", functionResults.getFrequency_value()));
 
         if (colum.getCycleTime() == null)
-            textViewCells[23].setText(ConfigParameters.TABLEDATA_NOTHING);
+            textViewCells[23].setText(CommonParameters.TABLEDATA_NOTHING);
         else
-            textViewCells[23].setText(ConfigParameters.TIMEONLY_FORMATTER.format(colum.getCycleTime()));
+            textViewCells[23].setText(CommonParameters.TIMEONLY_FORMATTER.format(colum.getCycleTime()));
 
 
         for (TextView textView : textViewCells) {
@@ -107,6 +128,13 @@ public class ResultTableController extends TableItemsControl<ResultsDataModel> {
         }
     }
 
+    /**
+     * APIから取得したデータで、OK,NGのデータに、androidリソースで
+     * 指定した文字列に置き換える
+     *
+     * @param character 書き換え対象の文字データ。
+     * @return 実際にテーブルに表示させる、androidリソースの文字列
+     */
     protected String resultCodeToString(Character character) {
         Character okCharacter = '〇';
         Character ngCharacter = '×';
@@ -115,7 +143,7 @@ public class ResultTableController extends TableItemsControl<ResultsDataModel> {
         } else if (character.equals(ngCharacter)) {
             return ng_String;
         } else {
-            return ConfigParameters.TABLEDATA_NOTHING;
+            return CommonParameters.TABLEDATA_NOTHING;
         }
     }
 
