@@ -8,6 +8,12 @@ import com.google.gson.annotations.SerializedName;
 import java.text.ParseException;
 import java.util.Date;
 
+/**
+ * 単位時間ごとの統計データを表すデータクラス
+ * <a href="https://192.168.96.69:7015/api/stationUtilization">自作API</a>
+ * "https://192.168.96.69:7015/api/stationUtilization"
+ * にアクセスしてデータを取得する
+ */
 public class StatisticsAPIModel {
 
     @SerializedName(value = "firstDateOfRange")
@@ -20,7 +26,6 @@ public class StatisticsAPIModel {
     private int count_Ok;
     private int count_Ng;
     private float defectRate;
-
 
     private int ngCount_IC1;
     private int ngCount_IC2;
@@ -35,6 +40,12 @@ public class StatisticsAPIModel {
 
     public static final int COLUM_NUMBER = 15;
 
+    /**
+     * APIから取得した、範囲の最初の日付データの文字列を、Javaで扱える {@link Date}
+     * 型に変換して取得する
+     *
+     * @return 単位時間となる日付の最初の日付データ
+     */
     public Date getFirstDateOfRange() {
         if (firstDateOfRangeString == null || firstDateOfRangeString.equals(""))
             return null;
@@ -47,6 +58,13 @@ public class StatisticsAPIModel {
         }
     }
 
+    /**
+     * APIから取得した、範囲の最後の日付データの文字列を、Javaで扱える {@link Date}
+     * 型に変換して取得する
+     *
+     * @return 単位時間となる日付の最後の日付データ。単位時間が1日の場合、{@link #firstDateOfRangeString}
+     * と同じ日付になる。
+     */
     public Date getEndDateOfRange() {
         if (endDateOfRangeString == null || endDateOfRangeString.equals(""))
             return null;

@@ -1,5 +1,11 @@
 package com.example.honban_robot2023.APIModules;
 
+/**
+ * 現在までの検査結果の合計を表すデータクラス
+ * <a href="https://192.168.96.69:7015/api/">自作API</a>
+ * "https://192.168.96.69:7015/api/totalInspectionData"
+ * にアクセスしてデータを取得する
+ */
 public class InspectionTotalAPIModel {
     private int count_Scan;
     private int count_OK;
@@ -41,4 +47,5 @@ public class InspectionTotalAPIModel {
     public int getCount_VoltAndFreqNG() {
         return count_VoltAndFreqNG;
     }
+
 }

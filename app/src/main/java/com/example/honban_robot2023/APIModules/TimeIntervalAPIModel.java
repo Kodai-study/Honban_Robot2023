@@ -7,6 +7,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
+/**
+ * ワークごとの、工程が変化した時間、タイムスタンプを表すデータクラス
+ * <a href="https://192.168.96.69:7015/api/times">自作API</a>
+ * "https://192.168.96.69:7015/api/times"
+ * にアクセスしてデータを取得する
+ */
 public class TimeIntervalAPIModel {
    public static final int COLUM_NUMBER = 6;
    private int cycleID;
@@ -37,7 +43,7 @@ public class TimeIntervalAPIModel {
       try {
          return CommonParameters.APISTRING_TO_DATETIME_FORMATTER.parse(startTimeString);
       } catch (Exception e) {
-         Log.d("APIフェッチエラー",e.getMessage());
+         Log.d("APIフェッチエラー", e.getMessage());
          return null;
       }
    }
@@ -49,7 +55,7 @@ public class TimeIntervalAPIModel {
       try {
          return CommonParameters.TIMEONLY_FORMATTER.parse(time_supplyString);
       } catch (Exception e) {
-         Log.d("APIフェッチエラー",e.getMessage());
+         Log.d("APIフェッチエラー", e.getMessage());
          return null;
       }
    }
@@ -61,7 +67,7 @@ public class TimeIntervalAPIModel {
       try {
          return CommonParameters.TIMEONLY_FORMATTER.parse(time_visualStationString);
       } catch (Exception e) {
-         Log.d("APIフェッチエラー",e.getMessage());
+         Log.d("APIフェッチエラー", e.getMessage());
          return null;
       }
    }
@@ -73,7 +79,7 @@ public class TimeIntervalAPIModel {
       try {
          return CommonParameters.TIMEONLY_FORMATTER.parse(time_functionalStationString);
       } catch (Exception e) {
-         Log.d("APIフェッチエラー",e.getMessage());
+         Log.d("APIフェッチエラー", e.getMessage());
          return null;
       }
    }
@@ -85,7 +91,7 @@ public class TimeIntervalAPIModel {
       try {
          return CommonParameters.TIMEONLY_FORMATTER.parse(time_assemblyStationString);
       } catch (Exception e) {
-         Log.d("APIフェッチエラー",e.getMessage());
+         Log.d("APIフェッチエラー", e.getMessage());
          return null;
       }
    }
@@ -98,5 +104,5 @@ public class TimeIntervalAPIModel {
       this.time_functionalStationString = time_functionalStationString;
       this.time_assemblyStationString = time_assemblyStationString;
    }
-}
 
+}

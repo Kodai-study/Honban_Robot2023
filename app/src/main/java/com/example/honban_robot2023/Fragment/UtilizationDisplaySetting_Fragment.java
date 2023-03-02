@@ -18,16 +18,45 @@ import android.widget.ToggleButton;
 import com.example.honban_robot2023.R;
 import com.example.honban_robot2023.UtilizationTable_Activity;
 
-
+/**
+ * 日ごとのロボットの稼働状況を表示させる {@link com.example.honban_robot2023.UtilizationTable_Activity}
+ * の表示項目の並び替え、絞り込みを行うダイアログ
+ */
 public class UtilizationDisplaySetting_Fragment extends DialogFragment {
 
+    /**
+     * 並び替え項目に何が選択されているかを表す値。
+     * 0:日付 1:稼働時間の長さ
+     */
     private int sortColumIndex = 0;
+
+    /**
+     * 並び替えの降順、昇順を選択する{@link #selectSortMethod}
+     * の値を保持しておく変数
+     */
     private boolean isSortMethodSelect = false;
+
+    /**
+     * 並び替え、絞り込みを行うテーブルがあるアクティビティ
+     */
     private UtilizationTable_Activity base_Activity;
 
+    /**
+     * 稼働時間の長さで並び替えを行うときに選択される
+     * ラジオボタン
+     */
     RadioButton orderByOperatingTime;
+
+    /**
+     * 日付で並び替えを行うときに選択される
+     * ラジオボタン
+     */
     RadioButton orderByDate;
 
+    /**
+     * 並び替えが true:昇順 false:降順 のどちらで
+     * 行うかを設定するトグルスイッチ
+     */
     ToggleButton selectSortMethod;
 
     public UtilizationDisplaySetting_Fragment(UtilizationTable_Activity base_Activity) {
@@ -78,4 +107,5 @@ public class UtilizationDisplaySetting_Fragment extends DialogFragment {
         builder.setNegativeButton("キャンセル", (dialog, which) -> dismiss());
         return builder.create();
     }
+
 }

@@ -17,9 +17,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * システムの現在の状態を表す {@link com.example.honban_robot2023.MainActivity}
+ * で、システムの状態をAPIから取得して画面の更新を行う処理
+ */
 public class TimerTaskMonitorSystem extends TimerTask {
 
+    /**
+     * APIからデータを取得するためのクラス
+     */
     APIManager apiManager;
+
     TextView stationState_Supply;
     TextView stationState_Visual;
     TextView stationState_Function;
@@ -37,6 +45,12 @@ public class TimerTaskMonitorSystem extends TimerTask {
     TextView systemState_cooperation;
     AppCompatActivity baseActivityView;
 
+    /**
+     * 書き換えを行う様々なビューオブジェクトを取得する。
+     *
+     * @param baseActivityView 書き換え対象のビューがある
+     *                         アクティビティ
+     */
     public TimerTaskMonitorSystem(AppCompatActivity baseActivityView) {
         this.baseActivityView = baseActivityView;
         apiManager = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
@@ -110,4 +124,5 @@ public class TimerTaskMonitorSystem extends TimerTask {
             }
         });
     }
+
 }

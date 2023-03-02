@@ -4,14 +4,11 @@ import com.google.gson.annotations.SerializedName;
 
 public class SampleAPIModel {
 
-
     private final int userId;
     private final int id;
     private final String title;
     @SerializedName(value = "body")
     private final String subTitle;
-
-
 
     public int getUserId() {
         return userId;

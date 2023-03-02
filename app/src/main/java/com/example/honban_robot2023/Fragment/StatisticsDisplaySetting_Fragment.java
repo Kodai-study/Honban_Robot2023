@@ -27,15 +27,37 @@ import java.util.List;
 public class StatisticsDisplaySetting_Fragment extends DialogFragment {
 
     /**
-     *
+     * 並び替え項目を選択するラジオボタンの親オブジェクト
      */
     RadioGroup sortColumSelect;
+
+    /**
+     * 並び替え、絞り込みを行うテーブルがあるアクティビティ
+     */
     StatisticsTable_Activity baseActivity;
+
+    /**
+     * 並び替えが true:昇順 false:降順 のどちらで
+     * 行うかを設定するトグルスイッチ
+     */
     ToggleButton selectSortMethod;
 
+    /**
+     * 設定項目を選択するラジオボタン {@link #sortColumSelect}
+     * のIDの値のリスト
+     */
     List<Integer> radioButtonIdList = new ArrayList<>();
 
+    /**
+     * 並び替え項目のラジオボタン {@link #sortColumSelect}
+     * で何が選択されているかを保持しておく変数
+     */
     private int sortColumIndex = 0;
+
+    /**
+     * 並び替えの降順、昇順を選択する{@link #selectSortMethod}
+     * の値を保持しておく変数
+     */
     private boolean isSortMethodSelect = false;
 
     public StatisticsDisplaySetting_Fragment(StatisticsTable_Activity baseActivity) {
@@ -99,4 +121,5 @@ public class StatisticsDisplaySetting_Fragment extends DialogFragment {
         builder.setNegativeButton("キャンセル", (dialog, which) -> dismiss());
         return builder.create();
     }
+
 }

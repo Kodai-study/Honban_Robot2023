@@ -1,6 +1,5 @@
 package com.example.honban_robot2023.APIModules;
 
-import com.google.gson.annotations.SerializedName;
 
 public class StationStateAPIModel {
 
@@ -8,7 +7,6 @@ public class StationStateAPIModel {
     private int numberOfWork_VisualStation;
     private int numberOfWork_FunctionalStation;
     private int numberOfWork_AssemblyStation;
-
     private int numberOfOKStock;
     private int numberOfNGStock;
     private String systemState;
@@ -22,6 +20,18 @@ public class StationStateAPIModel {
     private int resultFrequency;
     private float resultVoltage;
     private String visualInspectionData;
+
+    public int getNumberOfWork_VisualStation() {
+        return numberOfWork_VisualStation;
+    }
+
+    public int getNumberOfWork_FunctionalStation() {
+        return numberOfWork_FunctionalStation;
+    }
+
+    public int getNumberOfWork_AssemblyStation() {
+        return numberOfWork_AssemblyStation;
+    }
 
     public boolean isSuccessConnect() {
         return isSuccessConnect;
