@@ -2,13 +2,17 @@ package com.example.honban_robot2023.Test;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.honban_robot2023.APIModules.APIManager;
 import com.example.honban_robot2023.APIModules.InspectionTotalAPIModel;
 import com.example.honban_robot2023.APIModules.StatisticsAPIModel;
+import com.example.honban_robot2023.Fragment.PieGraph_Fragment;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.example.honban_robot2023.R;
 import com.github.mikephil.charting.charts.PieChart;
@@ -38,6 +42,8 @@ public class PieChartSample_Activity extends AppCompatActivity {
 
     APIManager retrofitApi;
 
+    private DialogFragment settingDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,7 @@ public class PieChartSample_Activity extends AppCompatActivity {
         retrofitApi = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
 
         setInspection();
+        settingDialog = new PieGraph_Fragment();
         //setNgCourse();
     }
 
@@ -143,5 +150,19 @@ public class PieChartSample_Activity extends AppCompatActivity {
                         t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.list_table_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    /* メニューバーのアイコンを押すことで設定ダイアログの表示 */
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        settingDialog.show(getSupportFragmentManager(), "dialog");
+        return super.onOptionsItemSelected(item);
     }
 }
