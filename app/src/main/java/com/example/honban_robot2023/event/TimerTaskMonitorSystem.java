@@ -39,7 +39,7 @@ public class TimerTaskMonitorSystem extends TimerTask {
 
     public TimerTaskMonitorSystem(AppCompatActivity baseActivityView) {
         this.baseActivityView = baseActivityView;
-        apiManager = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
+        apiManager = RetrofitFactory.getApiClient("https://192.168.96.234:7015/api/").create(APIManager.class);
         stationState_Supply = baseActivityView.findViewById(R.id.Supply_con);
         stationState_Visual = baseActivityView.findViewById(R.id.Visal_con);
         stationState_Function = baseActivityView.findViewById(R.id.Func_con);
