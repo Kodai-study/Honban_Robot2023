@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,7 +64,19 @@ public class PieChartSample_Activity extends AppCompatActivity {
         String[] dimensions = new String[]{"A", "B", "C", "D"};
         float[] values = new float[]{1f, 2f, 3f, 4f};
 
+
         setPieChart(dimensions, values);
+
+        pieChart.setEntryLabelTextSize(30f);  //ラベルテキストの変更
+        pieChart.setCenterText("検査別不良品率"); //中央にテキストを表示する
+        pieChart.setCenterTextSize(35f);  //centertextの文字の大きさ
+
+        //pieChart.getDescription().setTextSize(26f);
+        //pieChart.getDescription().setText("円グラフ");
+        pieChart.getDescription().setEnabled(false);
+        pieChart.getLegend().setTextSize(26f);
+
+
     }
 
     /**
@@ -83,11 +96,15 @@ public class PieChartSample_Activity extends AppCompatActivity {
         PieDataSet pieDataSet = new PieDataSet(entryList, "candle");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         PieData pieData = new PieData(pieDataSet);
+        pieData.setValueTextSize(30f);
         pieChart = findViewById(R.id.pieChartExample);
         pieChart.setData(pieData);
         pieChart.setEnabled(true);
         pieChart.invalidate();
+        /**https://qiita.com/c60evaporator/items/14e63d22d860b73e6f22
+         * MPAndroidchartまとめのURL*/
     }
+
 
     /**
      * 検査ステーション毎の、不合格品を出した割合を表示する。
