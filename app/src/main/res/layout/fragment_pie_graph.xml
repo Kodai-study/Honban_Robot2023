@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="表示する検査項目の選択"
+        android:text="円グラフの表示項目選択"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"
@@ -21,24 +21,28 @@
         app:layout_constraintStart_toStartOf="@+id/Visaltest"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
+    <ToggleButton
         android:id="@+id/Visaltest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="76dp"
         android:text="外観検査"
+        android:textOff="全体"
+        android:textOn="外観検査"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
+    <ToggleButton
         android:id="@+id/Functionaltest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="24dp"
         android:text="機能検査"
+        android:textOff="機能検査_OFF"
+        android:textOn="機能検査_ON"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Visaltest" />

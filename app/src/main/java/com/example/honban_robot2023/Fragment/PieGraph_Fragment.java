@@ -37,8 +37,8 @@ public class PieGraph_Fragment extends DialogFragment {
         builder.setView(dialogView);
         settingShowVisualInspectionData = dialogView.findViewById(R.id.Visaltest);
         settingShowFunctionInspectionData = dialogView.findViewById(R.id.Functionaltest);
-        settingShowFunctionInspectionData.setChecked(true);
-        settingShowVisualInspectionData.setChecked(true);
+        settingShowFunctionInspectionData.setChecked(false);
+        settingShowVisualInspectionData.setChecked(false);
         builder.setPositiveButton("適用", (dialog, which) -> dismiss());
         builder.setNegativeButton("キャンセル", (dialog, which) -> dismiss());
         return builder.create();

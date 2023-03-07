@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/pie_dialog_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="104dp"
+        android:text="円グラフの表示項目選択"
+        android:textColor="@color/black"
+
+        android:textSize="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioButton
+        android:id="@+id/ALL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="全体の不良品率"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/pie_dialog_select"
+        app:layout_constraintTop_toBottomOf="@+id/pie_dialog_select" />
+
+    <RadioButton
+        android:id="@+id/Visal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="外観検査別不良品率"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/pie_dialog_select"
+        app:layout_constraintTop_toBottomOf="@+id/ALL" />
+
+    <RadioButton
+        android:id="@+id/Function"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="機能検査別不良品率"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pie_dialog_select"
+        app:layout_constraintTop_toBottomOf="@+id/Visal" />
+
+    <ToggleButton
+        android:id="@+id/Pie_toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ToggleButton"
+        android:textColor="@color/black"
+        android:textOff="全体"
+        android:textOn="外観検査"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pie_dialog_select"
+        app:layout_constraintVertical_bias="0.225" />
+</androidx.constraintlayout.widget.ConstraintLayout>

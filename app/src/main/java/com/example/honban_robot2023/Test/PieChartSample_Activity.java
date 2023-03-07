@@ -68,13 +68,14 @@ public class PieChartSample_Activity extends AppCompatActivity {
         setPieChart(dimensions, values);
 
         pieChart.setEntryLabelTextSize(30f);  //ラベルテキストの変更
-        pieChart.setCenterText("検査別不良品率"); //中央にテキストを表示する
+        pieChart.setCenterText("全体の不良品率"); //中央にテキストを表示する
         pieChart.setCenterTextSize(35f);  //centertextの文字の大きさ
 
         //pieChart.getDescription().setTextSize(26f);
         //pieChart.getDescription().setText("円グラフ");
         pieChart.getDescription().setEnabled(false);
         pieChart.getLegend().setTextSize(26f);
+        pieChart.setTouchEnabled(false);//回転を止める、タップ無効
 
 
     }
