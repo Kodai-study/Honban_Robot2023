@@ -9,17 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
 import com.example.honban_robot2023.R;
 
 public class PieGraph_Fragment extends DialogFragment {
 
-    ToggleButton settingShowVisualInspectionData;
-    ToggleButton settingShowFunctionInspectionData;
+    RadioButton settingShowVisualInspectionData;
+    RadioButton settingShowFunctionInspectionData;
+    RadioButton settingShowALLInspectionData;
 
 
     public PieGraph_Fragment() {
@@ -37,8 +40,10 @@ public class PieGraph_Fragment extends DialogFragment {
         builder.setView(dialogView);
         settingShowVisualInspectionData = dialogView.findViewById(R.id.Visaltest);
         settingShowFunctionInspectionData = dialogView.findViewById(R.id.Functionaltest);
+        settingShowALLInspectionData = dialogView.findViewById(R.id.ALL_pie);
         settingShowFunctionInspectionData.setChecked(false);
         settingShowVisualInspectionData.setChecked(false);
+        settingShowALLInspectionData.setChecked(true);
         builder.setPositiveButton("適用", (dialog, which) -> dismiss());
         builder.setNegativeButton("キャンセル", (dialog, which) -> dismiss());
         return builder.create();
