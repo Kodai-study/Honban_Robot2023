@@ -13,19 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:title="統計データ" />
-    <item
-        android:id="@+id/action_user"
-        android:icon="@drawable/baseline_access_time_24"
-        android:orderInCategory="2"
-        android:title="アカウント"
-        app:showAsAction="ifRoom" />
-
-    <item
-        android:id="@+id/action_home"
-        android:icon="@drawable/baseline_format_list_bulleted_24"
-        android:orderInCategory="1"
-        android:title="ホーム"
-        app:showAsAction="ifRoom" />
 
     <item android:title="検査時刻データ"
         android:id="@+id/menu_moveToTimeTable"/>

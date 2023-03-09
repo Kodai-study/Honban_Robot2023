@@ -48,16 +48,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/Assem_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:text="00:00:00"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <TextView
                 android:id="@+id/Assem_con"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -149,16 +139,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/Supply_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:text="00:00:00"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <TextView
                 android:id="@+id/Supply_con"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -239,16 +219,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/Visal_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:text="00:00:00"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <TextView
                 android:id="@+id/Visal_con"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -318,16 +288,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/Func_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="4dp"
-                android:text="00:00:00"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/Func_con"

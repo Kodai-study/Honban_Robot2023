@@ -20,6 +20,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class PieChartSample_Activity extends AppCompatActivity {
 
         pieChart.setEntryLabelTextSize(30f);  //ラベルテキストの変更
         pieChart.setCenterText("全体の不良品率"); //中央にテキストを表示する
-        pieChart.setCenterTextSize(35f);  //centertextの文字の大きさ
+        pieChart.setCenterTextSize(35f);  //centerTextの文字の大きさ
 
         //pieChart.getDescription().setTextSize(26f);
         //pieChart.getDescription().setText("円グラフ");
@@ -96,14 +97,14 @@ public class PieChartSample_Activity extends AppCompatActivity {
 
         PieDataSet pieDataSet = new PieDataSet(entryList, "candle");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        PieData pieData = new PieData(pieDataSet);
+        pieDataSet.setDrawIcons(true);
+        PieData pieData = new PieData( pieDataSet);
+        pieData.setValueFormatter(new PercentFormatter());
         pieData.setValueTextSize(30f);
         pieChart = findViewById(R.id.pieChartExample);
         pieChart.setData(pieData);
         pieChart.setEnabled(true);
         pieChart.invalidate();
-        /**https://qiita.com/c60evaporator/items/14e63d22d860b73e6f22
-         * MPAndroidchartまとめのURL*/
     }
 
 

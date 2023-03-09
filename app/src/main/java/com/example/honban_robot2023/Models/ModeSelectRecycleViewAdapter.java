@@ -12,25 +12,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.honban_robot2023.InspectionTimeTable_Activity;
 import com.example.honban_robot2023.R;
 import com.example.honban_robot2023.ResultTable_Activity;
 import com.example.honban_robot2023.StatisticsTable_Activity;
 import com.example.honban_robot2023.Test.PieChartSample_Activity;
-import com.example.honban_robot2023.TimeIntervalsTable_Activity;
 import com.example.honban_robot2023.UtilizationTable_Activity;
 
 public class ModeSelectRecycleViewAdapter extends RecyclerView.Adapter<ModeSelectRecycleViewAdapter.ModeSelectCardViewHolder> {
 
     private Resources androidResource;
-
     private String[] modeTitles;
     private String[] modeExplanation;
-
     private Context activityContext;
     int imageResourceIds[] = new int[]{R.drawable.kekka, R.drawable.symbol048, R.drawable.img, R.drawable.stopwatch, R.drawable.graph01_circle};
 
     Class[] transitionList = new Class[]{ResultTable_Activity.class, StatisticsTable_Activity.class,
-            TimeIntervalsTable_Activity.class, UtilizationTable_Activity.class, PieChartSample_Activity.class};
+            InspectionTimeTable_Activity.class, UtilizationTable_Activity.class, PieChartSample_Activity.class};
 
     public ModeSelectRecycleViewAdapter(Resources androidResource, Context activityContext) {
         this.androidResource = androidResource;
@@ -68,7 +66,6 @@ public class ModeSelectRecycleViewAdapter extends RecyclerView.Adapter<ModeSelec
         TextView modeTitle;
         TextView modeExplanation;
         ImageButton modeSelectButton;
-
         View itemView;
 
         private void setButtonImage(int resourceId) {
