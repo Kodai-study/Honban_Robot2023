@@ -18,7 +18,7 @@ public class AnalysisSelection_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analysis_selection);
-        recycleViewAdapter = new ModeSelectRecycleViewAdapter(getResources());
+        recycleViewAdapter = new ModeSelectRecycleViewAdapter(getResources(),this);
         cardViewList = findViewById(R.id.recyclerView_ModeSelect);
         RecyclerView.LayoutManager rLayoutManager = new LinearLayoutManager(this);
 

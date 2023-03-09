@@ -1,6 +1,7 @@
 package com.example.honban_robot2023.Models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.honban_robot2023.R;
+import com.example.honban_robot2023.ResultTable_Activity;
+import com.example.honban_robot2023.StatisticsTable_Activity;
+import com.example.honban_robot2023.Test.PieChartSample_Activity;
+import com.example.honban_robot2023.TimeIntervalsTable_Activity;
+import com.example.honban_robot2023.UtilizationTable_Activity;
 
 public class ModeSelectRecycleViewAdapter extends RecyclerView.Adapter<ModeSelectRecycleViewAdapter.ModeSelectCardViewHolder> {
 
@@ -19,12 +25,18 @@ public class ModeSelectRecycleViewAdapter extends RecyclerView.Adapter<ModeSelec
 
     private String[] modeTitles;
     private String[] modeExplanation;
-    int imageResourceIds[] = new int[]{R.drawable.kekka, R.drawable.symbol048, R.drawable.img, R.drawable.stopwatch,R.drawable.graph01_circle};
 
-    public ModeSelectRecycleViewAdapter(Resources androidResource) {
+    private Context activityContext;
+    int imageResourceIds[] = new int[]{R.drawable.kekka, R.drawable.symbol048, R.drawable.img, R.drawable.stopwatch, R.drawable.graph01_circle};
+
+    Class[] transitionList = new Class[]{ResultTable_Activity.class, StatisticsTable_Activity.class,
+            TimeIntervalsTable_Activity.class, UtilizationTable_Activity.class, PieChartSample_Activity.class};
+
+    public ModeSelectRecycleViewAdapter(Resources androidResource, Context activityContext) {
         this.androidResource = androidResource;
         modeTitles = androidResource.getStringArray(R.array.modeSelect_cardViewTitle);
         modeExplanation = androidResource.getStringArray(R.array.modeSelect_cardViewExplanation);
+        this.activityContext = activityContext;
     }
 
     @NonNull
@@ -39,6 +51,12 @@ public class ModeSelectRecycleViewAdapter extends RecyclerView.Adapter<ModeSelec
         holder.modeTitle.setText(modeTitles[position]);
         holder.modeExplanation.setText(modeExplanation[position]);
         holder.setButtonImage(imageResourceIds[position]);
+        holder.modeSelectButton.setOnClickListener(view -> {
+            activityContext.startActivity(new Intent(activityContext, transitionList[position]));
+        });
+        holder.itemView.setOnClickListener(view -> {
+            activityContext.startActivity(new Intent(activityContext, transitionList[position]));
+        });
     }
 
     @Override
@@ -51,12 +69,15 @@ public class ModeSelectRecycleViewAdapter extends RecyclerView.Adapter<ModeSelec
         TextView modeExplanation;
         ImageButton modeSelectButton;
 
-        protected void setButtonImage(int resourceId) {
+        View itemView;
+
+        private void setButtonImage(int resourceId) {
             modeSelectButton.setImageResource(resourceId);
         }
 
         public ModeSelectCardViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.itemView = itemView;
             modeTitle = itemView.findViewById(R.id.textView_ModeSelectCardTitle);
             modeExplanation = itemView.findViewById(R.id.textView_ModeSelectCardExplanation);
             modeSelectButton = itemView.findViewById(R.id.imageButton_ModeSelectCardView);
