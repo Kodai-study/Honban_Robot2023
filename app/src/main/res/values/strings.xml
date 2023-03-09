@@ -72,6 +72,22 @@
         <item>組立ステーションでかかった時間</item>
     </array>
 
+    <array name="modeSelect_cardViewTitle">
+        <item>結果一覧</item>
+        <item>統計データ</item>
+        <item>検査時刻データ</item>
+        <item>稼働時間データ</item>
+        <item>検査別割合</item>
+    </array>
+
+    <array name="modeSelect_cardViewExplanation">
+        <item>最新の検査結果を表示します設定欄で検査項目別や合否別に調べることができます</item>
+        <item>検査日,検査数、良品数、不良品数、良品率、不良率を見ることが出来ます</item>
+        <item>開始時刻やサイクルタイムを表示します</item>
+        <item>ロボットの連続稼働時間の一覧を表示します</item>
+        <item>ワークの合格率や外観検査の項目毎の合格の割合などを円グラフで表示します</item>
+    </array>
+
     <array name="tableTitle_TimeStamp">
         <item>ワークID</item>
         <item>開始時刻</item>

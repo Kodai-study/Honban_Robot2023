@@ -16,11 +16,6 @@
         <activity
             android:name=".Test.PieChartSample_Activity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Test.BarChartSample_Activity"
@@ -37,6 +32,19 @@
             android:exported="true">
 
         </activity>
+
+        <activity android:name=".Start_Activity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Test.sample0228"
+            android:exported="true"/>
         <activity
             android:name=".StatisticsTable_Activity"
             android:exported="true"
@@ -44,11 +52,16 @@
         <activity
             android:name=".InspectionTimeTable_Activity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AnalysisSelection_Activity"
+            android:exported="true"
+            android:parentActivityName=".Start_Activity" />
+
         <activity
             android:name=".UtilizationTable_Activity"
             android:exported="true"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
