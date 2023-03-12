@@ -12,15 +12,16 @@ import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.ToggleButton;
 
 import com.example.honban_robot2023.R;
 
 public class PieGraph_Fragment extends DialogFragment {
 
-    ToggleButton settingShowVisualInspectionData;
-    ToggleButton settingShowFunctionInspectionData;
-
+    RadioButton settingShowVisualInspectionData;
+    RadioButton settingShowFunctionInspectionData;
+    RadioButton settingShowDataEachStation;
 
     public PieGraph_Fragment() {
         // Required empty public constructor
@@ -35,8 +36,11 @@ public class PieGraph_Fragment extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         final View dialogView = LayoutInflater.from(activity).inflate(R.layout.fragment_pie_graph, null);
         builder.setView(dialogView);
-        settingShowVisualInspectionData = dialogView.findViewById(R.id.Visaltest);
-        settingShowFunctionInspectionData = dialogView.findViewById(R.id.Functionaltest);
+        settingShowDataEachStation = dialogView.findViewById(R.id.radioButton_pieChartColum_Station);
+        settingShowVisualInspectionData = dialogView.findViewById(R.id.radioButton_pieChartColum_VisualInspection);
+        settingShowFunctionInspectionData = dialogView.findViewById(R.id.radioButton_pieChartColum_FunctionInspection);
+
+        settingShowDataEachStation.setChecked(true);
         settingShowFunctionInspectionData.setChecked(false);
         settingShowVisualInspectionData.setChecked(false);
         builder.setPositiveButton("適用", (dialog, which) -> dismiss());

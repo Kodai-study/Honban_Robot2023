@@ -27,6 +27,19 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/numberOfWork_assemblyStation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ステーション内のワークの個数"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView39"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Assem_con" />
+
+        <TextView
             android:id="@+id/textView39"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,24 +51,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/Assem_con"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/textView39"
+            android:text="状態"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberOfWork_assemblyStation"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/Assem_con"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="状態"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -129,24 +136,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/Supply_con"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:text="状態"
+            android:textColor="@color/black"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/textView40"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/Supply_con"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="状態"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-        </LinearLayout>
+
+        </TextView>
 
         <TextView
             android:id="@+id/textView30"
@@ -209,24 +213,40 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/numberOfWork_visualStation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:text="ステーション内のワークの個数"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/textView41"
+
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Visal_con">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Visal_con"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="状態"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberOfWork_visualStation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/Visal_con"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="状態"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-        </LinearLayout>
+        </TextView>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -280,24 +300,40 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/Func_con"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/textView42"
+            android:text="状態"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/numberOfWork_functionStation"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/Func_con"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="状態"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-        </LinearLayout>
+        </TextView>
+
+        <TextView
+            android:id="@+id/numberOfWork_functionStation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ステーション内のワークの個数"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/textView42"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Func_con">
+
+        </TextView>
 
         <TextView
             android:id="@+id/textView42"
@@ -348,52 +384,6 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="157dp"
-        android:layout_height="89dp"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.516">
-
-        <Button
-            android:id="@+id/button_moveResultTable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button_moveStatistics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button_moveTimeInterval"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="Button" />
-
-        <Button
-            android:id="@+id/button_moveUtilization"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:text="Button" />
-    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -454,7 +444,7 @@
             android:layout_height="wrap_content"
             android:text="システム全体の状態 "
             android:textColor="@color/teal_200"
-            android:textSize="21sp" />
+            android:textSize="34sp" />
 
         <TextView
             android:id="@+id/anomaly_state"
@@ -462,7 +452,8 @@
             android:layout_height="wrap_content"
             android:text="異常状態"
             android:textColor="@color/anomaly_state"
-            android:textSize="24sp" />
+            android:textSize="34sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/standby_state"
@@ -475,7 +466,7 @@
             android:shadowRadius="3"
             android:text="動作開始待機中"
             android:textColor="@color/standby_state"
-            android:textSize="24sp" />
+            android:textSize="34sp" />
 
         <TextView
             android:id="@+id/alig_state"
@@ -483,7 +474,8 @@
             android:layout_height="wrap_content"
             android:text="連携動作中"
             android:textColor="@color/alignment_state"
-            android:textSize="24sp" />
+            android:textSize="34sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <Button

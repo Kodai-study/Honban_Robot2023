@@ -16,9 +16,10 @@ public class StationStateAPIModel {
     private String stationState_Assembly;
     private boolean isSystemPause;
     private String systemPauseCause;
-    private boolean isInspectedJustBefore;
+    private boolean isVisualInspectedJustBefore;
+    private boolean isFunctionInspectedJustBefore;
     private int resultFrequency;
-    private float resultVoltage;
+    private int resultVoltage;
     private String visualInspectionData;
 
     public int getNumberOfWork_VisualStation() {
@@ -36,6 +37,7 @@ public class StationStateAPIModel {
     public boolean isSuccessConnect() {
         return isSuccessConnect;
     }
+
     public int getNumberOfOKStock() {
         return numberOfOKStock;
     }
@@ -72,15 +74,19 @@ public class StationStateAPIModel {
         return systemPauseCause;
     }
 
-    public boolean isInspectedJustBefore() {
-        return isInspectedJustBefore;
+    public boolean isVisualInspectedJustBefore() {
+        return isVisualInspectedJustBefore;
+    }
+
+    public boolean isFunctionInspectedJustBefore() {
+        return isFunctionInspectedJustBefore;
     }
 
     public int getResultFrequency() {
         return resultFrequency;
     }
 
-    public float getResultVoltage() {
+    public int getResultVoltage() {
         return resultVoltage;
     }
 

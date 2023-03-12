@@ -17,13 +17,17 @@ import com.example.honban_robot2023.Fragment.PieGraph_Fragment;
 import com.example.honban_robot2023.Models.RetrofitFactory;
 import com.example.honban_robot2023.R;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.interfaces.datasets.IPieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,10 +54,12 @@ public class PieChartSample_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart_sample);
+        pieChart = findViewById(R.id.pieChartExample);
         setTestChartData();
+        pieChart.setUsePercentValues(true);
         retrofitApi = RetrofitFactory.getApiClient("https://192.168.96.69:7015/api/").create(APIManager.class);
 
-        setInspection();
+       // setInspection();
         settingDialog = new PieGraph_Fragment();
         //setNgCourse();
     }
@@ -77,8 +83,6 @@ public class PieChartSample_Activity extends AppCompatActivity {
         pieChart.getDescription().setEnabled(false);
         pieChart.getLegend().setTextSize(26f);
         pieChart.setTouchEnabled(false);//回転を止める、タップ無効
-
-
     }
 
     /**
@@ -94,19 +98,40 @@ public class PieChartSample_Activity extends AppCompatActivity {
                     new PieEntry(values[i], columNames[i])
             );
         }
-
         PieDataSet pieDataSet = new PieDataSet(entryList, "candle");
         pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         pieDataSet.setDrawIcons(true);
         PieData pieData = new PieData( pieDataSet);
-        pieData.setValueFormatter(new PercentFormatter());
+        pieData.setValueFormatter(new PercentFormatter(pieChart));
         pieData.setValueTextSize(30f);
-        pieChart = findViewById(R.id.pieChartExample);
         pieChart.setData(pieData);
-        pieChart.setEnabled(true);
+        //pieChart.setEnabled(true);
         pieChart.invalidate();
     }
+    private void setupPieChartView() {
+        pieChart.setUsePercentValues(true);
 
+        Legend legend = pieChart.getLegend();
+
+        // 円グラフに表示するデータ
+        List<Float> values = Arrays.asList(40f, 30f, 20f, 10f);
+        List<PieEntry> entries = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            entries.add(new PieEntry(values.get(i), i));
+        }
+
+        PieDataSet dataSet = new PieDataSet(entries, "チャートのラベル");
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        dataSet.setDrawValues(true);
+
+        List<String> labels = Arrays.asList("A", "B", "C", "D");
+        PieData pieData = new PieData( dataSet);
+        pieData.setValueFormatter(new PercentFormatter());
+        pieData.setValueTextSize(12f);
+        pieData.setValueTextColor(Color.WHITE);
+
+        pieChart.setData(pieData);
+    }
 
     /**
      * 検査ステーション毎の、不合格品を出した割合を表示する。

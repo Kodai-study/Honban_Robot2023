@@ -16,27 +16,13 @@ import java.util.Timer;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button result;
-    Button Statistics;
-    Button TimeInterval;
-    Button Utilization;
-
     Timer stateObserveTimer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        result = findViewById(R.id.button_moveResultTable);
-        Statistics = findViewById(R.id.button_moveStatistics);
-        TimeInterval = findViewById(R.id.button_moveTimeInterval);
-        Utilization = findViewById(R.id.button_moveUtilization);
         // デバッグ用のボタンに、画面遷移の処理を割り当てる
-        result.setOnClickListener(new clickToMove(ResultTable_Activity.class));
-        Statistics.setOnClickListener(new clickToMove(StatisticsTable_Activity.class));
-        TimeInterval.setOnClickListener(new clickToMove(InspectionTimeTable_Activity.class));
-        Utilization.setOnClickListener(new clickToMove(UtilizationTable_Activity.class));
         stateObserveTimer.scheduleAtFixedRate(new TimerTaskMonitorSystem(this), 1000, 1000);
     }
 
@@ -46,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     class clickToMove implements View.OnClickListener {
 
         Class<? extends AppCompatActivity> activity;
+
 
         public clickToMove(Class<? extends AppCompatActivity> activity) {
             this.activity = activity;

@@ -12,50 +12,42 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="20dp"
         android:text="円グラフの表示項目選択"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/Visaltest"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ToggleButton
-        android:id="@+id/Visaltest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="76dp"
-        android:text="外観検査"
-        android:textOff="全体"
-        android:textOn="外観検査"
-        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ToggleButton
-        android:id="@+id/Functionaltest"
+    <RadioGroup
+        android:id="@+id/radioGroup6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="機能検査"
-        android:textOff="機能検査_OFF"
-        android:textOn="機能検査_ON"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/Visaltest"
-        app:layout_constraintTop_toBottomOf="@+id/Visaltest" />
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/textView19">
 
-    <ToggleButton
-        android:id="@+id/ASC_pie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="76dp"
-        android:text="ToggleButton"
-        android:textOff="昇順"
-        android:textOn="降順"
-        app:layout_constraintStart_toEndOf="@+id/Visaltest"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RadioButton
+            android:id="@+id/radioButton_pieChartColum_Station"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ステーション別" />
+
+        <RadioButton
+            android:id="@+id/radioButton_pieChartColum_VisualInspection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="外観検査 検査項目別" />
+
+        <RadioButton
+            android:id="@+id/radioButton_pieChartColum_FunctionInspection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="機能検査 検査項目別" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
