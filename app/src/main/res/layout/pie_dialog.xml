@@ -50,17 +50,4 @@
         app:layout_constraintStart_toStartOf="@+id/pie_dialog_select"
         app:layout_constraintTop_toBottomOf="@+id/Visal" />
 
-    <ToggleButton
-        android:id="@+id/Pie_toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ToggleButton"
-        android:textColor="@color/black"
-        android:textOff="全体"
-        android:textOn="外観検査"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pie_dialog_select"
-        app:layout_constraintVertical_bias="0.225" />
 </androidx.constraintlayout.widget.ConstraintLayout>
